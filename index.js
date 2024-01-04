@@ -12,7 +12,7 @@ const compression = require( 'compression' );
 const cookieParser = require( 'cookie-parser' );
 const helloRouter = require( './src/hallo' )
 // Your existing middleware setup (morgan, cors, etc)
-const combinedJSON = require('./lib/combinedJSON')();
+//const combinedJSON = require('./lib/combinedJSON')();
 
 /*
 //ini buat mantau perubahan file sub swagger
