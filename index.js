@@ -14,7 +14,7 @@ const helloRouter = require( './src/hallo' )
 // Your existing middleware setup (morgan, cors, etc)
 const combinedJSON = require('./lib/combinedJSON')();
 
-
+/*
 //ini buat mantau perubahan file sub swagger
 const chokidar = require('chokidar');
  const files = path.join(__dirname, 'lib', 'swagger.json');
@@ -37,7 +37,7 @@ fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
     fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
   });
 
-
+*/
 
 
 const apiR = require( './src/api/router' );
