@@ -1,0 +1,63 @@
+{
+  "dependencies": {
+    "axios": "^1.6.3",
+    "body-parser": "^1.20.2",
+    "cheerio": "1.0.0-rc.12",
+    "chokidar": "^3.5.3",
+    "compression": "^1.7.4",
+    "cookie": "^0.6.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.17.1",
+    "file-type": "^16.5.4",
+    "form-data": "^4.0.0",
+    "formdata-node": "^3.0.4",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mime-types": "^2.1.35",
+    "moment-timezone": "^0.5.44",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "nekopoi-scraper": "^2.7.1",
+    "node-fetch": "^2.6.5",
+    "node-tiklydown": "^1.0.0",
+    "pdfkit": "^0.14.0",
+    "qs": "^6.11.2",
+    "request": "^2.88.2",
+    "sdwc": "^1.0.1",
+    "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^9.0.1",
+    "yt-search": "^2.10.4",
+    "ytdl-core": "^4.11.5"
+  },
+  "name": "xyla-rest-api",
+  "version": "1.6.9",
+  "description": "rest api yang terbuat dari kegabutan",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pkok1024/dollar.git"
+  },
+  "keywords": [
+    "rest-api"
+  ],
+  "author": ".M.U.F.A.R.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pkok1024/dollar/issues"
+  },
+  "homepage": "https://github.com/Pkok1024/dollar#readme"
+}
