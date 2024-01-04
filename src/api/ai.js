@@ -91,5 +91,33 @@ apiR.get('/gptonline', async (req, res, next) => {
     })
   })
 })
+apiR.get('/toanime', async (req, res, next) => {
+  const url = req.query.url
+  if (!url) return res.json(msg.paramquery);
+
+  try {
+    const response = await fetchJson(`https://aemt.me/toanime?url=${url}`);
+    const imageUrl = response.url.img_crop_single;
+
+    if (!imageUrl) return res.json(msg.nodata);
+   let requestSettings = {
+    url: imageUrl,
+    method: 'GET',
+    encoding: null
+  };
+  request( requestSettings, function( error, response, body ) {
+    res.set( 'Content-Type', 'image/png' );
+    res.send( body );
+  } );
+
+  } catch (error) {
+    // Handle any errors
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
 
 module.exports = apiR

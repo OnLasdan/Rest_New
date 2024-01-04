@@ -11,5 +11,5 @@ apiR.use(cors());
   apiR.use('/canvas', require('./canvas'));
   apiR.use('/upload', require('./upload'));
   apiR.use('/search', require('./search'));
-
+  apiR.use('/misc', require('./misc'));
 module.exports = apiR;

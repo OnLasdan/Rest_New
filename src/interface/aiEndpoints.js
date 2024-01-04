@@ -208,8 +208,62 @@ const aiEndpoints = {
         }
       }
     }
-  }
+  },
+    "/api/ai/toanime": {
+      "get": {
+        "summary": "Get anime image from URL",
+         "tags": ["Ai"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL of the anime image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request, missing or invalid parameters",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Invalid or missing 'url' parameter"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
   // ... tambahkan endpoint ai lainnya
+
+
+  
 };
 //test chokidar function 
 // added watchFile function 
