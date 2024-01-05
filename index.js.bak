@@ -52,28 +52,3 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-//ini buat mantau perubahan file sub swagger
-// const combinedJSON = require('./lib/combinedJSON')();
-// const chokidar = require('chokidar');
-//  const files = path.join(__dirname, 'lib', 'swagger.json');
-// const watcher = chokidar.watch('src/interface', {
-//   ignored: /(^|[/\\])\../, // ignore dotfiles
-//   persistent: true
-// });
-// 
-// watcher
-//   .on('add', path => {
-//     console.log(`File ${path} has been added`);
-//     fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-//   })
-//   .on('change', path => {
-//     console.log(`File ${path} has been changed`);
-// fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-//   })
-//   .on('unlink', path => {
-//     console.log(`File ${path} has been removed`);
-//     fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-//   });
-// 
