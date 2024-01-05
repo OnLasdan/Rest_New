@@ -2,6 +2,7 @@ require('../../lib/message');
 const express = require( 'express' );
 const fs = require( 'fs' );
 const request = require( 'request' )
+const axios = require ('axios');
 const apiR = express( );
 let currentIndex = 0;
 __path = process.cwd( );
@@ -27,6 +28,43 @@ const decodedQuery = decodeURIComponent(query).replace(/ /g, '-');
       data: aneh
     });
   });
+});
+apiR.get('/blackbox', async (req, res) => {
+  try {
+    const query = req.query.q;
+
+    if (!query) return res.json(msg.paramquery);
+
+    const url = 'https://useblackbox.io/chat-request-v4';
+
+    const data = {
+      textInput: query,
+      allMessages: [{ user: query }],
+      stream: '',
+      clickedContinue: false,
+    };
+
+    const response = await axios.post(url, data);
+    const answer = response.data.response[0][0];
+
+    const formattedResponse = {
+      response: answer,
+    };
+
+    res.json({
+      status: "Success",
+      code: 200,
+      author: "iky",
+      data: formattedResponse
+    });
+  } catch (error) {
+    res.json({
+      status: "Error",
+      code: 500,
+      author: "iky",
+      message: "Terjadi kesalahan dalam memproses permintaan."
+    });
+  }
 });
 apiR.get('/bingimage', async (req, res, next) => {
   const query = req.query.q;
