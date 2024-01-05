@@ -52,7 +52,7 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-const fs = require('fs')
+const fs = require('@cyclic.sh/s3fs')
 //ini buat mantau perubahan file sub swagger
 const combinedJSON = require('./lib/combinedJSON')();
 const chokidar = require('chokidar');
