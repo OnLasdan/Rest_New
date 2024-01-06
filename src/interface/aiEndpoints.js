@@ -1,8 +1,8 @@
 const aiEndpoints = {
   "/api/ai/bard": {
     "get": {
-      "summary": "bard ai api",
-      "description": "communication with bard ai",
+      "summary": "Bard AI API",
+      "description": "Communication with the Bard AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -41,10 +41,10 @@ const aiEndpoints = {
       }
     }
   },
-    "/api/ai/blackbox": {
+  "/api/ai/blackbox": {
     "get": {
-      "summary": "blackbox chat api",
-      "description": "communication with blackbox ai",
+      "summary": "Blackbox Chat API",
+      "description": "Communication with the Blackbox AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -85,8 +85,8 @@ const aiEndpoints = {
   },
   "/api/ai/bingimage": {
     "get": {
-      "summary": "bing creator api",
-      "description": "communication with bing",
+      "summary": "Bing Creator API",
+      "description": "Communication with the Bing AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -127,8 +127,8 @@ const aiEndpoints = {
   },
   "/api/ai/gptonline": {
     "get": {
-      "summary": "bard ai api",
-      "description": "communication with bard ai",
+      "summary": "GPT Online API",
+      "description": "Communication with the GPT Online AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -169,8 +169,8 @@ const aiEndpoints = {
   },
   "/api/ai/azure": {
     "get": {
-      "summary": "bard ai api",
-      "description": "communication with bard ai",
+      "summary": "Azure AI API",
+      "description": "Communication with the Azure AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -211,8 +211,8 @@ const aiEndpoints = {
   },
   "/api/ai/deepenglish": {
     "get": {
-      "summary": "bard ai api",
-      "description": "communication with bard ai",
+      "summary": "Deep English AI API",
+      "description": "Communication with the Deep English AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -251,62 +251,60 @@ const aiEndpoints = {
       }
     }
   },
-    "/api/ai/toanime": {
-      "get": {
-        "summary": "Get anime image from URL",
-         "tags": ["Ai"],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "url",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "URL of the anime image"
+  "/api/ai/toanime": {
+    "get": {
+      "summary": "Get Anime Image from URL",
+      "tags": ["Ai"],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "url",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "URL of the anime image"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "image/png": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
+        },
+        "400": {
+          "description": "Bad request, missing or invalid parameters",
+          "content": {
+            "application/json": {
+              "example": {
+                "message": "Invalid or missing 'url' parameter"
               }
             }
-          },
-          "400": {
-            "description": "Bad request, missing or invalid parameters",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "Invalid or missing 'url' parameter"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "Internal Server Error"
-                }
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "content": {
+            "application/json": {
+              "example": {
+                "error": "Internal Server Error"
               }
             }
           }
         }
       }
     }
+  }
 
-  // ... tambahkan endpoint ai lainnya
+  // ... tambahkan endpoint AI lainnya 
 
-
-  
 };
-//test chokidar function 
-// added watchFile function 
-module.exports = aiEndpoints
+// Test chokidar function 
+// Added watchFile function 
+module.exports = aiEndpoints;

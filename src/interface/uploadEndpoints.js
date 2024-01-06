@@ -1,41 +1,70 @@
 const uploadEndpoints = {
-  "/api/upload/cdn": {
-    "post": {
-      "summary": "Upload a file to Discord",
-      "tags": ["Uploader"],
-      "parameters": [
-        {
-          "in": "query",
-          "name": "file",
-          "description": "The file to upload",
-          "schema": {
-            "type": "string",
-            "format": "binary"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "File uploaded successfully",
+    "/api/upload/cdn": {
+      "post": {
+        "summary": "Upload a file to the CDN.",
+        "tags": ["Uploader"],
+        "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "message": { "type": "string", "description": "Success message" },
-                  "result": { "type": "object", "description": "Result from Discord upload" }
+                  "apiKey": {
+                    "type": "string"
+                  },
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
                 }
               }
             }
           }
         },
-        "400": {
-          "description": "No file uploaded or file size exceeds the limit"
-        }
+        "responses": {
+          "200": {
+            "description": "File successfully uploaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - No file uploaded."
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
       }
     }
-  }
-  // ... tambahkan endpoint upload lainnya
+  
+
 };
 
 module.exports = uploadEndpoints
