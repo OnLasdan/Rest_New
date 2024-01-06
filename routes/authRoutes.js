@@ -1,10 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
 const User = require('../models/user');
 const authenticateToken = require('../middlewares/authMiddleware');
+
+const router = express.Router();
 
 router.post('/register', async (req, res) => {
   try {
@@ -35,30 +35,27 @@ router.post('/register', async (req, res) => {
     await newUser.save();
 
     // Generate JWT token
-    const token = jwt.sign({ email }, 'Konbanwa', { expiresIn: '1h' });
+    const accessToken = jwt.sign({ email }, 'Konbanwa', { expiresIn: '15m' });
 
-    // Create verification URL
-    const verificationUrl = `${req.protocol}://${req.get('host')}/verify/${token}`;
+    // Generate refresh token
+    const refreshToken = jwt.sign({ email }, 'RefreshTokenSecret', { expiresIn: '30d' });
 
-    // Send email verification
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'lzaky404@gmail.com',
-        pass: 'kqfsqrqrdigiaicr',
-      },
+    // Set refresh token as an HttpOnly cookie
+    res.cookie('RefreshToken', refreshToken, {
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      httpOnly: true,
+      secure: false, // Set to true if using HTTPS
     });
 
-    const mailOptions = {
-      from: '"M.U.F.A.R." <admin@onlasdan.tech>',
-      to: email,
-      subject: 'Account Verification',
-      html: `<p>Click the button to verify your email:</p><a href="${verificationUrl}" style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>`,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.json({ status: 'Success', message: 'Check your email for account verification.' });
+    res.json({
+      email: newUser.email,
+      username: newUser.username,
+      limit: newUser.limit,
+      status: newUser.status,
+      apiKey: newUser.apiKey,
+      isVerified: newUser.isVerified,
+      token: accessToken,
+    });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -82,19 +79,53 @@ router.post('/login', async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ email }, 'Konbanwa', { expiresIn: '7d' });
+    const accessToken = jwt.sign({ email }, 'Konbanwa', { expiresIn: '15m' });
 
-    // Set the token in the response cookie
-    res.cookie('Authorization', token, {
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    // Generate refresh token
+    const refreshToken = jwt.sign({ email }, 'RefreshTokenSecret', { expiresIn: '30d' });
+
+    // Set refresh token as an HttpOnly cookie
+    res.cookie('RefreshToken', refreshToken, {
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       httpOnly: true,
       secure: false, // Set to true if using HTTPS
     });
 
-    res.json({ email: user.email, username: user.username, limit: user.limit, status: user.status, apiKey: user.apiKey, isVerified: user.isVerified, token: token });
+    res.json({
+      email: user.email,
+      username: user.username,
+      limit: user.limit,
+      status: user.status,
+      apiKey: user.apiKey,
+      isVerified: user.isVerified,
+      token: accessToken,
+    });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.post('/logout', (req, res) => {
+  // Clear refresh token cookie to logout
+  res.clearCookie('RefreshToken');
+  res.json({ status: 'Success', message: 'Logout successful.' });
+});
+
+router.post('/refresh-token', async (req, res) => {
+  const refreshToken = req.cookies['RefreshToken'];
+
+  if (!refreshToken) {
+    return res.status(401).json({ error: 'Unauthorized: Missing refresh token.' });
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, 'RefreshTokenSecret');
+    const newAccessToken = jwt.sign({ email: decoded.email }, 'Konbanwa', { expiresIn: '15m' });
+
+    res.json({ token: newAccessToken });
+  } catch (error) {
+    res.status(403).json({ error: 'Forbidden: Invalid refresh token.' });
   }
 });
 

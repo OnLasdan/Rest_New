@@ -13,24 +13,11 @@ const session = require('express-session');
 const memoryStore = require('memorystore')(session);
 const helloRouter = require('./src/hallo');
 const apiR = require('./src/api/router');
-const authenticateToken = require('./middlewares/authMiddleware');
-
 dotenv.config();
-
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 86400000 },
-  store: new memoryStore({
-    checkPeriod: 86400000
-  }),
-}));
+require('./lib/resetLimitsCron');
 
 // Your existing middleware setup (morgan, cors, etc)
 const combinedJSON = require('./lib/combinedJSON');
-const { writeApiKeys } = require('./lib/localStorage');
-writeApiKeys('mupar');
 const files = path.join(__dirname, 'lib', 'swagger.json');
 fs.writeFileSync(files, JSON.stringify(combinedJSON));
 
@@ -70,9 +57,7 @@ app.use(cookieParser());
 
 const options2 = require('./lib/config.js')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDoc = require('./lib/options.js');
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./lib/swagger.json'), options2));
-swaggerDoc(app);
 
 // Register routes
 app.use('/', helloRouter);
@@ -87,7 +72,6 @@ app.get('/ip', (request, res) => {
   console.log(ip)
   return res.send({ ip })
 });
-
 // Start the server
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
