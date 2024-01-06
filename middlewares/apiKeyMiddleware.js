@@ -2,7 +2,7 @@
 const User = require('../models/user');
 
 const apiKeyMiddleware = async (req, res, next) => {
-  const { apiKey } = req.query;
+  const apiKey = req.query.apikey;
 
   if (!apiKey) {
     return res.status(401).json({ error: 'API key is required.' });
