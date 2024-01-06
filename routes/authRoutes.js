@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
     const token = jwt.sign({ email }, 'Konbanwa', { expiresIn: '1h' });
 
     // Create verification URL
-    const verificationUrl = `${req.protocol}://${req.get('host')}/api/verify/${token}`;
+    const verificationUrl = `${req.protocol}://${req.get('host')}/verify/${token}`;
 
     // Send email verification
     let transporter = nodemailer.createTransport({

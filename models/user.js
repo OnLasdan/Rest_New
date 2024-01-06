@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-mongoose.connect('mongodb+srv://apidatabase:OHgeWUpkrOXvcSf7@cluster0.uhrq7xg.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://pkok1024:12345@pkok.qh3qdes.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -17,6 +17,9 @@ const userSchema = new Schema({
     required: true,
   },
   username: {
+    type: String,
+    required: true,
+  },apiKey: {
     type: String,
     required: true,
   },

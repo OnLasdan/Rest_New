@@ -28,7 +28,7 @@ app.use(session({
 }));
 
 // Your existing middleware setup (morgan, cors, etc)
-const combinedJSON = require('./lib/combinedJSON')();
+const combinedJSON = require('./lib/combinedJSON');
 const { writeApiKeys } = require('./lib/localStorage');
 writeApiKeys('mupar');
 const files = path.join(__dirname, 'lib', 'swagger.json');
@@ -77,9 +77,9 @@ swaggerDoc(app);
 // Register routes
 app.use('/', helloRouter);
 
-app.use('/api/verify', require('./routes/verifyRoutes'));
+app.use('/', require('./routes/verifyRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api', authenticateToken, apiR);
+app.use('/api', apiR);
 
 app.get('/ip', (request, res) => {
   const ip = request.headers['cf-connecting-ip'] || request.headers['x-real-ip'] ||
@@ -93,3 +93,5 @@ const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
