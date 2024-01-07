@@ -17,10 +17,8 @@ dotenv.config();
 require('./lib/resetLimitsCron');
 const authenticateToken = require('./middlewares/authMiddleware');
 // Your existing middleware setup (morgan, cors, etc)
-const combinedJSON = require('./lib/combinedJSON');
-const files = path.join(__dirname, 'lib', 'swagger.json')
-fs.writeFileSync(files, JSON.stringify(combinedJSON));
-app.use(cookieParser());
+swaggerWr();
+
 app.use(authenticateToken);
 
 
@@ -35,29 +33,40 @@ app.enable('trust proxy');
 app.set("json spaces", 2)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const options2 = require('./lib/config.js');
+const options2 = require('./lib/options.js');
   options2().then((options) => {
     const swaggerUi = require('swagger-ui-express');
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./lib/swagger.json'), options));
   });
 
 // Register routes
-app.use('/', helloRouter);
-
-app.use('/', require('./routes/verifyRoutes'));
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api', apiR);
-
-app.get('/ip', (request, res) => {
-  const ip = request.headers['cf-connecting-ip'] || request.headers['x-real-ip'] ||
-    request.headers['x-forwarded-for'] || request.socket.remoteAddress || '';
-  console.log(ip)
-  return res.send({ ip })
-});
+apiRouter();
 // Start the server
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+
+function apiRouter() {
+    app.use('/', helloRouter);
+
+    app.use('/', require('./routes/verifyRoutes'));
+    app.use('/api/auth', require('./routes/authRoutes'));
+    app.use('/api', apiR);
+
+    app.get('/ip', (request, res) => {
+        const ip = request.headers['cf-connecting-ip'] || request.headers['x-real-ip'] ||
+            request.headers['x-forwarded-for'] || request.socket.remoteAddress || '';
+        console.log(ip);
+        return res.send({ ip });
+    });
+}
+
+function swaggerWr() {
+    const combinedJSON = require('./lib/combinedJSON');
+    const files = path.join(__dirname, 'lib', 'swagger.json');
+    fs.writeFileSync(files, JSON.stringify(combinedJSON));
+    app.use(cookieParser());
+}
 
