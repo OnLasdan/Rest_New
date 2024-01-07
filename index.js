@@ -15,32 +15,14 @@ const helloRouter = require('./src/hallo');
 const apiR = require('./src/api/router');
 dotenv.config();
 require('./lib/resetLimitsCron');
-
+const authenticateToken = require('./middlewares/authMiddleware');
 // Your existing middleware setup (morgan, cors, etc)
 const combinedJSON = require('./lib/combinedJSON');
-const files = path.join(__dirname, 'lib', 'swagger.json');
+const files = path.join(__dirname, 'lib', 'swagger.json')
 fs.writeFileSync(files, JSON.stringify(combinedJSON));
+app.use(cookieParser());
+app.use(authenticateToken);
 
-//ini buat mantau perubahan file sub swagger
-const chokidar = require('chokidar');
-const watcher = chokidar.watch('src/interface', {
-  ignored: /(^|[/\\])\../, // ignore dotfiles
-  persistent: true
-});
-
-watcher
-  .on('add', path => {
-    console.log(`File ${path} has been added`);
-    fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-  })
-  .on('change', path => {
-    console.log(`File ${path} has been changed`);
-    fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-  })
-  .on('unlink', path => {
-    console.log(`File ${path} has been removed`);
-    fs.writeFileSync(files, JSON.stringify(combinedJSON), 'utf8');
-  });
 
 app.use(bodyParser.json()); // to use body object in requests
 app.use(morgan('dev'));
@@ -53,11 +35,11 @@ app.enable('trust proxy');
 app.set("json spaces", 2)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
-
-const options2 = require('./lib/config.js')
-const swaggerUi = require('swagger-ui-express');
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./lib/swagger.json'), options2));
+const options2 = require('./lib/config.js');
+  options2().then((options) => {
+    const swaggerUi = require('swagger-ui-express');
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./lib/swagger.json'), options));
+  });
 
 // Register routes
 app.use('/', helloRouter);
