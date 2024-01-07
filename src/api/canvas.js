@@ -7,8 +7,8 @@ let currentIndex = 0;
 __path = process.cwd( );
 const author = 'xyla'
 const {
-    fetchJson,
-    getBuffer
+  fetchJson,
+  getBuffer
 } = require('../../lib/function');
 // search path
 module.exports = apiR

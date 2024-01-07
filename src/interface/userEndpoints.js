@@ -1,90 +1,130 @@
-const userEndpoints = {   
+const userEndpoints = {
   "/api/auth/register": {
-                          "post": {
-                            "summary": "User Registration",
-                            "tags": ["Auth"],
-                            "requestBody": {
-                              "content": {
-                                "application/json": {
-                                  "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                      "email": {
-                                        "type": "string",
-                                        "format": "email"
-                                      },
-                                      "password": {
-                                        "type": "string"
-                                      },
-                                      "username": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": ["email", "password", "username"]
-                                  }
-                                }
-                              }
-                            },
-                            "responses": {
-                              "200": {
-                                "description": "User registered successfully"
-                              },
-                              "400": {
-                                "description": "Bad Request - Invalid input data"
-                              },
-                              "500": {
-                                "description": "Internal Server Error"
-                              }
-                            }
-                          }
-                        },
-                        "/api/auth/login": {
-                          "post": {
-                            "summary": "User Login",
-                            "tags": ["Auth"],
-                            "requestBody": {
-                              "content": {
-                                "application/json": {
-                                  "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                      "email": {
-                                        "type": "string",
-                                        "format": "email"
-                                      },
-                                      "password": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": ["email", "password"]
-                                  }
-                                }
-                              }
-                            },
-                            "responses": {
-                              "200": {
-                                "description": "User logged in successfully",
-                                "content": {
-                                  "application/json": {
-                                    "example": {
-                                      "status": "Success",
-                                      "token": "your_generated_jwt_token"
-                                    }
-                                  }
-                                }
-                              },
-                              "400": {
-                                "description": "Bad Request - Invalid input data"
-                              },
-                              "401": {
-                                "description": "Unauthorized - Invalid email or password"
-                              },
-                              "500": {
-                                "description": "Internal Server Error"
-                              }
-                            }
-                          }
-                        }
+    "post": {
+      "summary": "User Registration",
+      "tags": [ "User" ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                }
+              },
+              "required": [ "email", "password", "username" ]
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "User registered successfully"
+        },
+        "400": {
+          "description": "Bad Request - Invalid input data"
+        },
+        "500": {
+          "description": "Internal Server Error"
+        }
+      }
+    }
+  },
+  "/api/auth/profile": {
+    "get": {
+      "summary": "Get user profile information",
+      "tags": [ "User" ],
+      "parameters": [ {
+        "name": "email",
+        "in": "query",
+        "description": "User's email",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }, {
+        "name": "password",
+        "in": "query",
+        "description": "User's password",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      } ],
+      "responses": {
+        "200": {
+          "description": "Successfully retrieved user profile.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "apiKey": {
+                    "type": "string"
+                  },
+                  "isVerified": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid email or password.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
-
 module.exports = userEndpoints;

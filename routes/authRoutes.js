@@ -62,9 +62,9 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
 
     // Check if user exists
     const user = await User.findOne({ email });
@@ -106,37 +106,16 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+
+router.get('/cekey', async (req, res) => {
   // Clear refresh token cookie to logout
-  res.clearCookie('RefreshToken');
-  res.json({ status: 'Success', message: 'Logout successful.' });
-});
+  const { key } = req.query;
+  const user = await User.findOne({ key });
+if (!user) {
+      return res.status(400).json({ error: 'Invalid apikey.' });
+    } 
+res.json({ limit: user.limit})
 
-router.post('/refresh-token', async (req, res) => {
-  const refreshToken = req.cookies['RefreshToken'];
-
-  if (!refreshToken) {
-    return res.status(401).json({ error: 'Unauthorized: Missing refresh token.' });
-  }
-
-  try {
-    const decoded = jwt.verify(refreshToken, 'RefreshTokenSecret');
-    const newAccessToken = jwt.sign({ email: decoded.email }, 'Konbanwa', { expiresIn: '15m' });
-
-    res.json({ token: newAccessToken });
-  } catch (error) {
-    res.status(403).json({ error: 'Forbidden: Invalid refresh token.' });
-  }
-});
-
-router.get('/profile', authenticateToken, async (req, res) => {
-  try {
-    const user = await User.findOne({ email: req.user.email });
-    res.json({ email: user.email, username: user.username, limit: user.limit, status: user.status });
-  } catch (error) {
-    console.error("Error fetching user profile:", error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
 });
 
 module.exports = router;
