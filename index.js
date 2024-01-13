@@ -19,7 +19,7 @@ const authenticateToken = require('./middlewares/authMiddleware');
 // Your existing middleware setup (morgan, cors, etc)
 swaggerWr();
 
-app.use(authenticateToken);
+//app.use(authenticateToken);
 
 
 app.use(bodyParser.json()); // to use body object in requests

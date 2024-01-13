@@ -4,6 +4,20 @@ const fs = require( 'fs' );
 const request = require( 'request' )
 const axios = require ('axios');
 const apiR = express( );
+const { pixart } = require("gpti");
+
+// Fungsi wrapper untuk mengubah penggunaan callback menjadi Promise
+function pixartAsync(prompt, data) {
+  return new Promise((resolve, reject) => {
+    pixart.a({ prompt, data }, (err, response) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(response);
+      }
+    });
+  });
+}
 let currentIndex = 0;
 __path = process.cwd( );
 const author = 'xyla'
@@ -154,6 +168,53 @@ apiR.get('/toanime', async (req, res, next) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+apiR.get('/Pixart-A', async (req, res, next) => {
+  try {
+    const prompt = req.query.prompt;
+    const style = req.query.style;
+    const sampler = req.query.sampler;
+    const width = req.query.width;
+    const height = req.query.height;
+
+    const data = {
+      prompt_negative: "",
+      sampler: sampler,
+      image_style: style,
+      width: width,
+      height: height,
+      dpm_guidance_scale: 4.5,
+      dpm_inference_steps: 14,
+      sa_guidance_scale: 3,
+      sa_inference_steps: 25
+    };
+
+    const response = await pixartAsync(prompt, data);
+
+    if (response && response.images && response.images.length > 0) {
+      let base64Image = response.images[0];
+      base64Image = base64Image.replace(/^data:image\/jpeg;base64,/, '');
+
+      res.contentType('image/jpeg'); 
+       res.send(Buffer.from(base64Image, 'base64'));
+    } else {
+      res.json({
+        status: "Error",
+        code: 500,
+        author: "iky",
+        message: "Tidak ada gambar ditemukan dalam respons.",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.json({
+      status: "Error",
+      code: 500,
+      author: "iky",
+      message: "Terjadi kesalahan dalam memproses permintaan.",
+    });
+  }
+});
+
 
 
 
