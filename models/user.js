@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+mongoose.connect('mongodb+srv://pkok1024:12345@pkok.qh3qdes.mongodb.net/?retryWrites=true&w=majority');
 
-mongoose.connect('mongodb+srv://pkok1024:12345@pkok.qh3qdes.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
 
 const userSchema = new Schema({
   email: {
