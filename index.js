@@ -10,17 +10,15 @@ const path = require('path');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const memoryStore = require('memorystore')(session);
 const helloRouter = require('./src/hallo');
 const apiR = require('./src/api/router');
 dotenv.config();
 require('./lib/resetLimitsCron');
-const authenticateToken = require('./middlewares/authMiddleware');
+//const authenticateToken = require('./middlewares/authMiddleware');
 // Your existing middleware setup (morgan, cors, etc)
 swaggerWr();
 
 //app.use(authenticateToken);
-
 
 app.use(bodyParser.json()); // to use body object in requests
 app.use(morgan('dev'));
