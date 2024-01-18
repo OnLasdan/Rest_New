@@ -9,13 +9,12 @@
       background: transparent;
     }
 body {
-  position: relative;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('https://telegra.ph/file/6b991509eafe7a895310c.jpg');
-  background-size: cover; /* Sesuaikan dengan contain atau auto */
-  background-position: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://telegra.ph/file/6b991509eafe7a895310c.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-z-index: 1;
+  position: relative;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 
