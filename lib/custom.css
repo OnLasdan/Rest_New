@@ -9,7 +9,7 @@
       background: transparent;
     }
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://telegra.ph/file/6b991509eafe7a895310c.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://telegra.ph/file/1afd44f0c04760ac7b379.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -17,64 +17,10 @@ body {
   background-attachment: fixed;
 }
 
-
-
-
-/*
-body {
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) no-repeat center center fixed;
-    background-size: cover;
-    animation: fadeInOut 48s infinite; /* Adjust the duration as needed 
+* {
+  color: #fff;
 }
 
-/*
-body {
-    position: relative;
-    background-size: cover;
-    animation: glitchFadeInOut 14s infinite;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); 
-    z-index: -1;
-}
-
-@keyframes glitchFadeInOut {
-    0%, 100% {
-        background-image: url('https://telegra.ph/file/6b991509eafe7a895310c.jpg');
-    }
-    14.28% {
-        background-image: url('https://telegra.ph/file/389259a90e0035469dc0f.jpg');
-          }
-    28.57% {
-        background-image: url('https://telegra.ph/file/2136888810ecf4f8e02b2.jpg');
-        }
-    42.85% {
-        background-image: url('https://telegra.ph/file/e1a950f4a8b25f65ca7c4.jpg');
-        }
-    57.14% {
-        background-image: url('https://telegra.ph/file/42ca73fd734c34db507ba.jpg');
-        }
-    71.42% {
-        background-image: url('https://telegra.ph/file/72e9810cddd3bf5b5e691.jpg');
-        }
-    85.71% {
-        background-image: url('https://telegra.ph/file/1db29b2244becd33c7ab4.jpg');
-     }
-}
-*/
-
-
-.swagger-ui body {
-  background: #000;
-}
 
 .swagger-ui .wrapper {
   width: 100%;
@@ -1312,12 +1258,11 @@ body::before {
 }
 
 .swagger-ui .topbar {
-  padding: 8px 30px;
-  background-color: transparent;
+  display: none; 
 }
 
-// .swagger-ui .topbar .topbar-wrapper {
-//   -ms-flex-align: center
+  .swagger-ui .topbar .topbar-wrapper {
+   -ms-flex-align: center
 }
 
 .swagger-ui .topbar .topbar-wrapper, .swagger-ui .topbar a {
