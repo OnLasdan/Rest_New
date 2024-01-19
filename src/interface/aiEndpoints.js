@@ -167,48 +167,6 @@ const aiEndpoints = {
       }
     }
   },
-  "/api/ai/azure": {
-    "get": {
-      "summary": "Azure AI API",
-      "description": "Communication with the Azure AI service.",
-      "tags": ["Ai"],
-      "parameters": [
-        {
-          "in": "query",
-          "name": "q",
-          "required": true,
-          "description": "The search query.",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful response with search results.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "status": { "type": "string" },
-                  "code": { "type": "integer" },
-                  "author": { "type": "string" },
-                  "data": { "type": "object" }
-                }
-              },
-              "example": {
-                "status": "Success",
-                "code": 200,
-                "author": "xyla",
-                "data": {}
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "/api/ai/deepenglish": {
     "get": {
       "summary": "Deep English AI API",
