@@ -1,15 +1,12 @@
 const downloaderEndpoints = {
   "/api/downloader/tiktok": {
     "get": {
-      "summary": "Download TikTok content",
-      "description": "Downloads TikTok content using the provided URL.",
       "tags": ["Downloader"],
       "parameters": [
         {
           "in": "query",
           "name": "url",
           "required": true,
-          "description": "The URL of the TikTok content to download.",
           "schema": {
             "type": "string"
           }
@@ -17,7 +14,6 @@ const downloaderEndpoints = {
       ],
       "responses": {
         "200": {
-          "description": "Successful response with downloaded TikTok content.",
           "content": {
             "application/json": {
               "schema": {
@@ -43,15 +39,12 @@ const downloaderEndpoints = {
   },
   "/api/downloader/sfilemobi": {
     "get": {
-      "summary": "Download TikTok content",
-      "description": "Downloads TikTok content using the provided URL.",
       "tags": ["Downloader"],
       "parameters": [
         {
           "in": "query",
           "name": "url",
           "required": true,
-          "description": "The URL of the TikTok content to download.",
           "schema": {
             "type": "string"
           }
@@ -59,7 +52,6 @@ const downloaderEndpoints = {
       ],
       "responses": {
         "200": {
-          "description": "Successful response with downloaded TikTok content.",
           "content": {
             "application/json": {
               "schema": {
@@ -85,15 +77,12 @@ const downloaderEndpoints = {
   },
   "/api/downloader/mediafire": {
     "get": {
-      "summary": "Download TikTok content",
-      "description": "Downloads TikTok content using the provided URL.",
       "tags": ["Downloader"],
       "parameters": [
         {
           "in": "query",
           "name": "url",
           "required": true,
-          "description": "The URL of the TikTok content to download.",
           "schema": {
             "type": "string"
           }
@@ -101,7 +90,6 @@ const downloaderEndpoints = {
       ],
       "responses": {
         "200": {
-          "description": "Successful response with downloaded TikTok content.",
           "content": {
             "application/json": {
               "schema": {

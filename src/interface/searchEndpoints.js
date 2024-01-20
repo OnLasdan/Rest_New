@@ -1,15 +1,13 @@
 const searchEndpoints = {
   "/api/search/youtube": {
     "get": {
-      "summary": "Search YouTube content",
-      "description": "Search YouTube content using the provided query.",
       "tags": ["Search"],
       "parameters": [
         {
           "in": "query",
-          "name": "url",
+          "name": "q",
           "required": true,
-          "description": "The URL of the TikTok content to download.",
+          "description": "query",
           "schema": {
             "type": "string"
           }
@@ -43,15 +41,13 @@ const searchEndpoints = {
   },
   "/api/search/xnxx": {
     "get": {
-      "summary": "Search YouTube content",
-      "description": "Search YouTube content using the provided query.",
       "tags": ["Search"],
       "parameters": [
         {
           "in": "query",
-          "name": "url",
+          "name": "q",
           "required": true,
-          "description": "The URL of the TikTok content to download.",
+          "description": "query",
           "schema": {
             "type": "string"
           }

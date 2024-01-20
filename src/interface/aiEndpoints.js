@@ -1,8 +1,6 @@
 const aiEndpoints = {
   "/api/ai/bard": {
     "get": {
-      "summary": "Bard AI API",
-      "description": "Communication with the Bard AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -43,8 +41,6 @@ const aiEndpoints = {
   },
   "/api/ai/blackbox": {
     "get": {
-      "summary": "Blackbox Chat API",
-      "description": "Communication with the Blackbox AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -85,8 +81,6 @@ const aiEndpoints = {
   },
   "/api/ai/bingimage": {
     "get": {
-      "summary": "Bing Creator API",
-      "description": "Communication with the Bing AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -127,8 +121,6 @@ const aiEndpoints = {
   },
   "/api/ai/gptonline": {
     "get": {
-      "summary": "GPT Online API",
-      "description": "Communication with the GPT Online AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -169,8 +161,6 @@ const aiEndpoints = {
   },
   "/api/ai/deepenglish": {
     "get": {
-      "summary": "Deep English AI API",
-      "description": "Communication with the Deep English AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -211,8 +201,6 @@ const aiEndpoints = {
   },
   "/api/ai/Pixart-A": {
     "get": {
-      "summary": "Pixart AI API",
-      "description": "Communication with the Pixart AI service.",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -295,7 +283,6 @@ const aiEndpoints = {
   },
   "/api/ai/toanime": {
     "get": {
-      "summary": "Get Anime Image from URL",
       "tags": ["Ai"],
       "parameters": [
         {
@@ -305,7 +292,6 @@ const aiEndpoints = {
           "schema": {
             "type": "string"
           },
-          "description": "URL of the anime image"
         }
       ],
       "responses": {
