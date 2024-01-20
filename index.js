@@ -34,7 +34,7 @@ app.use(session({
 }));
 app.set('trust proxy', 1);
 app.use(compression());
-app.use(favicon(path.join(__dirname, 'assets', 'image', '1.png')))
+app.use(favicon(path.join(__dirname, 'assets', 'image', '2.png')))
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.enable('trust proxy');
 app.set("json spaces", 2)

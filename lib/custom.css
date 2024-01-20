@@ -9,7 +9,7 @@
       background: transparent;
     }
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://i.pinimg.com/originals/96/26/62/962662ea1f3741e2b18e3da800fdeec6.gif');
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://telegra.ph/file/1afd44f0c04760ac7b379.jpg');
   /*
   https://telegra.ph/file/1afd44f0c04760ac7b379.jpg
   */
@@ -18,6 +18,7 @@ body {
   position: relative;
   background-position: center;
   background-attachment: fixed;
+  color: white;
 }
 * {
   color: #fff;
