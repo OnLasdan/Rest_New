@@ -24,7 +24,7 @@ apiR.get('/bard', async (req, res, next) => {
 
    const decodedQuery = decodeURIComponent(query).replace(/ /g, '-');
 
-   xorizn = await fetchJson(`https://aemt.me/bard?text=${decodedQuery}`).then((data) => {
+   let xorizn = await fetchJson(`https://aemt.me/bard?text=${decodedQuery}`).then((data) => {
       let aneh = data.result;
       if (!aneh) return res.json(msg.nodata);
       res.json({
