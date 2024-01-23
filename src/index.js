@@ -8,8 +8,8 @@ import path from 'path';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import helloRouter from './src/hallo.js';
-import apiR from './src/api/router.js';
+import helloRouter from './hallo.js';
+import apiR from './routes/api/router.js';
 import resetLimitsCron from './lib/resetLimitsCron.js';
 import options2 from './lib/options.js';
 import verifyRoutes from './routes/verifyRoutes.js';
@@ -41,7 +41,7 @@ app.set('json spaces', 2);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const options = await options2();
-import swaggerModule from './lib/swagger.json' with { type:  'json'};
+import { createRequire } from "module"; const require = createRequire(import.meta.url); const swaggerModule = require('./lib/swagger.json');
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
 
 app.use('/', helloRouter);
@@ -72,7 +72,7 @@ import combinedJSON from './lib/combinedJSON.js';
 
 async function swaggerWr() {
   try {
-    await fs.writeFile('your-bucket-name/lib/swagger.json', JSON.stringify(combinedJSON), 'utf-8');
+    await fs.writeFile('./lib/swagger.json', JSON.stringify(combinedJSON), 'utf-8');
     app.use(cookieParser());
   } catch (error) {
     console.error('Gagal menulis file ke S3:', error.message);

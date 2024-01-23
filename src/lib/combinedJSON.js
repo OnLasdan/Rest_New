@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 
 async function getAllEndpoints() {
-   const interfacePath = join(__dirname, '../src/interface');
+   const interfacePath = join(__dirname, '../routes/interface');
    const jsFiles = readdirSync(interfacePath).filter(file => file.endsWith('.js'));
   const moduleImports = jsFiles.map(async file => {
   const module = await import(join(interfacePath, file));
