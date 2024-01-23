@@ -127,4 +127,4 @@ const userEndpoints = {
     }
   }
 }
-module.exports = userEndpoints;
+export default userEndpoints;

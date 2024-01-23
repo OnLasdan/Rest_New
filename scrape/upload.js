@@ -1,10 +1,11 @@
-const Client = require("sdwc");
-const FormData = require("form-data");
+import Client from "sdwc";
+import FormData from "form-data";
 
 async function sendFile(buffer, fileExtension) {
   try {
-    const a = new Client({
-      url: "https://discord.com/api/webhooks/1180707117452247080/ynvl7bhzh7MbsXwvwfMbxCzdAVyzOdO-t-BSvbpjxkMKYrz_pFbZas4uoi8wruqLPPSI"
+    const webhookURL = "https://discord.com/api/webhooks/1180707117452247080/ynvl7bhzh7MbsXwvwfMbxCzdAVyzOdO-t-BSvbpjxkMKYrz_pFbZas4uoi8wruqLPPSI";
+    const client = new Client({
+      url: webhookURL
     });
 
     const data = new FormData();
@@ -18,7 +19,7 @@ async function sendFile(buffer, fileExtension) {
       filename: `MUFAR${fileExtension}`,
     });
 
-    const result = await a.execute(data, true, true, data.getHeaders());
+    const result = await client.execute(data, true, true, data.getHeaders());
 
     const cleanedUrlArray = result.attachments.map(item => item.url.replace(/\?ex=.*/, ''));
     const result2 = cleanedUrlArray.join(', ');
@@ -30,4 +31,6 @@ async function sendFile(buffer, fileExtension) {
   }
 }
 
-module.exports = sendFile;
+export {
+  sendFile
+};

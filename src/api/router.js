@@ -1,15 +1,23 @@
-// main-file.js
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import randomRoutes from './random.js';
+import downloaderRoutes from './downloader.js';
+import aiRoutes from './ai.js';
+import uploadRoutes from './upload.js';
+import searchRoutes from './search.js';
+import miscRoutes from './misc.js';
+
 const apiR = express.Router();
-const cors = require('cors')
-//Updated file?
+
+// Updated file
 apiR.use(cors());
-//buat defined routes
-  apiR.use('/random', require('./random'));
-  apiR.use('/downloader', require('./downloader'));
-  apiR.use('/ai', require('./ai'));
-  apiR.use('/canvas', require('./canvas'));
-  apiR.use('/upload', require('./upload'));
-  apiR.use('/search', require('./search'));
-  apiR.use('/misc', require('./misc'));
-module.exports = apiR;
+
+// Buat defined routes
+apiR.use('/random', randomRoutes);
+apiR.use('/downloader', downloaderRoutes);
+apiR.use('/ai', aiRoutes);
+apiR.use('/upload', uploadRoutes);
+apiR.use('/search', searchRoutes);
+apiR.use('/misc', miscRoutes);
+
+export default apiR;

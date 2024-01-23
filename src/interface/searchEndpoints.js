@@ -81,4 +81,4 @@ const searchEndpoints = {
   }
   // ... tambahkan endpoint search lainnya
 };
-module.exports = searchEndpoints
+export default searchEndpoints 

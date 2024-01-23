@@ -59,4 +59,4 @@ const miscEndpoints = {
   }
 };
 
-module.exports = miscEndpoints;
+export default miscEndpoints;

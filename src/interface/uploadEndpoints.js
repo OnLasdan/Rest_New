@@ -67,4 +67,4 @@ const uploadEndpoints = {
 
 };
 
-module.exports = uploadEndpoints
+export default uploadEndpoints

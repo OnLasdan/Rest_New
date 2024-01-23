@@ -361,4 +361,4 @@ const randomEndpoints = {
   }
   // ... tambahkan endpoint random lainnya
 };
-module.exports = randomEndpoints
+export default randomEndpoints

@@ -335,4 +335,4 @@ const aiEndpoints = {
 };
 // Test chokidar function 
 // Added watchFile function 
-module.exports = aiEndpoints;
+export default aiEndpoints;

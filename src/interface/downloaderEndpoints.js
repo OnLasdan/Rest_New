@@ -115,4 +115,4 @@ const downloaderEndpoints = {
   }
   // ... tambahkan endpoint downloader lainnya
 };
-module.exports = downloaderEndpoints
+export default downloaderEndpoints
