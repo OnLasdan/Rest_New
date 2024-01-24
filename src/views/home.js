@@ -15,9 +15,9 @@ router.use(bodyParser.json());
 router.use(cors());
 
 router.set("view engine", "ejs");
-router.set("views", join(__dirname, "views"));
+router.set("views", join(__dirname, "..", "views"));
 
-router.use(express.static(join(__dirname, "views", "pages")));
+router.use(express.static(join(__dirname, "..", "views", "pages")));
 router.get("/", (req, res) => {
   res.render("pages/home");
 });

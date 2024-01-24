@@ -7,7 +7,7 @@ const apiR = express();
 __path = process.cwd();
 
 apiR.get('/random', apiKeyMiddleware, async (req, res, next) => {
-   let data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/random.json')));
+   let data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/random.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -19,7 +19,7 @@ apiR.get('/random', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/potatogodzilla', apiKeyMiddleware, async (req, res, next) => {
-   let data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/potatogodzilla.json')));
+   let data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/potatogodzilla.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -31,7 +31,7 @@ apiR.get('/potatogodzilla', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/china', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/china.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/china.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -43,7 +43,7 @@ apiR.get('/china', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/indonesia', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/indonesia.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/indonesia.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -55,7 +55,7 @@ apiR.get('/indonesia', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/japan', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/japan.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/japan.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -67,7 +67,7 @@ apiR.get('/japan', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/korean', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/korean.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/korean.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -79,7 +79,7 @@ apiR.get('/korean', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/malaysia', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/malaysia.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/malaysia.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -91,7 +91,7 @@ apiR.get('/malaysia', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/thailand', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/thailand.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/thailand.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({
@@ -103,7 +103,7 @@ apiR.get('/thailand', apiKeyMiddleware, async (req, res, next) => {
 });
 
 apiR.get('/vietnam', apiKeyMiddleware, async (req, res, next) => {
-   const data = JSON.parse(fs.readFileSync(join(__path, '/scrape/data/asupan/image/vietnam.json')));
+   const data = JSON.parse(fs.readFileSync(join(__path, '/src/scrape/data/asupan/image/vietnam.json')));
    var result = data[Math.floor(Math.random() * data.length)];
 
    res.status(200).json({

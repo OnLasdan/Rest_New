@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import compression from 'compression';
 import session from 'express-session';
 import { createRequire } from 'module';
-import helloRouter from './hallo.js';
+import helloRouter from './views/home.js';
 import apiR from './routes/api/router.js';
 import resetLimitsCron from './lib/resetLimitsCron.js'; 
 import options2 from './lib/options.js';
@@ -63,11 +63,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something went wrong!');
 });
 // ========================================
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));
 });
-
-
-
 export default app;
