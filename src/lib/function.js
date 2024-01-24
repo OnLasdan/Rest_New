@@ -69,12 +69,12 @@ const customLogger = morgan(function(tokens, req, res) {
     const status = tokens.status(req, res);
     const contentLength = tokens.res(req, res, 'content-length') || '-';
     const responseTime = tokens['response-time'](req, res);
-    const coloredUrl = chalk.keyword('purple')(url);
+    const coloredUrl = chalk.hex('#ff99ff')(url);
 
     const log = [
-        chalk.bold.green(method),
+        chalk.bold.blue(method),
         coloredUrl,
-        chalk.keyword('orange')(status),
+        chalk.hex('#1AFF00')(status),
         contentLength === '-' ? '-' : chalk.bold.blue(contentLength),
         responseTime < 500 ? chalk.green(`${responseTime} ms`) : chalk.red(`${responseTime} ms`),
     ];
