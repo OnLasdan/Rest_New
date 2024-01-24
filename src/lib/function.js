@@ -1,6 +1,12 @@
 import axios from 'axios';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import morgan from 'morgan';
+import chalk from 'chalk';
+import fs from 'fs';
+import combinedJSON from './combinedJSON.js';
+import { currentDirectory } from '../index.js';
+
 
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 
@@ -56,5 +62,41 @@ const createActivationToken = (payload) => {
    const activationToken = jwt.sign(payload, activation_token, { expiresIn: '30m' });
    return activationToken;
 };
+// ========================================
+const customLogger = morgan(function(tokens, req, res) {
+    const method = tokens.method(req, res);
+    const url = tokens.url(req, res);
+    const status = tokens.status(req, res);
+    const contentLength = tokens.res(req, res, 'content-length') || '-';
+    const responseTime = tokens['response-time'](req, res);
+    const coloredUrl = chalk.keyword('purple')(url);
 
-export { createActivationToken, randomText, getHashedPassword, fetchJson, getBuffer };
+    const log = [
+        chalk.bold.green(method),
+        coloredUrl,
+        chalk.keyword('orange')(status),
+        contentLength === '-' ? '-' : chalk.bold.blue(contentLength),
+        responseTime < 500 ? chalk.green(`${responseTime} ms`) : chalk.red(`${responseTime} ms`),
+    ];
+
+    return log.join(' ');
+});
+async function swaggerWr() {
+    try {
+        const resolvedCombinedJSON = await combinedJSON;
+        fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON), 'utf-8');
+        console.log(chalk.green('swagger File Successfully Asambled'));
+    } catch (error) {
+        console.error('Gagal menulis file ke S3:', error.message);
+    }
+}
+
+export { 
+  createActivationToken, 
+  randomText, 
+  getHashedPassword, 
+  fetchJson, 
+  getBuffer, 
+  customLogger,
+  swaggerWr
+};
