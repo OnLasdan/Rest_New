@@ -59,7 +59,6 @@ router.post('/register', async (req, res) => {
          status: newUser.status,
          apiKey: newUser.apiKey,
          isVerified: newUser.isVerified,
-         token: accessToken,
       });
    } catch (error) {
       console.error("Error registering user:", error);
@@ -86,7 +85,6 @@ router.get('/profile', async (req, res) => {
          status: user.status,
          apiKey: user.apiKey,
          isVerified: user.isVerified,
-         token: accessToken,
       });
    } catch (error) {
       console.error("Error logging in:", error);

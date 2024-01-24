@@ -1,4 +1,4 @@
-const msg = {
+ const msg = {
     paramkey: {
     	status: "Terjadi Kesalahan",
     	code: 403,

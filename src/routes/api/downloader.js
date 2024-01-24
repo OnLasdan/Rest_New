@@ -1,10 +1,7 @@
 import '../../lib/message.js';
 import express from 'express';
-import fs from 'fs';
-import request from 'request';
-import { fetchJson, getBuffer } from '../../lib/function.js';
+import { fetchJson} from '../../lib/function.js';
 import mediafire from '../../scrape/index.js';
-let __path = process.cwd();
 const author = 'xyla';
 
 const apiR = express();
