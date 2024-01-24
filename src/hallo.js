@@ -19,7 +19,7 @@ router.set("views", join(__dirname, "views"));
 
 router.use(express.static(join(__dirname, "views", "pages")));
 router.get("/", (req, res) => {
-  res.render("pages/index");
+  res.render("pages/home");
 });
 
 export default router;
