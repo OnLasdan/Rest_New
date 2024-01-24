@@ -19,7 +19,6 @@ import authRoutes from './routes/authRoutes.js';
 import chalk from 'chalk';
 dotenv.config();
 
-swaggerWr();
 resetLimitsCron();
 
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
@@ -45,7 +44,9 @@ const coloredUrl = chalk.keyword('purple')(url);
 });
 
 app.use(customLogger);
-
+if (process.env.NODE_ENV === 'development') {
+swaggerWr();
+}
 // ========================================
 app.use(bodyParser.json());
 app.use(cors());
@@ -96,6 +97,7 @@ async function swaggerWr() {
   try {
     const resolvedCombinedJSON = await combinedJSON;
     fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON), 'utf-8');
+  console.log(chalk.green('swagger File Successfully Asambled'));
   } catch (error) {
     console.error('Gagal menulis file ke S3:', error.message);
   }
