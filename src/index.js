@@ -9,6 +9,7 @@ import compression from 'compression';
 import session from 'express-session';
 import { createRequire } from 'module';
 import helloRouter from './views/home.js';
+import R404 from './views/error.js';
 import apiR from './routes/api/router.js';
 import resetLimitsCron from './lib/resetLimitsCron.js'; 
 import options2 from './lib/options.js';
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 swaggerWr();
 }
 // ========================================
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
@@ -57,14 +59,17 @@ app.get('/ip', (request, res) => {
     console.log(ip);
     return res.send({ ip });
 });
-
-app.use((err,res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
+  next(); // Pastikan untuk memanggil next
 });
+app.use(R404)
 // ========================================
 const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));
 });
 export default app;
+/* experimental code for learning javascript */
+

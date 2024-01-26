@@ -2,7 +2,6 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-import authenticateToken from '../middlewares/authMiddleware.js';
 import nodemailer from 'nodemailer';
 
 const router = express.Router();
