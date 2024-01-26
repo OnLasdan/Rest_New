@@ -31,7 +31,10 @@ if (process.env.NODE_ENV === 'development') {
 swaggerWr();
 }
 // ========================================
-
+/*
+app.get('/error', (req, res, next) => { 
+  next(new Error('status code 500'));
+});*/
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
@@ -61,15 +64,18 @@ app.get('/ip', (request, res) => {
 });
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-  next(); // Pastikan untuk memanggil next
-});
+  let page = new URL('./views/pages/ERROR/500.html', import.meta.url).pathname
+  res.status(500).sendFile(page);
+console.log(page)
+  });
+
 app.use(R404)
 // ========================================
 const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));
 });
+
 export default app;
 /* experimental code for learning javascript */
 
