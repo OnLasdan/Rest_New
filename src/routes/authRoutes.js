@@ -51,14 +51,7 @@ router.post('/register', async (req, res) => {
 
       await transporter.sendMail(mailOptions);
 
-      res.json({
-         email: newUser.email,
-         username: newUser.username,
-         limit: newUser.limit,
-         status: newUser.status,
-         apiKey: newUser.apiKey,
-         isVerified: newUser.isVerified,
-      });
+      res.sendFile(new URL('../views/pages/login/success.html', import.meta.url).pathname); 
    } catch (error) {
       console.error("Error registering user:", error);
       res.status(500).json({ error: 'Internal Server Error' });

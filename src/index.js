@@ -62,6 +62,10 @@ app.get('/ip', (request, res) => {
     console.log(ip);
     return res.send({ ip });
 });
+app.get('/login', (req, res) => {
+const login = new URL('./views/pages/login/index.html', import.meta.url).pathname
+  res.sendFile(login)
+} )
 app.use((err, req, res, next) => {
   console.error(err.stack);
   let page = new URL('./views/pages/ERROR/500.html', import.meta.url).pathname
