@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import chalk from 'chalk';
 import fs from 'fs';
 import combinedJSON from './combinedJSON.js';
-import { currentDirectory } from '../index.js';
+import { currentDirectory } from '../app.js';
 
 
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
