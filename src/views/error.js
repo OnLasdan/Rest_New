@@ -7,9 +7,6 @@ const __dirname = dirname(__filename);
 
 const R404 = express();
 
-R404.set("view engine", "ejs");
-R404.set("views", join(__dirname, "..", "views"));
-
 R404.use((req, res) => {
   res.status(404).render("pages/ERROR/404");
 });

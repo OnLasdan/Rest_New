@@ -31,10 +31,6 @@ if (process.env.NODE_ENV === 'development') {
 swaggerWr();
 }
 // ========================================
-/*
-app.get('/error', (req, res, next) => { 
-  next(new Error('status code 500'));
-});*/
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
