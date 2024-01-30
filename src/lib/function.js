@@ -88,7 +88,7 @@ const customLogger = morgan(function(tokens, req, res) {
 async function swaggerWr() {
     try {
         const resolvedCombinedJSON = await combinedJSON;
-        fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON), 'utf-8');
+        fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON, null, 2));
         console.log(chalk.green('swagger File Successfully Asambled'));
     } catch (error) {
         console.error('Gagal menulis file ke S3:', error.message);

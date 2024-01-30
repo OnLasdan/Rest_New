@@ -81,7 +81,7 @@ console.log(page)
 app.use(morgan('combined'))
 app.use(R404);
   // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));
 });
