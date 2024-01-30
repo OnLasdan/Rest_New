@@ -62,17 +62,18 @@ app.get('/ip', (request, res) => {
     return res.send({ ip });
 });
 app.get('/login', (req, res) => {
-const login = new URL('./views/pages/login/index.html', import.meta.url).pathname
+const login = new URL('./views/pages/login/index.html',
+import.meta.url).pathname;
   res.sendFile(login)
 } )
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  let page = new URL('./views/pages/ERROR/500.html', import.meta.url).pathname
+  let page = new URL('./views/pages/ERROR/500.html', import.meta.url).pathname;
   res.status(500).sendFile(page);
 console.log(page)
   });
 app.use(morgan('combined'))
-app.use(R404)
+app.use(R404);
   // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
 const port = process.env.PORT || 9000;
 app.listen(port, () => {

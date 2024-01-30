@@ -75,7 +75,7 @@ const customLogger = morgan(function(tokens, req, res) {
     const log = [
         `${chalk.blue('method: ')} ${chalk.bold.blue(method)}`,
         coloredUrl,
-        chalk.hex('#1AFF00')(`status: ${status}`),
+        chalk.bold.hex('#1AFF00')(`status: ${status}`),
         contentLength === '-' ? '-' : chalk.bold.blue(`contentLength: ${contentLength}`),
           responseTime < 500 ? chalk.green(`responseTime: ${responseTime} ms`) : chalk.red(`responseTime: ${responseTime} ms`),
       `${chalk.blue('ipAddress: ')}${chalk.hex('#5670f5')(`${ipAddress}`)}`, 
