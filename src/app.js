@@ -66,11 +66,6 @@ const login = new URL('./views/pages/login/index.html',
 import.meta.url).pathname;
   res.sendFile(login)
 } )
-app.get('/clean', (req, res) => {
-  const q = req.query.query; // Mengambil nilai dari query parameter 'query'
-  const cleanedQuery = decodeURIComponent(q); // Membersihkan '%20' dan karakter URL-encoded lainnya
-  res.send(q);
-});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
