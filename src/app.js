@@ -1,12 +1,14 @@
-import express from 'express';
+import express from 'express'; 
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import favicon from 'serve-favicon';
 import path from 'path';
+import morgan from 'morgan';
 import dotenv from 'dotenv';
 import compression from 'compression';
 import session from 'express-session';
+import helmet from 'helmet'
 import { createRequire } from 'module';
 import helloRouter from './views/home.js';
 import R404 from './views/error.js';
@@ -27,6 +29,7 @@ resetLimitsCron();
 export const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
 export const app = express();
 app.use(customLogger);
+
 if (process.env.NODE_ENV === 'development') {
 swaggerWr();
 }
@@ -49,7 +52,7 @@ app.set('json spaces', 2);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
-
+app.use(helmet());
 app.use('/', helloRouter, verifyRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api', apiR);
@@ -68,9 +71,9 @@ app.use((err, req, res, next) => {
   res.status(500).sendFile(page);
 console.log(page)
   });
-
+app.use(morgan('combined'))
 app.use(R404)
-// ========================================
+  // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
 const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));

@@ -69,18 +69,21 @@ const customLogger = morgan(function(tokens, req, res) {
     const status = tokens.status(req, res);
     const contentLength = tokens.res(req, res, 'content-length') || '-';
     const responseTime = tokens['response-time'](req, res);
-    const coloredUrl = chalk.hex('#ff99ff')(url);
+    const coloredUrl = `${chalk.blue('url: ')} ${chalk.hex('#ff99ff')(url)}`;
+    const ipAddress = req.ip;
 
     const log = [
-        chalk.bold.blue(method),
+        `${chalk.blue('method: ')} ${chalk.bold.blue(method)}`,
         coloredUrl,
-        chalk.hex('#1AFF00')(status),
-        contentLength === '-' ? '-' : chalk.bold.blue(contentLength),
-        responseTime < 500 ? chalk.green(`${responseTime} ms`) : chalk.red(`${responseTime} ms`),
+        chalk.hex('#1AFF00')(`status: ${status}`),
+        contentLength === '-' ? '-' : chalk.bold.blue(`contentLength: ${contentLength}`),
+          responseTime < 500 ? chalk.green(`responseTime: ${responseTime} ms`) : chalk.red(`responseTime: ${responseTime} ms`),
+      `${chalk.blue('ipAddress: ')}${chalk.hex('#5670f5')(`${ipAddress}`)}`, 
     ];
 
-    return log.join(' ');
+    console.log(log.join('\n'));
 });
+
 async function swaggerWr() {
     try {
         const resolvedCombinedJSON = await combinedJSON;
