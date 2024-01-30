@@ -65,7 +65,8 @@ const createActivationToken = (payload) => {
 // ========================================
 const customLogger = morgan(function(tokens, req, res) {
     const method = tokens.method(req, res);
-    const url = tokens.url(req, res);
+    const uri = decodeURI(tokens.url(req, res));
+    const url = uri.replace(/ /g, '-')
     const status = tokens.status(req, res);
     const contentLength = tokens.res(req, res, 'content-length') || '-';
     const responseTime = tokens['response-time'](req, res);

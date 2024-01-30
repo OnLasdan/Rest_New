@@ -5,7 +5,7 @@ import express from 'express';
 import { pixart } from 'gpti';
 import { fetchJson } from '../../lib/function.js';
 import scrape from '../../scrape/index.js';
-const apiR = express()
+const apiR = express();
 function pixartAsync(prompt, data) {
    return new Promise((resolve, reject) => {
       pixart.a({ prompt, data }, (err, response) => {
@@ -17,14 +17,14 @@ function pixartAsync(prompt, data) {
       });
    });
 }
+apiR.use(express.urlencoded({ extended: true })); 
 
 apiR.get('/bard', async (req, res, next) => {
-   const query = req.query.q;
+   let query = decodeURIComponent(req.query.q);
+   query = query.replace(/ /g, '-');
    if (!query) return res.json(msg.paramquery);
 
-   const decodedQuery = decodeURIComponent(query).replace(/ /g, '-');
-
-   let xorizn = await fetchJson(`https://aemt.me/bard?text=${decodedQuery}`).then((data) => {
+   let xorizn = await fetchJson(`https://aemt.me/bard?text=${query}`).then((data) => {
       let aneh = data.result;
       if (!aneh) return res.json(msg.nodata);
       res.json({
@@ -35,6 +35,7 @@ apiR.get('/bard', async (req, res, next) => {
       });
    });
 });
+
 
 apiR.get('/blackbox', async (req, res) => {
    try {
