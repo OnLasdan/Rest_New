@@ -1,12 +1,19 @@
 import '../../lib/message.js';
 import express from 'express';
 import { fetchJson} from '../../lib/function.js';
-import mediafire from '../../scrape/index.js';
+import {
+  pinterestvideodownloader,
+  mediafires,
+  facebook,
+  shortlink,
+  xnxxDownloader
+ } from '../../scrape/src/downloader/downloader.js';
+ import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
 const author = 'xyla';
 
 const apiR = express();
 
-apiR.get('/tiktok', async (req, res, next) => {
+apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
    if (!url) return res.json(msg.paramurl);
    const xorizn = await fetchJson(`https://xorizn-downloads.vercel.app/api/downloads/tiktok?url=${url}`);
@@ -19,10 +26,40 @@ apiR.get('/tiktok', async (req, res, next) => {
    });
 });
 
-apiR.get('/mediafire', async (req, res, next) => {
+apiR.get('/mediafire', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
    if (!url) return res.json(msg.paramurl);
-   mediafire(url)
+   mediafires(url)
+      .then(data => {
+         if (!data) res.json(msg.nodata);
+         res.json({
+            status: "Success",
+            code: 200,
+            author: author,
+            data: data
+         });
+      });
+});
+
+apiR.get('/facebook', apiKeyMiddleware, async (req, res, next) => {
+   const url = req.query.url;
+   if (!url) return res.json(msg.paramurl);
+   facebook(url)
+      .then(data => {
+         if (!data) res.json(msg.nodata);
+         res.json({
+            status: "Success",
+            code: 200,
+            author: author,
+            data: data
+         });
+      });
+});
+
+apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
+   const url = req.query.url;
+   if (!url) return res.json(msg.paramurl);
+   xnxxDownloader(url)
       .then(data => {
          if (!data) res.json(msg.nodata);
          res.json({

@@ -37,7 +37,45 @@ const downloaderEndpoints = {
       }
     }
   },
-  "/api/downloader/sfilemobi": {
+  "/api/downloader/facebook": {
+    "get": {
+      "tags": ["Downloader"],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "url",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": { "type": "string" },
+                  "code": { "type": "integer" },
+                  "author": { "type": "string" },
+                  "data": { "type": "object" }
+                }
+              },
+              "example": {
+                "status": "Success",
+                "code": 200,
+                "author": "xyla",
+                "data": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/api/downloader/xnxx": {
     "get": {
       "tags": ["Downloader"],
       "parameters": [
@@ -113,6 +151,5 @@ const downloaderEndpoints = {
       }
     }
   }
-  // ... tambahkan endpoint downloader lainnya
 };
 export default downloaderEndpoints

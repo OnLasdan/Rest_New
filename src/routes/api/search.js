@@ -1,41 +1,46 @@
 import '../../lib/message.js';
 import express from 'express';
 import scrape from '../../scrape/index.js';
-
-const apiR = express()
+import { xnxxSearch } from '../../scrape/src/downloader/downloader.js';
+import youtube from '../../scrape/src/search/youtube.js';
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
+const apiR = express();
 let __path = process.cwd();
 const author = 'xyla';
 
-apiR.get('/youtube', async (req, res, next) => {
+apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
-   scrape.search.youtube(query)
-      .then(data => {
-         let result = data;
-         if (!result) res.json(msg.nodata);
-         res.json({
-            status: "Success",
-            code: 200,
-            author: author,
-            data: result
-         });
+   try {
+      const data = await youtube(query);
+      let result = data;
+      if (!result) res.json(msg.nodata);
+      res.json({
+         status: "Success",
+         code: 200,
+         author: author,
+         data: result
       });
+   } catch (e) {
+      next(e);
+   }
 });
 
-apiR.get('/xnxx', async (req, res, next) => {
+apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
-   scrape.downloader.download.xnxxSearch(query)
-      .then(data => {
-         let result = data;
-         if (!result) res.json(msg.nodata);
-         res.json({
-            status: "Success",
-            code: 200,
-            author: author,
-            data: result
-         });
+   try {
+      const data = await xnxxSearch(query);
+      if (!data) return res.json(msg.nodata);
+      res.json({
+         status: "Success",
+         code: 200,
+         author: author,
+         data: data
       });
+   } catch (error) {
+      next(error);
+   }
 });
 
 export default apiR;

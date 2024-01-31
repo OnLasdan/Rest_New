@@ -5,6 +5,7 @@ import express from 'express';
 import { pixart } from 'gpti';
 import { fetchJson } from '../../lib/function.js';
 import scrape from '../../scrape/index.js';
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
 const apiR = express();
 function pixartAsync(prompt, data) {
    return new Promise((resolve, reject) => {
@@ -19,7 +20,7 @@ function pixartAsync(prompt, data) {
 }
 apiR.use(express.urlencoded({ extended: true })); 
 
-apiR.get('/bard', async (req, res, next) => {
+apiR.get('/bard', apiKeyMiddleware, async (req, res, next) => {
    let query = decodeURIComponent(req.query.q);
    query = query.replace(/ /g, '-');
    if (!query) return res.json(msg.paramquery);
@@ -75,7 +76,7 @@ apiR.get('/blackbox', async (req, res) => {
    }
 });
 
-apiR.get('/bingimage', async (req, res, next) => {
+apiR.get('/bingimage', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
 
@@ -91,7 +92,7 @@ apiR.get('/bingimage', async (req, res, next) => {
    });
 });
 
-apiR.get('/deepenglish', async (req, res, next) => {
+apiR.get('/deepenglish', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
 
@@ -107,7 +108,7 @@ apiR.get('/deepenglish', async (req, res, next) => {
    });
 });
 
-apiR.get('/azure', async (req, res, next) => {
+apiR.get('/azure', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
 
@@ -123,7 +124,7 @@ apiR.get('/azure', async (req, res, next) => {
    });
 });
 
-apiR.get('/gptonline', async (req, res, next) => {
+apiR.get('/gptonline', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
    if (!query) return res.json(msg.paramquery);
 
@@ -139,7 +140,7 @@ apiR.get('/gptonline', async (req, res, next) => {
    });
 });
 
-apiR.get('/toanime', async (req, res, next) => {
+apiR.get('/toanime', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
    if (!url) return res.json(msg.paramquery);
 
@@ -165,7 +166,7 @@ apiR.get('/toanime', async (req, res, next) => {
    }
 });
 
-apiR.get('/Pixart-A', async (req, res, next) => {
+apiR.get('/Pixart-A', apiKeyMiddleware, async (req, res, next) => {
    try {
       const prompt = req.query.prompt;
       const style = req.query.style;
