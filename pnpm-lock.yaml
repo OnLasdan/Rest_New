@@ -65,6 +65,9 @@ dependencies:
   memorystore:
     specifier: ^1.6.7
     version: 1.6.7
+  mime-types:
+    specifier: ^2.1.35
+    version: 2.1.35
   moment-timezone:
     specifier: ^0.5.44
     version: 0.5.44
