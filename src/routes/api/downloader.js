@@ -2,10 +2,8 @@ import '../../lib/message.js';
 import express from 'express';
 import { fetchJson} from '../../lib/function.js';
 import {
-  pinterestvideodownloader,
   mediafires,
   facebook,
-  shortlink,
   xnxxDownloader
  } from '../../scrape/src/downloader/downloader.js';
  import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
