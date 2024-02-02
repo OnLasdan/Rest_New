@@ -46,7 +46,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/test.js",
     "start": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js"
   },
@@ -62,5 +62,9 @@
   "bugs": {
     "url": "https://github.com/Pkok1024/dollar/issues"
   },
-  "homepage": "https://github.com/Pkok1024/dollar#readme"
+  "homepage": "https://github.com/Pkok1024/dollar#readme",
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.4"
+  }
 }

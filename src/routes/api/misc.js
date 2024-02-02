@@ -1,7 +1,7 @@
 import express from 'express';
 import moment from 'moment-timezone';
 
-const apiR = express();
+const apiR = express.Router();
 
 let __path = process.cwd();
 

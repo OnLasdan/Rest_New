@@ -1,10 +1,10 @@
-import '../../lib/message.js';
+import msg from '../../lib/message.js';
 import express from 'express';
 import scrape from '../../scrape/index.js';
 import { xnxxSearch } from '../../scrape/src/downloader/downloader.js';
 import youtube from '../../scrape/src/search/youtube.js';
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
-const apiR = express();
+const apiR = express.Router();
 let __path = process.cwd();
 const author = 'xyla';
 

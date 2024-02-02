@@ -639,8 +639,6 @@
         "tags": [
           "Misc"
         ],
-        "summary": "Get the runtime of the application",
-        "description": "Returns the current uptime of the application",
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -666,8 +664,6 @@
         "tags": [
           "Misc"
         ],
-        "summary": "Get the current time in different timezones",
-        "description": "Returns the current time in different timezones",
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -698,8 +694,6 @@
     },
     "/api/random/china": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -740,8 +734,6 @@
     },
     "/api/random/indonesia": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -782,8 +774,6 @@
     },
     "/api/random/japan": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -824,8 +814,6 @@
     },
     "/api/random/korean": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -866,8 +854,6 @@
     },
     "/api/random/vietnam": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -908,8 +894,6 @@
     },
     "/api/random/random": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -950,8 +934,6 @@
     },
     "/api/random/thailand": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -992,8 +974,6 @@
     },
     "/api/random/malaysia": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -1034,8 +1014,6 @@
     },
     "/api/random/potatogodzilla": {
       "get": {
-        "summary": "Get random image and video",
-        "description": "Random image API",
         "tags": [
           "Random"
         ],
@@ -1176,7 +1154,6 @@
     },
     "/api/upload/cdn": {
       "post": {
-        "summary": "Upload a file to the CDN.",
         "tags": [
           "Uploader"
         ],
@@ -1242,7 +1219,6 @@
     },
     "/api/auth/register": {
       "post": {
-        "summary": "User Registration",
         "tags": [
           "User"
         ],
@@ -1287,7 +1263,6 @@
     },
     "/api/auth/profile": {
       "get": {
-        "summary": "Get user profile information",
         "tags": [
           "User"
         ],

@@ -2,8 +2,6 @@ const miscEndpoints = {
   "/api/misc/runtime": {
     "get": {
       "tags": ["Misc"],
-      "summary": "Get the runtime of the application",
-      "description": "Returns the current uptime of the application",
       "responses": {
         "200": {
           "description": "Successful operation",
@@ -27,8 +25,6 @@ const miscEndpoints = {
   "/api/misc/clock": {
     "get": {
       "tags": ["Misc"],
-      "summary": "Get the current time in different timezones",
-      "description": "Returns the current time in different timezones",
       "responses": {
         "200": {
           "description": "Successful operation",

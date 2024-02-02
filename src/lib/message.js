@@ -42,3 +42,5 @@ const msg = {
     	maintanied_by: 'xyla'
     }
 }
+
+export default msg

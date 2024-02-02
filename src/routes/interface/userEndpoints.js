@@ -1,7 +1,6 @@
 const userEndpoints = {
   "/api/auth/register": {
     "post": {
-      "summary": "User Registration",
       "tags": [ "User" ],
       "requestBody": {
         "content": {
@@ -40,7 +39,6 @@ const userEndpoints = {
   },
   "/api/auth/profile": {
     "get": {
-      "summary": "Get user profile information",
       "tags": [ "User" ],
       "parameters": [ {
         "name": "email",
@@ -127,4 +125,5 @@ const userEndpoints = {
     }
   }
 }
+
 export default userEndpoints;

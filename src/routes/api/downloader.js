@@ -1,4 +1,4 @@
-import '../../lib/message.js';
+import msg from '../../lib/message.js';
 import express from 'express';
 import { fetchJson} from '../../lib/function.js';
 import {
@@ -9,7 +9,7 @@ import {
  import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
 const author = 'xyla';
 
-const apiR = express();
+const apiR = express.Router();
 
 apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;

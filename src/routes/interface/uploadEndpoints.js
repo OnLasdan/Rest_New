@@ -1,7 +1,6 @@
 const uploadEndpoints = {
     "/api/upload/cdn": {
       "post": {
-        "summary": "Upload a file to the CDN.",
         "tags": ["Uploader"],
         "requestBody": {
           "content": {
