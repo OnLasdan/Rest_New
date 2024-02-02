@@ -8,7 +8,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import compression from 'compression';
 import session from 'express-session';
-import helmet from 'helmet'
+import helmet from 'helmet';
 import { createRequire } from 'module';
 import helloRouter from './views/home.js';
 import R404 from './views/error.js';
@@ -17,7 +17,7 @@ import resetLimitsCron from './lib/resetLimitsCron.js';
 import options2 from './lib/options.js';
 import verifyRoutes from './routes/verifyRoutes.js';
 import authRoutes from './routes/authRoutes.js';
-import { swaggerWr, customLogger } from './lib/function.js'
+import { swaggerWr, customLogger } from './lib/function.js';
 import chalk from 'chalk';
 const require = createRequire(import.meta.url);
 const options = await options2(); 
@@ -64,16 +64,16 @@ app.get('/ip', (request, res) => {
 app.get('/login', (req, res) => {
 const login = new URL('./views/pages/login/index.html',
 import.meta.url).pathname;
-  res.sendFile(login)
-} )
+  res.sendFile(login);
+} );
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   let page = new URL('./views/pages/ERROR/500.html', import.meta.url).pathname;
   res.status(500).sendFile(page);
-console.log(page)
+console.log(page);
   });
-app.use(morgan('combined'))
+app.use(morgan('combined'));
 app.use(R404);
   // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
 const port = process.env.PORT || 3002;

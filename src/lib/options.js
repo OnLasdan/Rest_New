@@ -15,7 +15,7 @@ export default async function getConfig() {
          operationsSorter: 'method',
          setPreLoadingEnabled: true,
       },
-     customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
+     customCss: customCss,
       customfavIcon: '../assets/image/2.png',
       customSiteTitle: ".M.U.F.A.R.",
       explorer: false,
