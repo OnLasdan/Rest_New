@@ -32,10 +32,6 @@ dotenv.config();
 
 resetLimitsCron();
 
-
-
-
-
 // ========================================
 app.use(bodyParser.json());
 app.use(cors());
@@ -59,28 +55,27 @@ app.use(helmet());
 app.use("/", helloRouter, verifyRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", apiR);
-app.get("/ip", function(request, res) {
+app.get("/ip", (request, res) => {
     const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
     console.log(ip);
     return res.send({ ip });
 });
-app.get("/login", function(req, res) {
+app.get("/login", (req, res) =>  {
 const login = new URL("./views/pages/login/index.html",
 import.meta.url).pathname;
   res.sendFile(login);
 } );
 
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   let page = new URL("./views/pages/ERROR/500.html", import.meta.url).pathname;
   res.status(500).sendFile(page);
 console.log(page);
   });
-app.use(morgan("combined"));
 app.use(R404);
   // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
 const port = process.env.PORT || 3002;
-app.listen (port, function() {
+app.listen (port, () => {
   console.log(chalk.cyan(`Server is running on port ${port}`));
 });
 
