@@ -72,6 +72,7 @@ const customLogger = morgan(function(tokens, req, res) {
     const responseTime = tokens['response-time'](req, res);
     const coloredUrl = `${chalk.blue('url: ')} ${chalk.hex('#ff99ff')(url)}`;
     const ipAddress = req.ip;
+    const userAgent = req.headers['user-agent'];
 
     const log = [
         `${chalk.blue('method: ')} ${chalk.bold.blue(method)}`,
@@ -79,7 +80,8 @@ const customLogger = morgan(function(tokens, req, res) {
         chalk.bold.hex('#1AFF00')(`status: ${status}`),
         contentLength === '-' ? '-' : chalk.bold.blue(`contentLength: ${contentLength}`),
           responseTime < 500 ? chalk.green(`responseTime: ${responseTime} ms`) : chalk.red(`responseTime: ${responseTime} ms`),
-      `${chalk.blue('ipAddress: ')}${chalk.hex('#5670f5')(`${ipAddress}`)}`, 
+      `${chalk.blue('ipAddress: ')}${chalk.hex('#5670f5')(`${ipAddress}`)}`,
+       `${chalk.blue('userAgent: ')}${chalk.hex('#ffcc00')(`${userAgent}`)}`,
     ];
 
     console.log(log.join('\n'));
