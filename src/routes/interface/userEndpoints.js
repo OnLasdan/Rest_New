@@ -17,9 +17,12 @@ const userEndpoints = {
                 },
                 "username": {
                   "type": "string"
+                },
+                "apiKey": {
+                  "type": "string"
                 }
               },
-              "required": [ "email", "password", "username" ]
+              "required": [ "email", "password", "username", "apikey" ]
             }
           }
         }

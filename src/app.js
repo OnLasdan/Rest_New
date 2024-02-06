@@ -4,7 +4,6 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import favicon from "serve-favicon";
 import path from "path";
-import morgan from "morgan";
 import dotenv from "dotenv";
 import compression from "compression";
 import session from "express-session";
@@ -53,25 +52,14 @@ app.use(express.json());
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
 app.use(helmet());
 app.use("/", helloRouter, verifyRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api", apiR);
+app.use("/api", apiR, authRoutes);
 app.get("/ip", (request, res) => {
     const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
     console.log(ip);
     return res.send({ ip });
 });
-app.get("/login", (req, res) =>  {
-const login = new URL("./views/pages/login/index.html",
-import.meta.url).pathname;
-  res.sendFile(login);
-} );
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  let page = new URL("./views/pages/ERROR/500.html", import.meta.url).pathname;
-  res.status(500).sendFile(page);
-console.log(page);
-  });
+
 app.use(R404);
   // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
 const port = process.env.PORT || 3002;

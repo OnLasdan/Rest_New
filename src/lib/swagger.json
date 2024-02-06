@@ -1237,12 +1237,16 @@
                   },
                   "username": {
                     "type": "string"
+                  },
+                  "apiKey": {
+                    "type": "string"
                   }
                 },
                 "required": [
                   "email",
                   "password",
-                  "username"
+                  "username",
+                  "apikey"
                 ]
               }
             }

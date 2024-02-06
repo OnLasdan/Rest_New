@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import combinedJSON from './combinedJSON.js';
 import { currentDirectory } from '../app.js';
-
+import ora from 'ora';
 
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
 
@@ -66,36 +66,38 @@ const createActivationToken = (payload) => {
 const customLogger = morgan(function(tokens, req, res) {
     const method = tokens.method(req, res);
     const uri = decodeURI(tokens.url(req, res));
-    const url = uri.replace(/ /g, '-')
+    const url = uri.replace(/ /g, '-');
     const status = tokens.status(req, res);
     const contentLength = tokens.res(req, res, 'content-length') || '-';
     const responseTime = tokens['response-time'](req, res);
-    const coloredUrl = `${chalk.blue('url: ')} ${chalk.hex('#ff99ff')(url)}`;
     const ipAddress = req.ip;
     const userAgent = req.headers['user-agent'];
 
     const log = [
-        `${chalk.blue('method: ')} ${chalk.bold.blue(method)}`,
-        coloredUrl,
-        chalk.bold.hex('#1AFF00')(`status: ${status}`),
-        contentLength === '-' ? '-' : chalk.bold.blue(`contentLength: ${contentLength}`),
-          responseTime < 500 ? chalk.green(`responseTime: ${responseTime} ms`) : chalk.red(`responseTime: ${responseTime} ms`),
-      `${chalk.blue('ipAddress: ')}${chalk.hex('#5670f5')(`${ipAddress}`)}`,
-       `${chalk.blue('userAgent: ')}${chalk.hex('#ffcc00')(`${userAgent}`)}`,
+        `${chalk.green('Method:')} ${chalk.bold.green(method)}`,
+        `${chalk.blue('URL:')} ${chalk.hex('#9933ff')(url)}`,
+        `${chalk.cyan('Status:')} ${chalk.bold.cyan(status)}`,
+        contentLength !== '-' ? `${chalk.green('Content Length:')} ${chalk.bold.green(contentLength)}` : '',
+        responseTime < 500 ? `${chalk.blue('Response Time:')} ${chalk.bold.blue(responseTime+" ms")}` : `${chalk.red('Response Time:')} ${chalk.bold.red(responseTime + " ms")}`,
+        `${chalk.magenta('IP Address:')} ${chalk.bold.magenta(ipAddress)}`,
+        `${chalk.yellow('User Agent:')} ${chalk.bold.yellow(userAgent)}`,
     ];
 
     console.log(log.join('\n'));
 });
 
 async function swaggerWr() {
+    const spinner = ora('Mengumpulkan swagger file').start();
+
     try {
         const resolvedCombinedJSON = await combinedJSON;
         fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON, null, 2));
-        console.log(chalk.green('swagger File Successfully Asambled'));
+        spinner.succeed('Swagger File Berhasil Disusun');
     } catch (error) {
-        console.error('Gagal menulis file ke S3:', error.message);
+        spinner.fail(`Gagal menulis file ke S3: ${error.message}`);
     }
 }
+
 
 export { 
   createActivationToken, 
