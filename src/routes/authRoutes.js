@@ -10,28 +10,14 @@ const router = express.Router();
 router.post('/auth/register', async (req, res) => {
    try {
       const { email, password, username, apiKey } = req.body;
-
-      if (!email || !validator.isEmail(email)) {
-         return res.status(400).json({ error: "Email tidak valid" });
-      }
-
-      if (!validator.isLength(password, { min: 6 })) {
-         return res.status(400).send('Password harus minimal 6 karakter');
-      }
-
-      if (!validator.isLength(username, { min: 3 })) {
-         return res.status(400).send('Username harus minimal 3 karakter');
-      }
-
+      if (!email || !validator.isEmail(email)) return res.status(400).json({ error: "Email tidak valid" });
+      if (!validator.isLength(password, { min: 6 })) return res.status(400).send('Password harus minimal 6 karakter');
+      if (!validator.isLength(username, { min: 3 }))  return res.status(400).send('Username harus minimal 3 karakter');
       const existingUser = await User.findOne({ email });
       const existingKey = await User.findOne({ apiKey: apiKey });
 console.log(existingKey)
-      if (existingUser) {
-         return res.status(400).json({ error: 'User with this email already exists.' });
-      }
-      if (existingKey == apiKey ) {
-         return res.status(400).json({ error: 'User with this apiKey already exists.' });
-      }
+      if (existingUser) return res.status(400).json({ error: 'User with this email already exists.' });
+      if (existingKey == apiKey ) return res.status(400).json({ error: 'User with this apiKey already exists.' });
 
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -58,27 +44,7 @@ console.log(existingKey)
    }
 });
 
-async function sendVerificationEmail(toEmail, verificationUrl) {
-   let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-         user: 'lzaky404@gmail.com',
-         pass: 'kqfsqrqrdigiaicr',
-      },
-   });
-
-   const mailOptions = {
-      from: '"M.U.F.A.R." <admin@onlasdan.tech>',
-      to: toEmail,
-      subject: 'Account Verification',
-      html: `<p>Click the button to verify your email:</p><a href="${verificationUrl}" style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>`,
-   };
-
-   await transporter.sendMail(mailOptions);
-}
-
-
-router.get('/auth/profile', async (req, res) => {
+router.get('/api/auth/profile', async (req, res) => {
    try {
       const { email, password } = req.query;
 
@@ -104,7 +70,7 @@ router.get('/auth/profile', async (req, res) => {
    }
 });
 
-router.get('/auth/cekey', async (req, res) => {
+router.get('/cekey', async (req, res) => {
    const { key } = req.query;
    const user = await User.findOne({ key });
    if (!user) {
@@ -113,4 +79,22 @@ router.get('/auth/cekey', async (req, res) => {
    res.json({ limit: user.limit });
 });
 
+async function sendVerificationEmail(toEmail, verificationUrl) {
+   let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+         user: 'lzaky404@gmail.com',
+         pass: 'kqfsqrqrdigiaicr',
+      },
+   });
+
+   const mailOptions = {
+      from: '"M.U.F.A.R." <admin@onlasdan.tech>',
+      to: toEmail,
+      subject: 'Account Verification',
+      html: `<p>Click the button to verify your email:</p><a href="${verificationUrl}" style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>`,
+   };
+
+   await transporter.sendMail(mailOptions);
+}
 export default router;

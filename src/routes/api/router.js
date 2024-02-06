@@ -8,7 +8,6 @@ const routeModules = ['random', 'downloader', 'ai', 'upload', 'search', 'misc'];
 
 routeModules.forEach(async (routeModule) => {
    const routes = await import(`./${routeModule}.js`);
-   apiR.use(`/${routeModule}`, routes.default);
+   apiR.use(`/api/${routeModule}`, routes.default);
 });
-
 export default apiR;

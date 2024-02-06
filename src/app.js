@@ -1,3 +1,4 @@
+// app.js
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import cors from "cors";
@@ -16,14 +17,18 @@ import resetLimitsCron from "./lib/resetLimitsCron.js";
 import options2 from "./lib/options.js";
 import verifyRoutes from "./routes/verifyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import routerDocs from "./routes/routerDocs.js"; // Import routerDocs
 import { swaggerWr, customLogger } from "./lib/function.js";
 import chalk from "chalk";
+
 export const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
+
 if (process.env.NODE_ENV === "development") {
-await swaggerWr();
-app.use(customLogger);
+  await swaggerWr();
+  app.use(customLogger);
 }
+
 const require = createRequire(import.meta.url);
 const options = await options2();
 const swaggerModule = require("./lib/swagger.json");
@@ -38,8 +43,8 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: "uh58h5yj8"
-  })
+    secret: "uh58h5yj8",
+  }),
 );
 app.set("trust proxy", 1);
 app.use(compression());
@@ -49,22 +54,18 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
-app.use(helmet());
-app.use("/", helloRouter, verifyRoutes);
-app.use("/api", apiR, authRoutes);
-app.get("/ip", (request, res) => {
-    const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
-    console.log(ip);
-    return res.send({ ip });
-});
 
+// Menggunakan routerDocs
+app.use(routerDocs);
+
+app.use(helmet());
+app.use("/", helloRouter, verifyRoutes, apiR, authRoutes);
+app.get("/ip", (request, res) => {
+  const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
+  console.log(ip);
+  return res.send({ ip });
+});
 
 app.use(R404);
-  // +_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ //
-const port = process.env.PORT || 3002;
-app.listen (port, () => {
-  console.log(chalk.cyan(`Server is running on port ${port}`));
-});
 
-export default app
+export default app;
