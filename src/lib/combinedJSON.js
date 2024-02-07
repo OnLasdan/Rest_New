@@ -22,7 +22,7 @@ async function generateCombinedJSON() {
     "openapi": "3.0.0",
     "info": {
       "title": ".M.U.F.A.R. APIs",
-      "version": "1.0.11"
+      "version": "1.1.11"
     },
     "security": [
       {
