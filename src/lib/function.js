@@ -5,10 +5,56 @@ import morgan from 'morgan';
 import chalk from 'chalk';
 import fs from 'fs';
 import combinedJSON from './combinedJSON.js';
-import { currentDirectory } from '../app.js';
 import ora from 'ora';
-
+import yaml from 'js-yaml'
+import path from 'path'
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
+ const currentDirectory = path.dirname(new
+URL(import.meta.url).pathname);
+
+
+function swaggerJs(inputFilePath, outputFilePath) {
+  try {
+    // Baca file YAML secara synchronous
+    const yamlContent = fs.readFileSync(inputFilePath, 'utf8');
+    const yamlData = yaml.load(yamlContent);
+    let jsFileContent = '';
+
+    // Loop melalui setiap router dan tambahkan komentar Swagger
+    for (const [route, data] of Object.entries(yamlData.paths)) {
+      // Pisahkan route menjadi bagian-bagian yang relevan
+      const [, api, ...rest] = route.split('/');
+
+      if (api === 'api' && rest.length > 0) {
+        const outputData = {
+          paths: {
+            [route]: data,
+          },
+        };
+        const outputYaml = yaml.dump(outputData);
+
+        jsFileContent += `
+/**
+ * @swagger
+ * ${outputYaml.replace(/\n/g, '\n * ')}
+ */
+`;
+      }
+    }
+fs.writeFileSync(outputFilePath, jsFileContent, (err) => {
+      if (err) {
+        console.error('Error writing file:', err);
+        return;
+      }
+      console.log(`File ${outputFilePath} berhasil dibuat.`);
+    });
+    console.log(`File ${outputFilePath} berhasil dibuat.`);
+  } catch (err) {
+    console.error('Error:', err);
+  }
+}
+
+
 
 const fetchJson = async (url, options) => {
    try {
@@ -90,9 +136,19 @@ async function swaggerWr() {
     const spinner = ora('Mengumpulkan swagger file').start();
 
     try {
-        const resolvedCombinedJSON = await combinedJSON;
-        fs.writeFileSync(`${currentDirectory}/lib/swagger.json`, JSON.stringify(resolvedCombinedJSON, null, 2));
+        const resolvedCombinedJSON = await combinedJSON
+        const json = fs.readFileSync(`${currentDirectory}/swagger.json`,
+        'utf8')
+        const jsonObject = JSON.parse(json);
+        const yamlContent = yaml.dump(jsonObject);
+        
+        fs.writeFileSync(`${currentDirectory}/swagger.json`, JSON.stringify(resolvedCombinedJSON, null, 2));
+        
+        fs.writeFileSync(`${currentDirectory}/swagger.yaml`, yamlContent);
         spinner.succeed('Swagger File Berhasil Disusun');
+        
+        await swaggerJs(`${currentDirectory}/swagger.yaml`,
+        `${currentDirectory}/swagger.js`);
     } catch (error) {
         spinner.fail(`Gagal menulis file ke S3: ${error.message}`);
     }
@@ -106,5 +162,6 @@ export {
   fetchJson, 
   getBuffer, 
   customLogger,
-  swaggerWr
+  swaggerWr,
+  swaggerJs
 };
