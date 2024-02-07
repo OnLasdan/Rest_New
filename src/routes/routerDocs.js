@@ -1,6 +1,6 @@
 import swaggerJsDoc from 'swagger-jsdoc'
 import express from "express";
-import swaggerUi from "swagger-ui-express";
+import swaggerUI from "swagger-ui-express";
 import options2 from "../lib/options.js";
 import { createRequire } from "module"
 const routerDocs = express.Router();
