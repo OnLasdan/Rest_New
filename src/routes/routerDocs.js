@@ -1,10 +1,10 @@
-
+import swaggerJsDoc from 'swagger-jsdoc'
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import options2 from "../lib/options.js";
 import { createRequire } from "module"
 const routerDocs = express.Router();
-
+const options = await options2();
 const options3 = {
   definition: {
     openapi: "3.0.0",
@@ -27,17 +27,17 @@ const options3 = {
     ],
   },
   // This is to call all the file
-  apis: ["**/**/*.js"],
+  apis: ["**/**/*.yaml"],
 };
 
 const specs = swaggerJsDoc(options3);
 
 routerDocs.use("/vercelDocs", swaggerUi.serve, swaggerUi.setup(specs, options));
 
-const options = await options2();
-const require = createRequire(import.meta.url);
-const swaggerModule = require("../lib/swagger.json");
+// 
+// const require = createRequire(import.meta.url);
+// const swaggerModule = require("../lib/swagger.json");
 
-routerDocs.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
+// routerDocs.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerModule, options));
 
 export default routerDocs;

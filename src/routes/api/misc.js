@@ -9,7 +9,11 @@ apiR.get('/runtime', (req, res) => {
    const uptime = process.uptime();
    res.json({ uptime: uptime });
 });
-
+apiR.get("/ip", (request, res) => {
+  const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
+  console.log(ip);
+  return res.send({ ip });
+});
 apiR.get('/clock', (req, res) => {
    const getCurrentTime = () => {
       const wibTime = moment().tz('Asia/Jakarta').format('HH:mm:ss');

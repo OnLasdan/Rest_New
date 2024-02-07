@@ -17,13 +17,13 @@ import resetLimitsCron from "./lib/resetLimitsCron.js";
 import options2 from "./lib/options.js";
 import verifyRoutes from "./routes/verifyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-import routerDocs from "./routes/routerDocs.js"; // Import routerDocs
+import routerDocs from "./routes/routerDocs.js";
 import { swaggerWr, customLogger } from "./lib/function.js";
 import chalk from "chalk";
-
-export const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
+ const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
-
+dotenv.config();
+resetLimitsCron();
 if (process.env.NODE_ENV === "development") {
   await swaggerWr();
   app.use(customLogger);
@@ -32,11 +32,7 @@ if (process.env.NODE_ENV === "development") {
 const require = createRequire(import.meta.url);
 const options = await options2();
 const swaggerModule = require("./lib/swagger.json");
-dotenv.config();
 
-resetLimitsCron();
-
-// ========================================
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
@@ -54,18 +50,9 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Menggunakan routerDocs
 app.use(routerDocs);
-
 app.use(helmet());
 app.use("/", helloRouter, verifyRoutes, apiR, authRoutes);
-app.get("/ip", (request, res) => {
-  const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
-  console.log(ip);
-  return res.send({ ip });
-});
-
 app.use(R404);
 
 export default app;
