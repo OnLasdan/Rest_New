@@ -123,6 +123,49 @@ const animeEndpoints = {
       }
     }
   },
+  "/api/anime/doujin-img": {
+    "get": {
+      "tags": ["Anime"],
+      "parameters": [
+        {
+          "name": "url",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "URL doujin get image"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "content": {
+            "application/json": {
+              "example": {
+                "status": "Success",
+                "code": 200,
+                "author": "nama_author", 
+                "data": "data_doujin"
+              }
+            }
+          }
+        },
+        "default": {
+          "description": "Unexpected error",
+          "content": {
+            "application/json": {
+              "example": {
+                "status": "Error",
+                "code": 500,
+                "message": "Internal Server Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/api/anime/hentai": {
     "get": {
       "tags": ["Anime"],
@@ -181,7 +224,53 @@ const animeEndpoints = {
           "content": {
             "application/json": {
               "example": {
-                // Example response when successful
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "example": {
+                "error": "Invalid parameters. URL is required."
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "content": {
+            "application/json": {
+              "example": {
+                "error": "Internal server error."
+              }
+            }
+          }
+        }
+      }
+    }
+  },  
+  "/api/anime/nhentai-search": {
+    "get": {
+    "tags": ["Anime"],
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "description": "q of the image or video frame",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response",
+          "content": {
+            "application/json": {
+              "example": {
               }
             }
           }

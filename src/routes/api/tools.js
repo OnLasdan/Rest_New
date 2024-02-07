@@ -45,20 +45,5 @@ apiR.get('/langList', apiKeyMiddleware, async (req, res) => {
   }
 });
 
-apiR.get('/nekopoi-letest', apiKeyMiddleware, async (req, res, next) => {
-   try {
-     const data = await nekopoilatest()
-      res.json({
-         status: "Success",
-         code: 200,
-         author,
-         data
-      });
-   } catch (error) {
-      next(error);
-   }
-});
-
-
 
 export default apiR;
