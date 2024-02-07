@@ -31,8 +31,10 @@ const options3 = {
 };
 
 const specs = swaggerJsDoc(options3);
-
-routerDocs.use("/vercelDocs", swaggerUi.serve, swaggerUi.setup(specs, options));
+const CSS_URL =
+"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css"
+routerDocs.use("/vercelDocs", swaggerUi.serve, swaggerUI.setup(specs, {
+customCssUrl: CSS_URL }));
 
 // 
 // const require = createRequire(import.meta.url);
