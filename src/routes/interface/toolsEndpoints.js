@@ -82,6 +82,44 @@ const toolsEndpoints = {
         }
       }
     }
-  }
+  },
+    "/api/tools/nekopoi-letest": {
+    "get": {
+      "tags": ["Tools"],
+      "responses": {
+        "200": {
+          "description": "Successfully retrieved response",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "code": {
+                    "type": "integer",
+                    "example": 200
+                  },
+                  "author": {
+                    "type": "string",
+                    "example": "Xyla"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
 }
 export default toolsEndpoints;

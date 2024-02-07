@@ -1,6 +1,16 @@
 import express from 'express';
-import { translate, langList } from '../../scrape/src/tools/translate.js'; 
+import { 
+  translate, 
+  langList
+  } from '../../scrape/src/tools/translate.js'; 
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
+import {
+  komikindogetch,
+  dojindsgetimg,
+  nkpepsddl,
+  nekopoilatest,
+  nhentaisearch
+  } from '../../scrape/src/tools/komik.js'
 const author = 'xyla';
 const apiR = express.Router();
 
@@ -34,5 +44,21 @@ apiR.get('/langList', apiKeyMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Internal server error.' });
   }
 });
+
+apiR.get('/nekopoi-letest', apiKeyMiddleware, async (req, res, next) => {
+   try {
+     const data = await nekopoilatest()
+      res.json({
+         status: "Success",
+         code: 200,
+         author,
+         data
+      });
+   } catch (error) {
+      next(error);
+   }
+});
+
+
 
 export default apiR;

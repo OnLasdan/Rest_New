@@ -13,13 +13,12 @@ apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
    if (!query) return res.json(msg.paramquery);
    try {
       const data = await youtube(query);
-      let result = data;
-      if (!result) res.json(msg.nodata);
+      if (!data) res.json(msg.nodata);
       res.json({
          status: "Success",
          code: 200,
-         author: author,
-         data: result
+         author,
+         data
       });
    } catch (e) {
       next(e);
@@ -35,8 +34,8 @@ apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
       res.json({
          status: "Success",
          code: 200,
-         author: author,
-         data: data
+         author,
+         data
       });
    } catch (error) {
       next(error);
@@ -52,8 +51,8 @@ apiR.get('/wikipedia', apiKeyMiddleware, async (req, res, next) => {
       res.json({
          status: "Success",
          code: 200,
-         author: author,
-         data: data
+         author,
+         data
       });
    } catch (error) {
       next(error);
