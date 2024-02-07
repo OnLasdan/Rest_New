@@ -1,7 +1,7 @@
 const sfwEndpoints = {
   "/api/sfw/akira": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -16,7 +16,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/elaina": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -31,7 +31,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/miku": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -46,7 +46,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/shota": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -61,7 +61,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/anna": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -76,7 +76,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/ikuyo": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -91,7 +91,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/neko": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -106,7 +106,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/takina": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -121,7 +121,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/asuna": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -136,7 +136,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/kaela": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -151,7 +151,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/rias": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -166,7 +166,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/waifu": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -181,7 +181,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/sakura": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -196,7 +196,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/kaguya": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -211,7 +211,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/ayanokouji": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -226,7 +226,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/yotsuba": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -241,7 +241,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/ayuzawa": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -256,7 +256,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/kaori": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -271,7 +271,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/sasuke": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -286,7 +286,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/yumeko": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -301,7 +301,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/bocchi": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -316,7 +316,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/kobo": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -331,7 +331,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/chisato": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -346,7 +346,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/kotori": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -361,7 +361,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/shinka": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -376,7 +376,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/cosplay": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -391,7 +391,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/loli": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -406,7 +406,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/shizuka": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",
@@ -421,7 +421,7 @@ const sfwEndpoints = {
   },
   "/api/sfw/sakura": {
     "get": {
-      "tags": ["Random"],
+      "tags": ["Sfw"],
       "responses": {
         "200": {
           "description": "Successfully retrieved a random image.",

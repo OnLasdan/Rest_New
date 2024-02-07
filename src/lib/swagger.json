@@ -442,6 +442,224 @@
         }
       }
     },
+    "/api/anime/doujin-latest": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "author": {
+                      "type": "string",
+                      "example": "Xyla"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/anime/doujin-search": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL for doujin search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Success",
+                  "code": 200,
+                  "author": "nama_author",
+                  "data": "data_doujin"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/anime/doujin-ch": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL for doujin search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Success",
+                  "code": 200,
+                  "author": "nama_author",
+                  "data": "data_doujin"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/anime/hentai": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "author": {
+                      "type": "string",
+                      "example": "Xyla"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/anime/whatanime": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "URL of the image or video frame",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Invalid parameters. URL is required."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/downloader/tiktok": {
       "get": {
         "tags": [
@@ -1120,7 +1338,57 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response with downloaded YouTube content.",
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "author": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "status": "Success",
+                  "code": 200,
+                  "author": "xyla",
+                  "data": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search/wikipedia": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "description": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -1155,7 +1423,7 @@
     "/api/sfw/akira": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1172,7 +1440,7 @@
     "/api/sfw/elaina": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1189,7 +1457,7 @@
     "/api/sfw/miku": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1206,7 +1474,7 @@
     "/api/sfw/shota": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1223,7 +1491,7 @@
     "/api/sfw/anna": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1240,7 +1508,7 @@
     "/api/sfw/ikuyo": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1257,7 +1525,7 @@
     "/api/sfw/neko": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1274,7 +1542,7 @@
     "/api/sfw/takina": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1291,7 +1559,7 @@
     "/api/sfw/asuna": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1308,7 +1576,7 @@
     "/api/sfw/kaela": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1325,7 +1593,7 @@
     "/api/sfw/rias": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1342,7 +1610,7 @@
     "/api/sfw/waifu": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1359,7 +1627,7 @@
     "/api/sfw/sakura": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1376,7 +1644,7 @@
     "/api/sfw/kaguya": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1393,7 +1661,7 @@
     "/api/sfw/ayanokouji": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1410,7 +1678,7 @@
     "/api/sfw/yotsuba": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1427,7 +1695,7 @@
     "/api/sfw/ayuzawa": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1444,7 +1712,7 @@
     "/api/sfw/kaori": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1461,7 +1729,7 @@
     "/api/sfw/sasuke": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1478,7 +1746,7 @@
     "/api/sfw/yumeko": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1495,7 +1763,7 @@
     "/api/sfw/bocchi": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1512,7 +1780,7 @@
     "/api/sfw/kobo": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1529,7 +1797,7 @@
     "/api/sfw/chisato": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1546,7 +1814,7 @@
     "/api/sfw/kotori": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1563,7 +1831,7 @@
     "/api/sfw/shinka": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1580,7 +1848,7 @@
     "/api/sfw/cosplay": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1597,7 +1865,7 @@
     "/api/sfw/loli": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1614,7 +1882,7 @@
     "/api/sfw/shizuka": {
       "get": {
         "tags": [
-          "Random"
+          "Sfw"
         ],
         "responses": {
           "200": {
@@ -1622,6 +1890,98 @@
             "content": {
               "image/*": {
                 "example": "https://example.com/image.jpg"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/translate": {
+      "get": {
+        "tags": [
+          "Tools"
+        ],
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Target language code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Text to be translated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful translation",
+            "content": {
+              "application/json": {
+                "example": {
+                  "translation": "Translated text"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Invalid parameters. Both lang and text are required."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tools/langList": {
+      "get": {
+        "tags": [
+          "Tools"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "languages": [
+                    "en",
+                    "es",
+                    "fr"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Internal server error."
+                }
               }
             }
           }
