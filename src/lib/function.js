@@ -8,21 +8,18 @@ import combinedJSON from './combinedJSON.js';
 import ora from 'ora';
 import yaml from 'js-yaml'
 import path from 'path'
-const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('');
+const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789';
  const currentDirectory = path.dirname(new
 URL(import.meta.url).pathname);
 
 
 function swaggerJs(inputFilePath, outputFilePath) {
   try {
-    // Baca file YAML secara synchronous
     const yamlContent = fs.readFileSync(inputFilePath, 'utf8');
     const yamlData = yaml.load(yamlContent);
     let jsFileContent = '';
 
-    // Loop melalui setiap router dan tambahkan komentar Swagger
     for (const [route, data] of Object.entries(yamlData.paths)) {
-      // Pisahkan route menjadi bagian-bagian yang relevan
       const [, api, ...rest] = route.split('/');
 
       if (api === 'api' && rest.length > 0) {
@@ -46,7 +43,6 @@ fs.writeFileSync(outputFilePath, jsFileContent, (err) => {
         console.error('Error writing file:', err);
         return;
       }
-      console.log(`File ${outputFilePath} berhasil dibuat.`);
     });
     console.log(`File ${outputFilePath} berhasil dibuat.`);
   } catch (err) {

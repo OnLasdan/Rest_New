@@ -1,4 +1,4 @@
-import msg from '../../lib/message.js';
+
 import express from 'express';
 import { xnxxSearch } from '../../scrape/src/downloader/downloader.js';
 import youtube from '../../scrape/src/search/youtube.js';
@@ -10,10 +10,10 @@ const author = 'xyla';
 
 apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
    try {
       const data = await youtube(query);
-      if (!data) res.json(msg.nodata);
+      if (!data) res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -27,10 +27,10 @@ apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
    try {
       const data = await xnxxSearch(query);
-      if (!data) return res.json(msg.nodata);
+      if (!data) return res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -44,10 +44,10 @@ apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/wikipedia', apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
    try {
       const data = await wikipedia(query);
-      if (!data) return res.json(msg.nodata);
+      if (!data) return res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,

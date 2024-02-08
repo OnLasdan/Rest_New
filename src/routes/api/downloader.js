@@ -1,4 +1,4 @@
-import msg from '../../lib/message.js';
+
 import express from 'express';
 import { fetchJson} from '../../lib/function.js';
 import {
@@ -13,9 +13,9 @@ const apiR = express.Router();
 
 apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    const xorizn = await fetchJson(`https://xorizn-downloads.vercel.app/api/downloads/tiktok?url=${url}`);
-   if (!xorizn.result) return res.json(msg.nodata);
+   if (!xorizn.result) return res.json(global.msg.nodata);
    res.status(200).json({
       status: "Success",
       code: 200,
@@ -26,10 +26,10 @@ apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/mediafire', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    mediafires(url)
       .then(data => {
-         if (!data) res.json(msg.nodata);
+         if (!data) res.json(global.msg.nodata);
          res.json({
             status: "Success",
             code: 200,
@@ -41,10 +41,10 @@ apiR.get('/mediafire', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/facebook', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    facebook(url)
       .then(data => {
-         if (!data) res.json(msg.nodata);
+         if (!data) res.json(global.msg.nodata);
          res.json({
             status: "Success",
             code: 200,
@@ -56,10 +56,10 @@ apiR.get('/facebook', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    xnxxDownloader(url)
       .then(data => {
-         if (!data) res.json(msg.nodata);
+         if (!data) res.json(global.msg.nodata);
          res.json({
             status: "Success",
             code: 200,

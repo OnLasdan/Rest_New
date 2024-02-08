@@ -1,4 +1,4 @@
-import msg from '../../lib/message.js';
+
 import express from 'express';
 import {
   doujindesusearch,
@@ -18,7 +18,7 @@ const apiR = express.Router();
 
 apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.q;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    doujindesusearch(url)
       .then(data => {
           if (data.length === 0) {
@@ -40,7 +40,7 @@ apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    doujindesuch(url)
       .then(data => {
         console.log(data)
@@ -63,7 +63,7 @@ apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramurl);
+   if (!url) return res.json(global.msg.paramurl);
    dojindsgetimg(url)
       .then(data => {
         console.log(data)

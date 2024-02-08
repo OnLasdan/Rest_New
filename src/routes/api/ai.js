@@ -2,7 +2,6 @@ import axios from "axios";
 import request from "request";
 import express from "express";
 import { pixart } from "gpti";
-import msg from '../../lib/message.js';
 import { fetchJson } from "../../lib/function.js";
 import scrape from "../../scrape/index.js";
 import apiKeyMiddleware from "../../middlewares/apiKeyMiddleware.js";
@@ -24,13 +23,13 @@ apiR.get("/bard", apiKeyMiddleware, async (req, res) => {
     let query = decodeURIComponent(req.query.q);
     query = query.replace(/ /g, "-");
 
-    if (!query) return res.json(msg.paramquery);
+    if (!query) return res.json(global.msg.paramquery);
 
     try {
         const data = await fetchJson(`https://aemt.me/bard?text=${query}`);
         const aneh = data.result;
 
-        if (!aneh) return res.json(msg.nodata);
+        if (!aneh) return res.json(global.msg.nodata);
 
         res.json({
             status: "Berhasil",
@@ -50,7 +49,7 @@ apiR.get("/blackbox", async (req, res) => {
    try {
       const query = req.query.q;
 
-      if (!query) return res.json(msg.paramquery);
+      if (!query) return res.json(global.msg.paramquery);
 
       const url = "https://useblackbox.io/chat-request-v4";
 
@@ -86,11 +85,11 @@ apiR.get("/blackbox", async (req, res) => {
 
 apiR.get("/bingimage", apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
 
    xorizn = await fetchJson(`https://aemt.me/bingimg?text=${query}`).then((data) => {
       let aneh = data.result;
-      if (!aneh) return res.json(msg.nodata);
+      if (!aneh) return res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -102,11 +101,11 @@ apiR.get("/bingimage", apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get("/deepenglish", apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
 
    scrape.others.deepenglish(query).then((data) => {
       let anu = data;
-      if (!anu) res.json(msg.nodata);
+      if (!anu) res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -118,11 +117,11 @@ apiR.get("/deepenglish", apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get("/azure", apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
 
    scrape.others.azure(query).then((data) => {
       let anu = data;
-      if (!anu) res.json(msg.nodata);
+      if (!anu) res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -134,11 +133,11 @@ apiR.get("/azure", apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get("/gptonline", apiKeyMiddleware, async (req, res, next) => {
    const query = req.query.q;
-   if (!query) return res.json(msg.paramquery);
+   if (!query) return res.json(global.msg.paramquery);
 
    scrape.others.gptonline(query).then((data) => {
       let anu = data;
-      if (!anu) res.json(msg.nodata);
+      if (!anu) res.json(global.msg.nodata);
       res.json({
          status: "Success",
          code: 200,
@@ -150,13 +149,13 @@ apiR.get("/gptonline", apiKeyMiddleware, async (req, res, next) => {
 
 apiR.get("/toanime", apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
-   if (!url) return res.json(msg.paramquery);
+   if (!url) return res.json(global.msg.paramquery);
 
    try {
       const response = await fetchJson(`https://aemt.me/toanime?url=${url}`);
       const imageUrl = response.url.img_crop_single;
 
-      if (!imageUrl) return res.json(msg.nodata);
+      if (!imageUrl) return res.json(global.msg.nodata);
 
       let requestSettings = {
          url: imageUrl,

@@ -28,7 +28,6 @@ if (process.env.NODE_ENV === "development") {
   await swaggerWr();
   app.use(customLogger);
 }
-
 const require = createRequire(import.meta.url);
 const options = await options2();
 const swaggerModule = require("./lib/swagger.json");

@@ -1,4 +1,4 @@
-const msg = {
+global.msg = {
     paramkey: {
     	status: "Terjadi Kesalahan",
     	code: 403,
@@ -42,5 +42,3 @@ const msg = {
     	maintanied_by: 'xyla'
     }
 }
-
-export default msg
