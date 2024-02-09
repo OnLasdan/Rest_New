@@ -166,7 +166,6 @@ apiR.get("/toanime", apiKeyMiddleware, async (req, res, next) => {
    }
 });
 
-
 apiR.get("/Pixart-A", apiKeyMiddleware, async (req, res, next) => {
    try {
       const prompt = req.query.prompt;
