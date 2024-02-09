@@ -1,5 +1,4 @@
 import axios from "axios";
-import request from "request";
 import express from "express";
 import { pixart } from "gpti";
 import { fetchJson } from "../../lib/function.js";
@@ -152,26 +151,21 @@ apiR.get("/toanime", apiKeyMiddleware, async (req, res, next) => {
    if (!url) return res.json(global.msg.paramquery);
 
    try {
-      const response = await fetchJson(`https://aemt.me/toanime?url=${url}`);
-      const imageUrl = response.url.img_crop_single;
+      const response = await axios.get(`https://aemt.me/toanime?url=${url}`);
+      const imageUrl = response.data.url.img_crop_single;
 
       if (!imageUrl) return res.json(global.msg.nodata);
 
-      let requestSettings = {
-         url: imageUrl,
-         method: "GET",
-         encoding: null,
-      };
+      const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
 
-      request(requestSettings, function (error, response, body) {
-         res.set("Content-Type", "image/png");
-         res.send(body);
-      });
+      res.set("Content-Type", "image/png");
+      res.send(imageResponse.data);
    } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
    }
 });
+
 
 apiR.get("/Pixart-A", apiKeyMiddleware, async (req, res, next) => {
    try {
