@@ -6,8 +6,8 @@ import chalk from 'chalk';
 import fs from 'fs';
 import combinedJSON from './combinedJSON.js';
 import ora from 'ora';
-import yaml from 'js-yaml'
-import path from 'path'
+import yaml from 'js-yaml';
+import path from 'path';
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789';
  const currentDirectory = path.dirname(new
 URL(import.meta.url).pathname);
@@ -132,9 +132,9 @@ async function swaggerWr() {
     const spinner = ora('Mengumpulkan swagger file').start();
 
     try {
-        const resolvedCombinedJSON = await combinedJSON
+        const resolvedCombinedJSON = await combinedJSON;
         const json = fs.readFileSync(`${currentDirectory}/swagger.json`,
-        'utf8')
+        'utf8');
         const jsonObject = JSON.parse(json);
         const yamlContent = yaml.dump(jsonObject);
         
@@ -146,10 +146,9 @@ async function swaggerWr() {
         await swaggerJs(`${currentDirectory}/swagger.yaml`,
         `${currentDirectory}/swagger.js`);
     } catch (error) {
-        spinner.fail(`Gagal menulis file ke S3: ${error.message}`);
+        spinner.fail(`Gagal menulis file ke S3:\n ${error.message}`);
     }
 }
-
 
 export { 
   createActivationToken, 

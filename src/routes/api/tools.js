@@ -4,13 +4,6 @@ import {
   langList
   } from '../../scrape/src/tools/translate.js'; 
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
-import {
-  komikindogetch,
-  dojindsgetimg,
-  nkpepsddl,
-  nekopoilatest,
-  nhentaisearch
-  } from '../../scrape/src/tools/komik.js'
 const author = 'xyla';
 const apiR = express.Router();
 

@@ -1,4 +1,3 @@
-
 import express from 'express';
 import {
   doujindesusearch,
@@ -9,11 +8,9 @@ import {
   komikindogetch,
   dojindsgetimg,
   nhentaisearch
-  } from '../../scrape/src/tools/komik.js'
+  } from '../../scrape/src/tools/komik.js';
  import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
 import traceMoe from '../../scrape/src/anime/whatAnime.js';
-const author = 'xyla';
-
 const apiR = express.Router();
 
 apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
@@ -22,12 +19,7 @@ apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
    doujindesusearch(url)
       .then(data => {
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
          res.json({
             status: "Success",
@@ -43,14 +35,8 @@ apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
    if (!url) return res.json(global.msg.paramurl);
    doujindesuch(url)
       .then(data => {
-        console.log(data)
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
          res.json({
             status: "Success",
@@ -60,20 +46,13 @@ apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
          });
       });
 });
-
 apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
    const url = req.query.url;
    if (!url) return res.json(global.msg.paramurl);
    dojindsgetimg(url)
       .then(data => {
-        console.log(data)
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
          res.json({
             status: "Success",
@@ -83,17 +62,11 @@ apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
          });
       });
 });
-
 apiR.get('/doujin-latest', apiKeyMiddleware, async (req, res, next) => {
    doujindesulatest()
       .then(data => {
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
          res.json({
             status: "Success",
@@ -108,12 +81,7 @@ apiR.get('/hentai', apiKeyMiddleware, async (req, res, next) => {
    hentai()
       .then(data => {
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
          res.json({
             status: "Success",
@@ -134,12 +102,7 @@ apiR.get('/whatanime', apiKeyMiddleware, async (req, res) => {
 
     const data = await traceMoe(url);
           if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.mdg.nodata);
     }
     res.json({
         status: "Success",
@@ -162,12 +125,7 @@ apiR.get('/nhentai-search', apiKeyMiddleware, async (req, res) => {
     
     const data = await nhentaisearch(q);
      if (data.length === 0) {
-      return res.json({
-        status: "Success",
-        code: 200,
-        author,
-        message: 'No results found for the given query.',
-      });
+      return res.json(global.msg.nodata);
     }
     
     res.json({

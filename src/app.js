@@ -14,12 +14,13 @@ import helloRouter from "./views/home.js";
 import R404 from "./views/error.js";
 import apiR from "./routes/api/router.js";
 import resetLimitsCron from "./lib/resetLimitsCron.js";
-import options2 from "./lib/options.js";
 import verifyRoutes from "./routes/verifyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import routerDocs from "./routes/routerDocs.js";
 import { swaggerWr, customLogger } from "./lib/function.js";
 import chalk from "chalk";
+
+
  const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 dotenv.config();
@@ -28,10 +29,6 @@ if (process.env.NODE_ENV === "development") {
   await swaggerWr();
   app.use(customLogger);
 }
-const require = createRequire(import.meta.url);
-const options = await options2();
-const swaggerModule = require("./lib/swagger.json");
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
