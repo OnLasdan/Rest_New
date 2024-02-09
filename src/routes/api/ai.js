@@ -1,7 +1,7 @@
 import axios from "axios";
 import express from "express";
 import { pixart } from "gpti";
-import { fetchJson } from "../../lib/function.js";
+import { fetchJson, getBuffer } from "../../lib/function.js";
 import scrape from "../../scrape/index.js";
 import apiKeyMiddleware from "../../middlewares/apiKeyMiddleware.js";
 const apiR = express.Router();
@@ -17,11 +17,8 @@ function pixartAsync(prompt, data) {
    });
 }
 
-apiR.use(express.urlencoded({ extended: true })); 
-
 apiR.get("/bard", apiKeyMiddleware, async (req, res) => {
-    let query = decodeURIComponent(req.query.q);
-    query = query.replace(/ /g, "-");
+    let query = req.query.q;
 
     if (!query) return res.json(global.msg.paramquery);
 
@@ -42,8 +39,6 @@ apiR.get("/bard", apiKeyMiddleware, async (req, res) => {
         return res.status(500).json({ error: 'Kesalahan Server Internal' });
     }
 });
-
-
 
 apiR.get("/blackbox", async (req, res) => {
    try {
@@ -152,12 +147,12 @@ apiR.get("/toanime", apiKeyMiddleware, async (req, res, next) => {
    if (!url) return res.json(global.msg.paramquery);
 
    try {
-      const response = await axios.get(`https://aemt.me/toanime?url=${url}`);
-      const imageUrl = response.data.url.img_crop_single;
+      const response = await fetchJson(`https://aemt.me/toanime?url=${url}`);
+      const imageUrl = response.url.img_crop_single;
 
       if (!imageUrl) return res.json(global.msg.nodata);
 
-      const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+      const imageResponse = await getBuffer(imageUrl);
 
       res.set("Content-Type", "image/png");
       res.send(imageResponse.data);
