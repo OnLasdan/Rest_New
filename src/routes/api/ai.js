@@ -16,6 +16,7 @@ function pixartAsync(prompt, data) {
       });
    });
 }
+
 apiR.use(express.urlencoded({ extended: true })); 
 
 apiR.get("/bard", apiKeyMiddleware, async (req, res) => {
