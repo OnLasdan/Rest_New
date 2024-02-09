@@ -1,1 +1,1 @@
-globalauthor = "Xyla";
+global.author = "Xyla";

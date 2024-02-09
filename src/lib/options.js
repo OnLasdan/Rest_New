@@ -4,7 +4,6 @@ import path from 'path';
 export default async function getConfig() {
    const customCssPath = join(path.dirname(new URL(import.meta.url).pathname), 'custom.css');
    const customCss = await readFile(customCssPath, 'utf-8');
-
    return {
       swaggerOptions: {
          persistAuthorization: true,
