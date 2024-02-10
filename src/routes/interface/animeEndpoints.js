@@ -12,30 +12,30 @@ const animeEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success',
+                    example: 'Success'
                   },
                   code: {
                     type: 'integer',
-                    example: 200,
+                    example: 200
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla',
+                    example: 'Xyla'
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: '',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+                      example: ''
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/doujin-search': {
     get: {
@@ -46,10 +46,10 @@ const animeEndpoints = {
           in: 'query',
           required: true,
           schema: {
-            type: 'string',
+            type: 'string'
           },
-          description: 'URL for doujin search',
-        },
+          description: 'URL for doujin search'
+        }
       ],
       responses: {
         200: {
@@ -60,10 +60,10 @@ const animeEndpoints = {
                 status: 'Success',
                 code: 200,
                 author: 'nama_author',
-                data: 'data_doujin',
-              },
-            },
-          },
+                data: 'data_doujin'
+              }
+            }
+          }
         },
         default: {
           description: 'Unexpected error',
@@ -72,13 +72,13 @@ const animeEndpoints = {
               example: {
                 status: 'Error',
                 code: 500,
-                message: 'Internal Server Error',
-              },
-            },
-          },
-        },
-      },
-    },
+                message: 'Internal Server Error'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/doujin-ch': {
     get: {
@@ -89,10 +89,10 @@ const animeEndpoints = {
           in: 'query',
           required: true,
           schema: {
-            type: 'string',
+            type: 'string'
           },
-          description: 'URL for doujin search',
-        },
+          description: 'URL for doujin search'
+        }
       ],
       responses: {
         200: {
@@ -103,10 +103,10 @@ const animeEndpoints = {
                 status: 'Success',
                 code: 200,
                 author: 'nama_author',
-                data: 'data_doujin',
-              },
-            },
-          },
+                data: 'data_doujin'
+              }
+            }
+          }
         },
         default: {
           description: 'Unexpected error',
@@ -115,13 +115,13 @@ const animeEndpoints = {
               example: {
                 status: 'Error',
                 code: 500,
-                message: 'Internal Server Error',
-              },
-            },
-          },
-        },
-      },
-    },
+                message: 'Internal Server Error'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/doujin-img': {
     get: {
@@ -132,10 +132,10 @@ const animeEndpoints = {
           in: 'query',
           required: true,
           schema: {
-            type: 'string',
+            type: 'string'
           },
-          description: 'URL doujin get image',
-        },
+          description: 'URL doujin get image'
+        }
       ],
       responses: {
         200: {
@@ -146,10 +146,10 @@ const animeEndpoints = {
                 status: 'Success',
                 code: 200,
                 author: 'nama_author',
-                data: 'data_doujin',
-              },
-            },
-          },
+                data: 'data_doujin'
+              }
+            }
+          }
         },
         default: {
           description: 'Unexpected error',
@@ -158,13 +158,13 @@ const animeEndpoints = {
               example: {
                 status: 'Error',
                 code: 500,
-                message: 'Internal Server Error',
-              },
-            },
-          },
-        },
-      },
-    },
+                message: 'Internal Server Error'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/hentai': {
     get: {
@@ -179,30 +179,30 @@ const animeEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success',
+                    example: 'Success'
                   },
                   code: {
                     type: 'integer',
-                    example: 200,
+                    example: 200
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla',
+                    example: 'Xyla'
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: '',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+                      example: ''
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/whatanime': {
     get: {
@@ -214,41 +214,41 @@ const animeEndpoints = {
           description: 'URL of the image or video frame',
           required: true,
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
           description: 'Successful response',
           content: {
             'application/json': {
-              example: {},
-            },
-          },
+              example: {}
+            }
+          }
         },
         400: {
           description: 'Bad Request',
           content: {
             'application/json': {
               example: {
-                error: 'Invalid parameters. URL is required.',
-              },
-            },
-          },
+                error: 'Invalid parameters. URL is required.'
+              }
+            }
+          }
         },
         500: {
           description: 'Internal Server Error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal server error.',
-              },
-            },
-          },
-        },
-      },
-    },
+                error: 'Internal server error.'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/anime/nhentai-search': {
     get: {
@@ -260,41 +260,41 @@ const animeEndpoints = {
           description: 'q of the image or video frame',
           required: true,
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
           description: 'Successful response',
           content: {
             'application/json': {
-              example: {},
-            },
-          },
+              example: {}
+            }
+          }
         },
         400: {
           description: 'Bad Request',
           content: {
             'application/json': {
               example: {
-                error: 'Invalid parameters. URL is required.',
-              },
-            },
-          },
+                error: 'Invalid parameters. URL is required.'
+              }
+            }
+          }
         },
         500: {
           description: 'Internal Server Error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal server error.',
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-};
-export default animeEndpoints;
+                error: 'Internal server error.'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+export default animeEndpoints

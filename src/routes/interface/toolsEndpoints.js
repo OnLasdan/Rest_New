@@ -9,8 +9,8 @@ const toolsEndpoints = {
           description: 'Target language code',
           required: true,
           schema: {
-            type: 'string',
-          },
+            type: 'string'
+          }
         },
         {
           name: 'text',
@@ -18,9 +18,9 @@ const toolsEndpoints = {
           description: 'Text to be translated',
           required: true,
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -28,33 +28,33 @@ const toolsEndpoints = {
           content: {
             'application/json': {
               example: {
-                translation: 'Translated text',
-              },
-            },
-          },
+                translation: 'Translated text'
+              }
+            }
+          }
         },
         400: {
           description: 'Bad Request',
           content: {
             'application/json': {
               example: {
-                error: 'Invalid parameters. Both lang and text are required.',
-              },
-            },
-          },
+                error: 'Invalid parameters. Both lang and text are required.'
+              }
+            }
+          }
         },
         500: {
           description: 'Internal Server Error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal server error.',
-              },
-            },
-          },
-        },
-      },
-    },
+                error: 'Internal server error.'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/tools/langList': {
     get: {
@@ -65,23 +65,23 @@ const toolsEndpoints = {
           content: {
             'application/json': {
               example: {
-                languages: ['en', 'es', 'fr'],
-              },
-            },
-          },
+                languages: ['en', 'es', 'fr']
+              }
+            }
+          }
         },
         500: {
           description: 'Internal Server Error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal server error.',
-              },
-            },
-          },
-        },
-      },
-    },
+                error: 'Internal server error.'
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/tools/nekopoi-letest': {
     get: {
@@ -96,30 +96,30 @@ const toolsEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success',
+                    example: 'Success'
                   },
                   code: {
                     type: 'integer',
-                    example: 200,
+                    example: 200
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla',
+                    example: 'Xyla'
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: '',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+                      example: ''
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/tools/anti-porn': {
     get: {
@@ -130,10 +130,10 @@ const toolsEndpoints = {
           in: 'query',
           required: true,
           schema: {
-            type: 'string',
+            type: 'string'
           },
-          description: 'URL of the image to be checked',
-        },
+          description: 'URL of the image to be checked'
+        }
       ],
       responses: {
         200: {
@@ -141,33 +141,33 @@ const toolsEndpoints = {
           content: {
             'application/json': {
               example: {
-                nsfw: false,
-              },
-            },
-          },
+                nsfw: false
+              }
+            }
+          }
         },
         400: {
           description: 'Bad Request',
           content: {
             'application/json': {
               example: {
-                error: 'Parameter url not found',
-              },
-            },
-          },
+                error: 'Parameter url not found'
+              }
+            }
+          }
         },
         500: {
           description: 'Internal Server Error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal server error',
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-};
-export default toolsEndpoints;
+                error: 'Internal server error'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+export default toolsEndpoints

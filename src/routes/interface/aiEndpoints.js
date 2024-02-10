@@ -9,9 +9,9 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -24,20 +24,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/blackbox': {
     get: {
@@ -49,9 +49,9 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -64,20 +64,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'iky',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/bingimage': {
     get: {
@@ -89,9 +89,9 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -104,20 +104,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/gptonline': {
     get: {
@@ -129,9 +129,9 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -144,20 +144,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/deepenglish': {
     get: {
@@ -169,9 +169,9 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -184,20 +184,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/Pixart-A': {
     get: {
@@ -209,8 +209,8 @@ const aiEndpoints = {
           required: true,
           description: 'The search query.',
           schema: {
-            type: 'string',
-          },
+            type: 'string'
+          }
         },
         {
           in: 'query',
@@ -229,9 +229,9 @@ const aiEndpoints = {
               'Pixel art',
               'Fantasy art',
               'Neonpunk',
-              '3D Model',
-            ],
-          },
+              '3D Model'
+            ]
+          }
         },
         {
           in: 'query',
@@ -241,8 +241,8 @@ const aiEndpoints = {
             'The sampler for the AI. Choose from: DPM-Solver, SA-Solver',
           schema: {
             type: 'string',
-            enum: ['DPM-Solver', 'SA-Solver'],
-          },
+            enum: ['DPM-Solver', 'SA-Solver']
+          }
         },
         {
           in: 'query',
@@ -252,8 +252,8 @@ const aiEndpoints = {
           schema: {
             type: 'integer',
             enum: [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
-            default: 1024,
-          },
+            default: 1024
+          }
         },
         {
           in: 'query',
@@ -263,9 +263,9 @@ const aiEndpoints = {
           schema: {
             type: 'integer',
             enum: [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
-            default: 1024,
-          },
-        },
+            default: 1024
+          }
+        }
       ],
       responses: {
         200: {
@@ -278,20 +278,20 @@ const aiEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'iky',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/ai/toanime': {
     get: {
@@ -302,9 +302,9 @@ const aiEndpoints = {
           name: 'url',
           required: true,
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -313,37 +313,37 @@ const aiEndpoints = {
             'image/png': {
               schema: {
                 type: 'string',
-                format: 'binary',
-              },
-            },
-          },
+                format: 'binary'
+              }
+            }
+          }
         },
         400: {
           description: 'Bad request, missing or invalid parameters',
           content: {
             'application/json': {
               example: {
-                message: "Invalid or missing 'url' parameter",
-              },
-            },
-          },
+                message: "Invalid or missing 'url' parameter"
+              }
+            }
+          }
         },
         500: {
           description: 'Internal server error',
           content: {
             'application/json': {
               example: {
-                error: 'Internal Server Error',
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                error: 'Internal Server Error'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   // ... tambahkan endpoint AI lainnya
-};
+}
 // Test chokidar function
 // Added watchFile function
-export default aiEndpoints;
+export default aiEndpoints

@@ -9,9 +9,9 @@ const searchEndpoints = {
           required: true,
           description: 'query',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -24,20 +24,20 @@ const searchEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/search/xnxx': {
     get: {
@@ -49,9 +49,9 @@ const searchEndpoints = {
           required: true,
           description: 'query',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -64,20 +64,20 @@ const searchEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
   },
 
   '/api/search/wikipedia': {
@@ -90,9 +90,9 @@ const searchEndpoints = {
           required: true,
           description: 'query',
           schema: {
-            type: 'string',
-          },
-        },
+            type: 'string'
+          }
+        }
       ],
       responses: {
         200: {
@@ -105,21 +105,21 @@ const searchEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' },
-                },
+                  data: { type: 'object' }
+                }
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {},
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                data: {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   // ... tambahkan endpoint search lainnya
-};
-export default searchEndpoints;
+}
+export default searchEndpoints

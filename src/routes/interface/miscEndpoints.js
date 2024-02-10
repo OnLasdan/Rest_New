@@ -12,15 +12,15 @@ const miscEndpoints = {
                 properties: {
                   uptime: {
                     type: 'number',
-                    description: 'Application uptime in seconds',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+                    description: 'Application uptime in seconds'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   '/api/misc/clock': {
     get: {
@@ -36,26 +36,26 @@ const miscEndpoints = {
                   wib: {
                     type: 'string',
                     description:
-                      'Current time in Waktu Indonesia Barat timezone',
+                      'Current time in Waktu Indonesia Barat timezone'
                   },
                   wita: {
                     type: 'string',
                     description:
-                      'Current time in Waktu Indonesia Tengah timezone',
+                      'Current time in Waktu Indonesia Tengah timezone'
                   },
                   wit: {
                     type: 'string',
                     description:
-                      'Current time in Waktu Indonesia Timur timezone',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-};
+                      'Current time in Waktu Indonesia Timur timezone'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
-export default miscEndpoints;
+export default miscEndpoints

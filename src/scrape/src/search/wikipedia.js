@@ -1,41 +1,41 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
+import axios from 'axios'
+import cheerio from 'cheerio'
 
-async function wikipedia(query) {
+async function wikipedia (query) {
   try {
-    const link = await axios.get(`https://id.m.wikipedia.org/wiki/${query}`);
-    const $ = cheerio.load(link.data);
-    let judul = $('#firstHeading').text().trim();
-    let thumb =
+    const link = await axios.get(`https://id.m.wikipedia.org/wiki/${query}`)
+    const $ = cheerio.load(link.data)
+    const judul = $('#firstHeading').text().trim()
+    const thumb =
       $('#mw-content-text')
         .find(
           'div.mw-parser-output > div:nth-child(1) > table > tbody > tr:nth-child(2) > td > a > img'
         )
-        .attr('src') || `//i.postimg.cc/Z5b1WDwD/1675949861324.jpg`;
-    let isi = [];
+        .attr('src') || '//i.postimg.cc/Z5b1WDwD/1675949861324.jpg'
+    const isi = []
 
     $('#mw-content-text > div.mw-parser-output').each(function (rayy, Ra) {
-      let penjelasan = $(Ra).find('p').text().trim();
-      isi.push(penjelasan);
-    });
+      const penjelasan = $(Ra).find('p').text().trim()
+      isi.push(penjelasan)
+    })
 
     const result = isi.map((i) => ({
-      judul: judul,
+      judul,
       thumb: 'https:' + thumb,
-      isi: i,
-    }));
+      isi: i
+    }))
 
     return {
       status: link.status,
-      result: result,
-    };
+      result
+    }
   } catch (err) {
-    var notFound = {
+    const notFound = {
       status: err.response.status,
-      Pesan: err.message,
-    };
-    return notFound;
+      Pesan: err.message
+    }
+    return notFound
   }
 }
 
-export default wikipedia;
+export default wikipedia

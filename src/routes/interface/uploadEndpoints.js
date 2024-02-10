@@ -9,16 +9,16 @@ const uploadEndpoints = {
               type: 'object',
               properties: {
                 apiKey: {
-                  type: 'string',
+                  type: 'string'
                 },
                 file: {
                   type: 'string',
-                  format: 'binary',
-                },
-              },
-            },
-          },
-        },
+                  format: 'binary'
+                }
+              }
+            }
+          }
+        }
       },
       responses: {
         200: {
@@ -29,39 +29,39 @@ const uploadEndpoints = {
                 type: 'object',
                 properties: {
                   status: {
-                    type: 'string',
+                    type: 'string'
                   },
                   code: {
-                    type: 'integer',
+                    type: 'integer'
                   },
                   author: {
-                    type: 'string',
+                    type: 'string'
                   },
                   data: {
-                    type: 'object',
-                  },
-                },
-              },
-            },
-          },
+                    type: 'object'
+                  }
+                }
+              }
+            }
+          }
         },
         400: {
-          description: 'Bad Request - No file uploaded.',
+          description: 'Bad Request - No file uploaded.'
         },
         401: {
-          description: 'Unauthorized - Invalid API key.',
+          description: 'Unauthorized - Invalid API key.'
         },
         500: {
-          description: 'Internal Server Error.',
-        },
+          description: 'Internal Server Error.'
+        }
       },
       security: [
         {
-          ApiKeyAuth: [],
-        },
-      ],
-    },
-  },
-};
+          ApiKeyAuth: []
+        }
+      ]
+    }
+  }
+}
 
-export default uploadEndpoints;
+export default uploadEndpoints

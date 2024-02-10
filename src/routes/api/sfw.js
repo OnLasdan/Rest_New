@@ -1,11 +1,11 @@
-import express from 'express';
-import fs from 'fs';
-import { join } from 'path';
-import axios from 'axios';
-import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
+import express from 'express'
+import fs from 'fs'
+import { join } from 'path'
+import axios from 'axios'
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
-const apiR = express.Router();
-let __path = process.cwd();
+const apiR = express.Router()
+const __path = process.cwd()
 const countries = [
   'akira',
   'elaina',
@@ -35,32 +35,32 @@ const countries = [
   'shinka',
   'cosplay',
   'loli',
-  'shizuka',
-];
+  'shizuka'
+]
 
 countries.forEach((country) => {
   apiR.get(`/${country}`, apiKeyMiddleware, async (req, res, next) => {
     try {
       const data = JSON.parse(
         fs.readFileSync(join(__path, `/src/scrape/data/sfw/${country}.json`))
-      );
-      const result = data[Math.floor(Math.random() * data.length)];
+      )
+      const result = data[Math.floor(Math.random() * data.length)]
 
       const { data: imageBuffer } = await axios.get(result, {
-        responseType: 'arraybuffer',
-      });
+        responseType: 'arraybuffer'
+      })
 
-      res.setHeader('Content-Type', 'image/jpeg');
-      res.status(200).send(imageBuffer);
+      res.setHeader('Content-Type', 'image/jpeg')
+      res.status(200).send(imageBuffer)
     } catch (error) {
-      console.error(`Error in handling '/${country}' endpoint:`, error);
+      console.error(`Error in handling '/${country}' endpoint:`, error)
       res.status(500).json({
         status: 'Error',
         code: 500,
-        message: 'Internal Server Error',
-      });
+        message: 'Internal Server Error'
+      })
     }
-  });
-});
+  })
+})
 
-export default apiR;
+export default apiR

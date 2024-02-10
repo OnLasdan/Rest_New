@@ -73,6 +73,7 @@
     "mocha": "^10.2.0",
     "onchange": "7.1.0",
     "prettier": "3.2.5",
+    "standard": "17.1.0",
     "supertest": "^6.3.4"
   }
 }
