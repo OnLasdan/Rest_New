@@ -1,36 +1,36 @@
 const searchEndpoints = {
-  "/api/search/youtube": {
+  '/api/search/youtube': {
     get: {
-      tags: ["Search"],
+      tags: ['Search'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "query",
+          description: 'query',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with downloaded YouTube content.",
+          description: 'Successful response with downloaded YouTube content.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -39,38 +39,38 @@ const searchEndpoints = {
       },
     },
   },
-  "/api/search/xnxx": {
+  '/api/search/xnxx': {
     get: {
-      tags: ["Search"],
+      tags: ['Search'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "query",
+          description: 'query',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -80,38 +80,38 @@ const searchEndpoints = {
     },
   },
 
-  "/api/search/wikipedia": {
+  '/api/search/wikipedia': {
     get: {
-      tags: ["Search"],
+      tags: ['Search'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "query",
+          description: 'query',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },

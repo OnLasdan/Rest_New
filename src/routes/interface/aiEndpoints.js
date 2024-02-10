@@ -1,36 +1,36 @@
 const aiEndpoints = {
-  "/api/ai/bard": {
+  '/api/ai/bard': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -39,38 +39,38 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/blackbox": {
+  '/api/ai/blackbox': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "iky",
+                author: 'iky',
                 data: {},
               },
             },
@@ -79,38 +79,38 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/bingimage": {
+  '/api/ai/bingimage': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -119,38 +119,38 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/gptonline": {
+  '/api/ai/gptonline': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -159,38 +159,38 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/deepenglish": {
+  '/api/ai/deepenglish': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "q",
+          in: 'query',
+          name: 'q',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -199,69 +199,69 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/Pixart-A": {
+  '/api/ai/Pixart-A': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "prompt",
+          in: 'query',
+          name: 'prompt',
           required: true,
-          description: "The search query.",
+          description: 'The search query.',
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
         {
-          in: "query",
-          name: "style",
+          in: 'query',
+          name: 'style',
           required: true,
           description:
-            "The style for the AI. Choose from: Cinematic, Photographic, Anime, Manga, Digital Art, Pixel art, Fantasy art, Neonpunk, 3D Model",
+            'The style for the AI. Choose from: Cinematic, Photographic, Anime, Manga, Digital Art, Pixel art, Fantasy art, Neonpunk, 3D Model',
           schema: {
-            type: "string",
+            type: 'string',
             enum: [
-              "Cinematic",
-              "Photographic",
-              "Anime",
-              "Manga",
-              "Digital Art",
-              "Pixel art",
-              "Fantasy art",
-              "Neonpunk",
-              "3D Model",
+              'Cinematic',
+              'Photographic',
+              'Anime',
+              'Manga',
+              'Digital Art',
+              'Pixel art',
+              'Fantasy art',
+              'Neonpunk',
+              '3D Model',
             ],
           },
         },
         {
-          in: "query",
-          name: "samplers",
+          in: 'query',
+          name: 'samplers',
           required: true,
           description:
-            "The sampler for the AI. Choose from: DPM-Solver, SA-Solver",
+            'The sampler for the AI. Choose from: DPM-Solver, SA-Solver',
           schema: {
-            type: "string",
-            enum: ["DPM-Solver", "SA-Solver"],
+            type: 'string',
+            enum: ['DPM-Solver', 'SA-Solver'],
           },
         },
         {
-          in: "query",
-          name: "width",
+          in: 'query',
+          name: 'width',
           required: false,
-          description: "The width of the image.",
+          description: 'The width of the image.',
           schema: {
-            type: "integer",
+            type: 'integer',
             enum: [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
             default: 1024,
           },
         },
         {
-          in: "query",
-          name: "height",
+          in: 'query',
+          name: 'height',
           required: false,
-          description: "The height of the image.",
+          description: 'The height of the image.',
           schema: {
-            type: "integer",
+            type: 'integer',
             enum: [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
             default: 1024,
           },
@@ -269,22 +269,22 @@ const aiEndpoints = {
       ],
       responses: {
         200: {
-          description: "Successful response with search results.",
+          description: 'Successful response with search results.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "iky",
+                author: 'iky',
                 data: {},
               },
             },
@@ -293,35 +293,35 @@ const aiEndpoints = {
       },
     },
   },
-  "/api/ai/toanime": {
+  '/api/ai/toanime': {
     get: {
-      tags: ["Ai"],
+      tags: ['Ai'],
       parameters: [
         {
-          in: "query",
-          name: "url",
+          in: 'query',
+          name: 'url',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "image/png": {
+            'image/png': {
               schema: {
-                type: "string",
-                format: "binary",
+                type: 'string',
+                format: 'binary',
               },
             },
           },
         },
         400: {
-          description: "Bad request, missing or invalid parameters",
+          description: 'Bad request, missing or invalid parameters',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
                 message: "Invalid or missing 'url' parameter",
               },
@@ -329,11 +329,11 @@ const aiEndpoints = {
           },
         },
         500: {
-          description: "Internal server error",
+          description: 'Internal server error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal Server Error",
+                error: 'Internal Server Error',
               },
             },
           },

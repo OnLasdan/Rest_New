@@ -1,32 +1,32 @@
 const animeEndpoints = {
-  "/api/anime/doujin-latest": {
+  '/api/anime/doujin-latest': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       responses: {
         200: {
-          description: "Successfully retrieved response",
+          description: 'Successfully retrieved response',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "",
+                      type: 'string',
+                      example: '',
                     },
                   },
                 },
@@ -37,42 +37,42 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/doujin-search": {
+  '/api/anime/doujin-search': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       parameters: [
         {
-          name: "q",
-          in: "query",
+          name: 'q',
+          in: 'query',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
-          description: "URL for doujin search",
+          description: 'URL for doujin search',
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "nama_author",
-                data: "data_doujin",
+                author: 'nama_author',
+                data: 'data_doujin',
               },
             },
           },
         },
         default: {
-          description: "Unexpected error",
+          description: 'Unexpected error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Error",
+                status: 'Error',
                 code: 500,
-                message: "Internal Server Error",
+                message: 'Internal Server Error',
               },
             },
           },
@@ -80,42 +80,42 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/doujin-ch": {
+  '/api/anime/doujin-ch': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       parameters: [
         {
-          name: "url",
-          in: "query",
+          name: 'url',
+          in: 'query',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
-          description: "URL for doujin search",
+          description: 'URL for doujin search',
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "nama_author",
-                data: "data_doujin",
+                author: 'nama_author',
+                data: 'data_doujin',
               },
             },
           },
         },
         default: {
-          description: "Unexpected error",
+          description: 'Unexpected error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Error",
+                status: 'Error',
                 code: 500,
-                message: "Internal Server Error",
+                message: 'Internal Server Error',
               },
             },
           },
@@ -123,42 +123,42 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/doujin-img": {
+  '/api/anime/doujin-img': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       parameters: [
         {
-          name: "url",
-          in: "query",
+          name: 'url',
+          in: 'query',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
-          description: "URL doujin get image",
+          description: 'URL doujin get image',
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "nama_author",
-                data: "data_doujin",
+                author: 'nama_author',
+                data: 'data_doujin',
               },
             },
           },
         },
         default: {
-          description: "Unexpected error",
+          description: 'Unexpected error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                status: "Error",
+                status: 'Error',
                 code: 500,
-                message: "Internal Server Error",
+                message: 'Internal Server Error',
               },
             },
           },
@@ -166,34 +166,34 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/hentai": {
+  '/api/anime/hentai': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       responses: {
         200: {
-          description: "Successfully response.",
+          description: 'Successfully response.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "",
+                      type: 'string',
+                      example: '',
                     },
                   },
                 },
@@ -204,45 +204,45 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/whatanime": {
+  '/api/anime/whatanime': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       parameters: [
         {
-          name: "url",
-          in: "query",
-          description: "URL of the image or video frame",
+          name: 'url',
+          in: 'query',
+          description: 'URL of the image or video frame',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {},
             },
           },
         },
         400: {
-          description: "Bad Request",
+          description: 'Bad Request',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Invalid parameters. URL is required.",
+                error: 'Invalid parameters. URL is required.',
               },
             },
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal server error.",
+                error: 'Internal server error.',
               },
             },
           },
@@ -250,45 +250,45 @@ const animeEndpoints = {
       },
     },
   },
-  "/api/anime/nhentai-search": {
+  '/api/anime/nhentai-search': {
     get: {
-      tags: ["Anime"],
+      tags: ['Anime'],
       parameters: [
         {
-          name: "q",
-          in: "query",
-          description: "q of the image or video frame",
+          name: 'q',
+          in: 'query',
+          description: 'q of the image or video frame',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {},
             },
           },
         },
         400: {
-          description: "Bad Request",
+          description: 'Bad Request',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Invalid parameters. URL is required.",
+                error: 'Invalid parameters. URL is required.',
               },
             },
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal server error.",
+                error: 'Internal server error.',
               },
             },
           },

@@ -1,96 +1,96 @@
 const userEndpoints = {
-  "/api/auth/register": {
+  '/api/auth/register': {
     post: {
-      tags: ["User"],
+      tags: ['User'],
       requestBody: {
         content: {
-          "application/json": {
+          'application/json': {
             schema: {
-              type: "object",
+              type: 'object',
               properties: {
                 email: {
-                  type: "string",
-                  format: "email",
+                  type: 'string',
+                  format: 'email',
                 },
                 password: {
-                  type: "string",
+                  type: 'string',
                 },
                 username: {
-                  type: "string",
+                  type: 'string',
                 },
                 apiKey: {
-                  type: "string",
+                  type: 'string',
                 },
               },
-              required: ["email", "password", "username", "apikey"],
+              required: ['email', 'password', 'username', 'apikey'],
             },
           },
         },
       },
       responses: {
         200: {
-          description: "User registered successfully",
+          description: 'User registered successfully',
         },
         400: {
-          description: "Bad Request - Invalid input data",
+          description: 'Bad Request - Invalid input data',
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
         },
       },
     },
   },
-  "/api/auth/profile": {
+  '/api/auth/profile': {
     get: {
-      tags: ["User"],
+      tags: ['User'],
       parameters: [
         {
-          name: "email",
-          in: "query",
+          name: 'email',
+          in: 'query',
           description: "User's email",
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
         {
-          name: "password",
-          in: "query",
+          name: 'password',
+          in: 'query',
           description: "User's password",
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successfully retrieved user profile.",
+          description: 'Successfully retrieved user profile.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   email: {
-                    type: "string",
+                    type: 'string',
                   },
                   username: {
-                    type: "string",
+                    type: 'string',
                   },
                   limit: {
-                    type: "integer",
+                    type: 'integer',
                   },
                   status: {
-                    type: "string",
+                    type: 'string',
                   },
                   apiKey: {
-                    type: "string",
+                    type: 'string',
                   },
                   isVerified: {
-                    type: "boolean",
+                    type: 'boolean',
                   },
                   token: {
-                    type: "string",
+                    type: 'string',
                   },
                 },
               },
@@ -98,14 +98,14 @@ const userEndpoints = {
           },
         },
         400: {
-          description: "Invalid email or password.",
+          description: 'Invalid email or password.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   error: {
-                    type: "string",
+                    type: 'string',
                   },
                 },
               },
@@ -113,14 +113,14 @@ const userEndpoints = {
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   error: {
-                    type: "string",
+                    type: 'string',
                   },
                 },
               },

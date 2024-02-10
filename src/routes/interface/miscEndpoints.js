@@ -1,18 +1,18 @@
 const miscEndpoints = {
-  "/api/misc/runtime": {
+  '/api/misc/runtime': {
     get: {
-      tags: ["Misc"],
+      tags: ['Misc'],
       responses: {
         200: {
-          description: "Successful operation",
+          description: 'Successful operation',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   uptime: {
-                    type: "number",
-                    description: "Application uptime in seconds",
+                    type: 'number',
+                    description: 'Application uptime in seconds',
                   },
                 },
               },
@@ -22,31 +22,31 @@ const miscEndpoints = {
       },
     },
   },
-  "/api/misc/clock": {
+  '/api/misc/clock': {
     get: {
-      tags: ["Misc"],
+      tags: ['Misc'],
       responses: {
         200: {
-          description: "Successful operation",
+          description: 'Successful operation',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   wib: {
-                    type: "string",
+                    type: 'string',
                     description:
-                      "Current time in Waktu Indonesia Barat timezone",
+                      'Current time in Waktu Indonesia Barat timezone',
                   },
                   wita: {
-                    type: "string",
+                    type: 'string',
                     description:
-                      "Current time in Waktu Indonesia Tengah timezone",
+                      'Current time in Waktu Indonesia Tengah timezone',
                   },
                   wit: {
-                    type: "string",
+                    type: 'string',
                     description:
-                      "Current time in Waktu Indonesia Timur timezone",
+                      'Current time in Waktu Indonesia Timur timezone',
                   },
                 },
               },

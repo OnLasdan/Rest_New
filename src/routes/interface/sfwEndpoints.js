@@ -1,433 +1,433 @@
 const sfwEndpoints = {
-  "/api/sfw/akira": {
+  '/api/sfw/akira': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/elaina": {
+  '/api/sfw/elaina': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/miku": {
+  '/api/sfw/miku': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/shota": {
+  '/api/sfw/shota': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/anna": {
+  '/api/sfw/anna': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/ikuyo": {
+  '/api/sfw/ikuyo': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/neko": {
+  '/api/sfw/neko': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/takina": {
+  '/api/sfw/takina': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/asuna": {
+  '/api/sfw/asuna': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/kaela": {
+  '/api/sfw/kaela': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/rias": {
+  '/api/sfw/rias': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/waifu": {
+  '/api/sfw/waifu': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/sakura": {
+  '/api/sfw/sakura': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/kaguya": {
+  '/api/sfw/kaguya': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/ayanokouji": {
+  '/api/sfw/ayanokouji': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/yotsuba": {
+  '/api/sfw/yotsuba': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/ayuzawa": {
+  '/api/sfw/ayuzawa': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/kaori": {
+  '/api/sfw/kaori': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/sasuke": {
+  '/api/sfw/sasuke': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/yumeko": {
+  '/api/sfw/yumeko': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/bocchi": {
+  '/api/sfw/bocchi': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/kobo": {
+  '/api/sfw/kobo': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/chisato": {
+  '/api/sfw/chisato': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/kotori": {
+  '/api/sfw/kotori': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/shinka": {
+  '/api/sfw/shinka': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/cosplay": {
+  '/api/sfw/cosplay': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/loli": {
+  '/api/sfw/loli': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/shizuka": {
+  '/api/sfw/shizuka': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
       },
     },
   },
-  "/api/sfw/sakura": {
+  '/api/sfw/sakura': {
     get: {
-      tags: ["Sfw"],
+      tags: ['Sfw'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "image/*": {
-              example: "https://example.com/image.jpg",
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },

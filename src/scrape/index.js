@@ -1,23 +1,23 @@
-import axios from "axios";
-import cheerio from "cheerio";
+import axios from 'axios';
+import cheerio from 'cheerio';
 
 async function mediafire(url) {
   try {
     const res = await axios.get(url);
     const $ = cheerio.load(res.data);
 
-    const urlFile = $("a#downloadButton").attr("href");
-    const sizeFile = $("a#downloadButton")
+    const urlFile = $('a#downloadButton').attr('href');
+    const sizeFile = $('a#downloadButton')
       .text()
-      .replace("Download", "")
-      .replace("(", "")
-      .replace(")", "")
-      .replace(/\n/g, "")
+      .replace('Download', '')
+      .replace('(', '')
+      .replace(')', '')
+      .replace(/\n/g, '')
       .trim();
 
-    const split = urlFile.split("/");
+    const split = urlFile.split('/');
     const nameFile = split[5];
-    const mime = nameFile.split(".")[1];
+    const mime = nameFile.split('.')[1];
 
     const result = {
       title: nameFile,
@@ -28,7 +28,7 @@ async function mediafire(url) {
 
     return result;
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error('Error:', error.message);
     throw error;
   }
 }

@@ -50,6 +50,8 @@
     "lib": "lib"
   },
   "scripts": {
+    "format": "npx prettier --write .",
+    "prettier-watch": "npx onchange \"**/*\" -- prettier --write --ignore-unknown{{changed}}",
     "test": "mocha test/test.js",
     "start": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js"
@@ -69,6 +71,7 @@
   "homepage": "https://github.com/Pkok1024/dollar#readme",
   "devDependencies": {
     "mocha": "^10.2.0",
+    "onchange": "7.1.0",
     "prettier": "3.2.5",
     "supertest": "^6.3.4"
   }

@@ -1,34 +1,34 @@
 const downloaderEndpoints = {
-  "/api/downloader/tiktok": {
+  '/api/downloader/tiktok': {
     get: {
-      tags: ["Downloader"],
+      tags: ['Downloader'],
       parameters: [
         {
-          in: "query",
-          name: "url",
+          in: 'query',
+          name: 'url',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -37,36 +37,36 @@ const downloaderEndpoints = {
       },
     },
   },
-  "/api/downloader/facebook": {
+  '/api/downloader/facebook': {
     get: {
-      tags: ["Downloader"],
+      tags: ['Downloader'],
       parameters: [
         {
-          in: "query",
-          name: "url",
+          in: 'query',
+          name: 'url',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -75,36 +75,36 @@ const downloaderEndpoints = {
       },
     },
   },
-  "/api/downloader/xnxx": {
+  '/api/downloader/xnxx': {
     get: {
-      tags: ["Downloader"],
+      tags: ['Downloader'],
       parameters: [
         {
-          in: "query",
-          name: "url",
+          in: 'query',
+          name: 'url',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },
@@ -113,36 +113,36 @@ const downloaderEndpoints = {
       },
     },
   },
-  "/api/downloader/mediafire": {
+  '/api/downloader/mediafire': {
     get: {
-      tags: ["Downloader"],
+      tags: ['Downloader'],
       parameters: [
         {
-          in: "query",
-          name: "url",
+          in: 'query',
+          name: 'url',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
-                  status: { type: "string" },
-                  code: { type: "integer" },
-                  author: { type: "string" },
-                  data: { type: "object" },
+                  status: { type: 'string' },
+                  code: { type: 'integer' },
+                  author: { type: 'string' },
+                  data: { type: 'object' },
                 },
               },
               example: {
-                status: "Success",
+                status: 'Success',
                 code: 200,
-                author: "xyla",
+                author: 'xyla',
                 data: {},
               },
             },

@@ -1,32 +1,32 @@
 const randomEndpoints = {
-  "/api/random/china": {
+  '/api/random/china': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -37,34 +37,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/indonesia": {
+  '/api/random/indonesia': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -75,34 +75,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/japan": {
+  '/api/random/japan': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -113,34 +113,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/korean": {
+  '/api/random/korean': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -151,34 +151,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/vietnam": {
+  '/api/random/vietnam': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -189,34 +189,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/random": {
+  '/api/random/random': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -227,34 +227,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/thailand": {
+  '/api/random/thailand': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -265,34 +265,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/malaysia": {
+  '/api/random/malaysia': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },
@@ -303,34 +303,34 @@ const randomEndpoints = {
       },
     },
   },
-  "/api/random/potatogodzilla": {
+  '/api/random/potatogodzilla': {
     get: {
-      tags: ["Random"],
+      tags: ['Random'],
       responses: {
         200: {
-          description: "Successfully retrieved a random image.",
+          description: 'Successfully retrieved a random image.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "https://example.com/image.jpg",
+                      type: 'string',
+                      example: 'https://example.com/image.jpg',
                     },
                   },
                 },

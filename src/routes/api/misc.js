@@ -1,24 +1,24 @@
-import express from "express";
-import moment from "moment-timezone";
+import express from 'express';
+import moment from 'moment-timezone';
 
 const apiR = express.Router();
 
 let __path = process.cwd();
 
-apiR.get("/runtime", (req, res) => {
+apiR.get('/runtime', (req, res) => {
   const uptime = process.uptime();
   res.json({ uptime: uptime });
 });
-apiR.get("/ip", (request, res) => {
-  const ip = request.headers["x-forwarded-for"] || request.remoteAddress;
+apiR.get('/ip', (request, res) => {
+  const ip = request.headers['x-forwarded-for'] || request.remoteAddress;
   console.log(ip);
   return res.send({ ip });
 });
-apiR.get("/clock", (req, res) => {
+apiR.get('/clock', (req, res) => {
   const getCurrentTime = () => {
-    const wibTime = moment().tz("Asia/Jakarta").format("HH:mm:ss");
-    const witaTime = moment().tz("Asia/Makassar").format("HH:mm:ss");
-    const witTime = moment().tz("Asia/Jayapura").format("HH:mm:ss");
+    const wibTime = moment().tz('Asia/Jakarta').format('HH:mm:ss');
+    const witaTime = moment().tz('Asia/Makassar').format('HH:mm:ss');
+    const witTime = moment().tz('Asia/Jayapura').format('HH:mm:ss');
 
     return {
       wib: wibTime,
@@ -35,7 +35,7 @@ apiR.get("/clock", (req, res) => {
   }
 
   function set(val) {
-    return val < 10 ? "0" + val : val;
+    return val < 10 ? '0' + val : val;
   }
 
   // Send the initial response
@@ -46,7 +46,7 @@ apiR.get("/clock", (req, res) => {
   }, 1000);
 
   // Optionally,
-  res.on("close", () => {
+  res.on('close', () => {
     clearInterval(intervalId);
   });
 });

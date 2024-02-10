@@ -1,19 +1,19 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
 
 const apiR = express.Router();
 apiR.use(cors());
 
 const routeModules = [
-  "random",
-  "downloader",
-  "ai",
-  "upload",
-  "search",
-  "misc",
-  "sfw",
-  "anime",
-  "tools",
+  'random',
+  'downloader',
+  'ai',
+  'upload',
+  'search',
+  'misc',
+  'sfw',
+  'anime',
+  'tools',
 ];
 
 routeModules.forEach(async (routeModule) => {

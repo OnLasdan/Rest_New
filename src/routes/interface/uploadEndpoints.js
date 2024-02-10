@@ -1,19 +1,19 @@
 const uploadEndpoints = {
-  "/api/upload/cdn": {
+  '/api/upload/cdn': {
     post: {
-      tags: ["Uploader"],
+      tags: ['Uploader'],
       requestBody: {
         content: {
-          "multipart/form-data": {
+          'multipart/form-data': {
             schema: {
-              type: "object",
+              type: 'object',
               properties: {
                 apiKey: {
-                  type: "string",
+                  type: 'string',
                 },
                 file: {
-                  type: "string",
-                  format: "binary",
+                  type: 'string',
+                  format: 'binary',
                 },
               },
             },
@@ -22,23 +22,23 @@ const uploadEndpoints = {
       },
       responses: {
         200: {
-          description: "File successfully uploaded.",
+          description: 'File successfully uploaded.',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
+                    type: 'string',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                   },
                   author: {
-                    type: "string",
+                    type: 'string',
                   },
                   data: {
-                    type: "object",
+                    type: 'object',
                   },
                 },
               },
@@ -46,13 +46,13 @@ const uploadEndpoints = {
           },
         },
         400: {
-          description: "Bad Request - No file uploaded.",
+          description: 'Bad Request - No file uploaded.',
         },
         401: {
-          description: "Unauthorized - Invalid API key.",
+          description: 'Unauthorized - Invalid API key.',
         },
         500: {
-          description: "Internal Server Error.",
+          description: 'Internal Server Error.',
         },
       },
       security: [

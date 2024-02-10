@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 mongoose.connect(
-  "mongodb+srv://pkok1024:12345@pkok.qh3qdes.mongodb.net/?retryWrites=true&w=majority",
+  'mongodb+srv://pkok1024:12345@pkok.qh3qdes.mongodb.net/?retryWrites=true&w=majority'
 );
 
 const userSchema = new Schema({
@@ -29,8 +29,8 @@ const userSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["free", "premium"],
-    default: "free",
+    enum: ['free', 'premium'],
+    default: 'free',
   },
   isVerified: {
     type: Boolean,
@@ -38,6 +38,6 @@ const userSchema = new Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 export default User;

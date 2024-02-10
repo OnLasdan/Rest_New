@@ -1,9 +1,9 @@
-import cheerio from "cheerio";
-import axios from "axios";
-import fetch from "node-fetch";
-import fs from "fs";
-import qs from "qs";
-import PDFDocument from "pdfkit";
+import cheerio from 'cheerio';
+import axios from 'axios';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import qs from 'qs';
+import PDFDocument from 'pdfkit';
 let no = 1;
 let data, result, x, y, z, pagina, rand, slink;
 
@@ -14,12 +14,12 @@ async function komikindogetch(url) {
       .then(({ data }) => {
         const $ = cheerio.load(data);
         const hasil = [];
-        $("#chapter_list > ul > li").each(async function (a, b) {
+        $('#chapter_list > ul > li').each(async function (a, b) {
           const result = {
             status: 200,
             author: author,
-            title: $(b).find("> span.lchx > a").attr("href"),
-            get_url: $(b).find("> span.lchx > a").text(),
+            title: $(b).find('> span.lchx > a').attr('href'),
+            get_url: $(b).find('> span.lchx > a').text(),
           };
           hasil.push(result);
         });
@@ -35,18 +35,18 @@ async function nhentaisearch(query) {
       .then(({ data }) => {
         const $ = cheerio.load(data);
         const hasil = [];
-        $("body > div.container.index-container > div").each(
+        $('body > div.container.index-container > div').each(
           async function (a, b) {
             const result = {
-              author: "©lui",
+              author: '©lui',
               status: 200,
               index: `${no++}`,
-              link: "https://nhentai.to" + $(b).find("> a").attr("href"),
-              thumb: $(b).find("> a > img:nth-child(2)").attr("src"),
-              title: $(b).find("> a > div").text(),
+              link: 'https://nhentai.to' + $(b).find('> a').attr('href'),
+              thumb: $(b).find('> a > img:nth-child(2)').attr('src'),
+              title: $(b).find('> a > div').text(),
             };
             hasil.push(result);
-          },
+          }
         );
         resolve(hasil);
       })
@@ -56,7 +56,7 @@ async function nhentaisearch(query) {
 
 async function nekopoilatest() {
   try {
-    const response = await fetch("https://nekopoi.care/");
+    const response = await fetch('https://nekopoi.care/');
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -66,13 +66,13 @@ async function nekopoilatest() {
     const $ = cheerio.load(data);
     const hasil = [];
 
-    $("#boxid > div").each(function (a, b) {
+    $('#boxid > div').each(function (a, b) {
       const result = {
-        title: $(b).find("> div.eroinfo > h2 > a").text(),
-        epsd_url: $(b).find("> div.eroinfo > h2 > a").attr("href"),
-        thumb: $(b).find("> div.eroimg > div > img").attr("src"),
-        up_date: $(b).find("> div.eroinfo > span:nth-child(2)").text(),
-        url: $(b).find("> div.eroinfo > span:nth-child(3) > a").attr("href"),
+        title: $(b).find('> div.eroinfo > h2 > a').text(),
+        epsd_url: $(b).find('> div.eroinfo > h2 > a').attr('href'),
+        thumb: $(b).find('> div.eroimg > div > img').attr('src'),
+        up_date: $(b).find('> div.eroinfo > span:nth-child(2)').text(),
+        url: $(b).find('> div.eroinfo > span:nth-child(3) > a').attr('href'),
       };
       hasil.push(result);
     });
@@ -91,23 +91,23 @@ async function nkpepsddl(url) {
         const $ = cheerio.load(data);
         const hasil = [];
         $(
-          "#content > div.postsbody > div > div.arealinker > div.boxdownload > div",
+          '#content > div.postsbody > div > div.arealinker > div.boxdownload > div'
         ).each(async function (a, b) {
           let dati = {
-            Drop: $(b).find("> div.listlink > p > a:nth-child(1)").attr("href"),
+            Drop: $(b).find('> div.listlink > p > a:nth-child(1)').attr('href'),
             Slare: $(b)
-              .find("> div.listlink > p > a:nth-child(2)")
-              .attr("href"),
+              .find('> div.listlink > p > a:nth-child(2)')
+              .attr('href'),
             StreamSB: $(b)
-              .find("> div.listlink > p > a:nth-child(2)")
-              .attr("href"),
-            Dood: $(b).find("> div.listlink > p > a:nth-child(3)").attr("href"),
+              .find('> div.listlink > p > a:nth-child(2)')
+              .attr('href'),
+            Dood: $(b).find('> div.listlink > p > a:nth-child(3)').attr('href'),
             Racaty: $(b)
-              .find("> div.listlink > p > a:nth-child(4)")
-              .attr("href"),
+              .find('> div.listlink > p > a:nth-child(4)')
+              .attr('href'),
             ZippyShare: $(b)
-              .find("> div.listlink > p > a:nth-child(5)")
-              .attr("href"),
+              .find('> div.listlink > p > a:nth-child(5)')
+              .attr('href'),
           };
           hasil.push(dati);
         });
@@ -123,8 +123,8 @@ async function dojindsgetimg(url) {
       .then(({ data }) => {
         const $ = cheerio.load(data);
         const hasil = [];
-        $("#anu > img").each(async function (a, b) {
-          hasil.push($(b).attr("src"));
+        $('#anu > img').each(async function (a, b) {
+          hasil.push($(b).attr('src'));
         });
         resolve(hasil);
       })

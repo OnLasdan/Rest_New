@@ -1,54 +1,54 @@
 const toolsEndpoints = {
-  "/api/tools/translate": {
+  '/api/tools/translate': {
     get: {
-      tags: ["Tools"],
+      tags: ['Tools'],
       parameters: [
         {
-          name: "lang",
-          in: "query",
-          description: "Target language code",
+          name: 'lang',
+          in: 'query',
+          description: 'Target language code',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
         {
-          name: "text",
-          in: "query",
-          description: "Text to be translated",
+          name: 'text',
+          in: 'query',
+          description: 'Text to be translated',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
         },
       ],
       responses: {
         200: {
-          description: "Successful translation",
+          description: 'Successful translation',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                translation: "Translated text",
+                translation: 'Translated text',
               },
             },
           },
         },
         400: {
-          description: "Bad Request",
+          description: 'Bad Request',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Invalid parameters. Both lang and text are required.",
+                error: 'Invalid parameters. Both lang and text are required.',
               },
             },
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal server error.",
+                error: 'Internal server error.',
               },
             },
           },
@@ -56,26 +56,26 @@ const toolsEndpoints = {
       },
     },
   },
-  "/api/tools/langList": {
+  '/api/tools/langList': {
     get: {
-      tags: ["Tools"],
+      tags: ['Tools'],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                languages: ["en", "es", "fr"],
+                languages: ['en', 'es', 'fr'],
               },
             },
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal server error.",
+                error: 'Internal server error.',
               },
             },
           },
@@ -83,34 +83,34 @@ const toolsEndpoints = {
       },
     },
   },
-  "/api/tools/nekopoi-letest": {
+  '/api/tools/nekopoi-letest': {
     get: {
-      tags: ["Tools"],
+      tags: ['Tools'],
       responses: {
         200: {
-          description: "Successfully retrieved response",
+          description: 'Successfully retrieved response',
           content: {
-            "application/json": {
+            'application/json': {
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   status: {
-                    type: "string",
-                    example: "Success",
+                    type: 'string',
+                    example: 'Success',
                   },
                   code: {
-                    type: "integer",
+                    type: 'integer',
                     example: 200,
                   },
                   author: {
-                    type: "string",
-                    example: "Xyla",
+                    type: 'string',
+                    example: 'Xyla',
                   },
                   data: {
-                    type: "array",
+                    type: 'array',
                     items: {
-                      type: "string",
-                      example: "",
+                      type: 'string',
+                      example: '',
                     },
                   },
                 },
@@ -121,25 +121,25 @@ const toolsEndpoints = {
       },
     },
   },
-  "/api/tools/anti-porn": {
+  '/api/tools/anti-porn': {
     get: {
-      tags: ["Tools"],
+      tags: ['Tools'],
       parameters: [
         {
-          name: "url",
-          in: "query",
+          name: 'url',
+          in: 'query',
           required: true,
           schema: {
-            type: "string",
+            type: 'string',
           },
-          description: "URL of the image to be checked",
+          description: 'URL of the image to be checked',
         },
       ],
       responses: {
         200: {
-          description: "Successful response",
+          description: 'Successful response',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
                 nsfw: false,
               },
@@ -147,21 +147,21 @@ const toolsEndpoints = {
           },
         },
         400: {
-          description: "Bad Request",
+          description: 'Bad Request',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Parameter url not found",
+                error: 'Parameter url not found',
               },
             },
           },
         },
         500: {
-          description: "Internal Server Error",
+          description: 'Internal Server Error',
           content: {
-            "application/json": {
+            'application/json': {
               example: {
-                error: "Internal server error",
+                error: 'Internal server error',
               },
             },
           },

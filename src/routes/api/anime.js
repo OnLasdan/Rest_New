@@ -1,20 +1,20 @@
-import express from "express";
+import express from 'express';
 import {
   doujindesusearch,
   doujindesuch,
   doujindesulatest,
   hentai,
-} from "../../scrape/src/downloader/downloader.js";
+} from '../../scrape/src/downloader/downloader.js';
 import {
   komikindogetch,
   dojindsgetimg,
   nhentaisearch,
-} from "../../scrape/src/tools/komik.js";
-import apiKeyMiddleware from "../../middlewares/apiKeyMiddleware.js";
-import traceMoe from "../../scrape/src/anime/whatAnime.js";
+} from '../../scrape/src/tools/komik.js';
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
+import traceMoe from '../../scrape/src/anime/whatAnime.js';
 const apiR = express.Router();
 
-apiR.get("/doujin-search", apiKeyMiddleware, async (req, res, next) => {
+apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
   const url = req.query.q;
   if (!url) return res.json(global.msg.paramurl);
   doujindesusearch(url).then((data) => {
@@ -22,7 +22,7 @@ apiR.get("/doujin-search", apiKeyMiddleware, async (req, res, next) => {
       return res.json(global.msg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
@@ -30,7 +30,7 @@ apiR.get("/doujin-search", apiKeyMiddleware, async (req, res, next) => {
   });
 });
 
-apiR.get("/doujin-ch", apiKeyMiddleware, async (req, res, next) => {
+apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
   const url = req.query.url;
   if (!url) return res.json(global.msg.paramurl);
   doujindesuch(url).then((data) => {
@@ -38,14 +38,14 @@ apiR.get("/doujin-ch", apiKeyMiddleware, async (req, res, next) => {
       return res.json(global.msg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
     });
   });
 });
-apiR.get("/doujin-img", apiKeyMiddleware, async (req, res, next) => {
+apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
   const url = req.query.url;
   if (!url) return res.json(global.msg.paramurl);
   dojindsgetimg(url).then((data) => {
@@ -53,20 +53,20 @@ apiR.get("/doujin-img", apiKeyMiddleware, async (req, res, next) => {
       return res.json(global.msg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
     });
   });
 });
-apiR.get("/doujin-latest", apiKeyMiddleware, async (req, res, next) => {
+apiR.get('/doujin-latest', apiKeyMiddleware, async (req, res, next) => {
   doujindesulatest().then((data) => {
     if (data.length === 0) {
       return res.json(global.msg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
@@ -74,13 +74,13 @@ apiR.get("/doujin-latest", apiKeyMiddleware, async (req, res, next) => {
   });
 });
 
-apiR.get("/hentai", apiKeyMiddleware, async (req, res, next) => {
+apiR.get('/hentai', apiKeyMiddleware, async (req, res, next) => {
   hentai().then((data) => {
     if (data.length === 0) {
       return res.json(global.msg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
@@ -88,14 +88,14 @@ apiR.get("/hentai", apiKeyMiddleware, async (req, res, next) => {
   });
 });
 
-apiR.get("/whatanime", apiKeyMiddleware, async (req, res) => {
+apiR.get('/whatanime', apiKeyMiddleware, async (req, res) => {
   const url = req.query.url;
 
   try {
     if (!url) {
       return res
         .status(400)
-        .json({ error: "Invalid parameters. URL is required." });
+        .json({ error: 'Invalid parameters. URL is required.' });
     }
 
     const data = await traceMoe(url);
@@ -103,24 +103,24 @@ apiR.get("/whatanime", apiKeyMiddleware, async (req, res) => {
       return res.json(global.mdg.nodata);
     }
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal server error." });
+    res.status(500).json({ error: 'Internal server error.' });
   }
 });
 
-apiR.get("/nhentai-search", apiKeyMiddleware, async (req, res) => {
+apiR.get('/nhentai-search', apiKeyMiddleware, async (req, res) => {
   const q = req.query.q;
   try {
     if (!q) {
       return res
         .status(400)
-        .json({ error: "Invalid parameters. query is required." });
+        .json({ error: 'Invalid parameters. query is required.' });
     }
 
     const data = await nhentaisearch(q);
@@ -129,14 +129,14 @@ apiR.get("/nhentai-search", apiKeyMiddleware, async (req, res) => {
     }
 
     res.json({
-      status: "Success",
+      status: 'Success',
       code: 200,
       author,
       data,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal server error." });
+    res.status(500).json({ error: 'Internal server error.' });
   }
 });
 
