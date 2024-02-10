@@ -13,8 +13,8 @@ R404.use((err, req, res, next) => {
   console.error(err.stack);
   let page = new URL("./pages/ERROR/500.html", import.meta.url).pathname;
   res.status(500).sendFile(page);
-console.log(page);
-  });
+  console.log(page);
+});
 R404.use((req, res) => {
   res.status(404).render("pages/ERROR/404");
 });

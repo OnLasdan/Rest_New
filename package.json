@@ -69,6 +69,7 @@
   "homepage": "https://github.com/Pkok1024/dollar#readme",
   "devDependencies": {
     "mocha": "^10.2.0",
+    "prettier": "3.2.5",
     "supertest": "^6.3.4"
   }
 }

@@ -1,69 +1,67 @@
 const uploadEndpoints = {
-    "/api/upload/cdn": {
-      "post": {
-        "tags": ["Uploader"],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "apiKey": {
-                    "type": "string"
+  "/api/upload/cdn": {
+    post: {
+      tags: ["Uploader"],
+      requestBody: {
+        content: {
+          "multipart/form-data": {
+            schema: {
+              type: "object",
+              properties: {
+                apiKey: {
+                  type: "string",
+                },
+                file: {
+                  type: "string",
+                  format: "binary",
+                },
+              },
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: "File successfully uploaded.",
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  status: {
+                    type: "string",
                   },
-                  "file": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              }
-            }
-          }
+                  code: {
+                    type: "integer",
+                  },
+                  author: {
+                    type: "string",
+                  },
+                  data: {
+                    type: "object",
+                  },
+                },
+              },
+            },
+          },
         },
-        "responses": {
-          "200": {
-            "description": "File successfully uploaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string"
-                    },
-                    "code": {
-                      "type": "integer"
-                    },
-                    "author": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - No file uploaded."
-          },
-          "401": {
-            "description": "Unauthorized - Invalid API key."
-          },
-          "500": {
-            "description": "Internal Server Error."
-          }
+        400: {
+          description: "Bad Request - No file uploaded.",
         },
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
-      }
-    }
-  
-
+        401: {
+          description: "Unauthorized - Invalid API key.",
+        },
+        500: {
+          description: "Internal Server Error.",
+        },
+      },
+      security: [
+        {
+          ApiKeyAuth: [],
+        },
+      ],
+    },
+  },
 };
 
-export default uploadEndpoints
+export default uploadEndpoints;

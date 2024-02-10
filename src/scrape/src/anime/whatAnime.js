@@ -1,6 +1,8 @@
 async function traceMoe(url) {
   try {
-    let res = await fetch(`https://api.trace.moe/search?anilistInfo&url=${encodeURIComponent(url)}`);
+    let res = await fetch(
+      `https://api.trace.moe/search?anilistInfo&url=${encodeURIComponent(url)}`,
+    );
     let json = await res.json();
     return json;
   } catch (error) {
@@ -8,4 +10,4 @@ async function traceMoe(url) {
   }
 }
 
-export default traceMoe
+export default traceMoe;

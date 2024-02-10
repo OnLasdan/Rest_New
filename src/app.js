@@ -19,7 +19,6 @@ import authRoutes from "./routes/authRoutes.js";
 import routerDocs from "./routes/routerDocs.js";
 import { swaggerWr, customLogger } from "./lib/function.js";
 import chalk from "chalk";
-
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 dotenv.config();

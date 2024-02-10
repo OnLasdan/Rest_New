@@ -66,17 +66,17 @@ async function facebook(t) {
       result: {
         url: t,
         title: o(
-          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-5.no-padd > div > h5 > a"
+          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-5.no-padd > div > h5 > a",
         ).text(),
         time: o("#time").text(),
         hd: o(
-          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(1) > a"
+          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(1) > a",
         ).attr("href"),
         sd: o(
-          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(2) > a"
+          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(2) > a",
         ).attr("href"),
         audio: o(
-          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(3) > a"
+          "body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(3) > a",
         ).attr("href"),
       },
     });
@@ -86,7 +86,7 @@ async function facebook(t) {
 async function shortlink(t) {
   return (
     await axios.get(
-      "https://tinyurl.com/api-create.php?url=" + encodeURIComponent(t)
+      "https://tinyurl.com/api-create.php?url=" + encodeURIComponent(t),
     )
   ).data;
 }
@@ -109,7 +109,7 @@ async function xnxxSearch(t) {
             .find("div.thumb")
             .each(function (t, n) {
               a.push(
-                r + e(n).find("a").attr("href").replace("/THUMBNUM/", "/")
+                r + e(n).find("a").attr("href").replace("/THUMBNUM/", "/"),
               );
             });
         }),
@@ -155,7 +155,7 @@ async function xnxxDownloader(t) {
             thumb69: l.match("html5player.setThumbUrl169\\('(.*?)'\\);")[1],
             thumbSlide: l.match("html5player.setThumbSlide\\('(.*?)'\\);")[1],
             thumbSlideBig: l.match(
-              "html5player.setThumbSlideBig\\('(.*?)'\\);"
+              "html5player.setThumbSlideBig\\('(.*?)'\\);",
             )[1],
           };
         n({
@@ -175,133 +175,143 @@ async function xnxxDownloader(t) {
   });
 }
 async function doujindesusearch(query) {
-    return new Promise((resolve, reject) => {
-    axios.get(`https://doujindesu.tv/?s=${query}`)
-        .then(({
-           data
-        }) => {
-            const $ = cheerio.load(data)
-            const hasil = [];
-            $('#archives > div > article').each(async function(a, b) {
-           let result = {
-            link: 'https://doujindesu.tv' + $(b).find('> a').attr('href'),
-            thumb: $(b).find('> a > figure > img').attr('src'),
-            title: $(b).find('> a > figure > img').attr('title'),
-            type: $(b).find('> a > figure > span').text(),
-            status: $(b).find('> a > div > div.status').text(),
-            score: $(b).find('> a > div > div.score').text()
-                        }
-            hasil.push(result)
-            })
-            resolve(hasil)
-         })
-         .catch(reject)
-       })
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`https://doujindesu.tv/?s=${query}`)
+      .then(({ data }) => {
+        const $ = cheerio.load(data);
+        const hasil = [];
+        $("#archives > div > article").each(async function (a, b) {
+          let result = {
+            link: "https://doujindesu.tv" + $(b).find("> a").attr("href"),
+            thumb: $(b).find("> a > figure > img").attr("src"),
+            title: $(b).find("> a > figure > img").attr("title"),
+            type: $(b).find("> a > figure > span").text(),
+            status: $(b).find("> a > div > div.status").text(),
+            score: $(b).find("> a > div > div.score").text(),
+          };
+          hasil.push(result);
+        });
+        resolve(hasil);
+      })
+      .catch(reject);
+  });
 }
 async function doujindesuch(url) {
-    return new Promise((resolve, reject) => {
-    axios.get(url)
-        .then(({
-           data
-        }) => {
-            const $ = cheerio.load(data)
-            const hasil = [];
-            $('#chapter_list > ul > li').each(async function(a, b) {
-            let result = {
-            title: $(b).find('> div.chright > span > a').attr('title'),
-            url: $(b).find('> div.chright > span > a').attr('href')
-            }            
-            hasil.push(result)
-            })
-            resolve(hasil)
-         })
-         .catch(reject)
-       })
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url)
+      .then(({ data }) => {
+        const $ = cheerio.load(data);
+        const hasil = [];
+        $("#chapter_list > ul > li").each(async function (a, b) {
+          let result = {
+            title: $(b).find("> div.chright > span > a").attr("title"),
+            url: $(b).find("> div.chright > span > a").attr("href"),
+          };
+          hasil.push(result);
+        });
+        resolve(hasil);
+      })
+      .catch(reject);
+  });
 }
 async function doujindesulatest() {
-    return new Promise((resolve, reject) => {
-    axios.get(`https://doujindesu.tv`)
-        .then(({
-           data
-        }) => {
-            const $ = cheerio.load(data)
-            const hasil = [];
-            $('#archives > div > article').each(async function(a, b) {
-            let result = {
-            title: $(b).find('> a').attr('title'),
-            link: 'https://doujindesu.tv' + $(b).find('> a').attr('href'),
-            info: $(b).find('div > div > a > span').text(),
-            type: $(b).find('> a > figure > span').text(),
-            thumb: $(b).find('> a > figure > img').attr('src')            
-            }
-            hasil.push(result)
-            })
-            resolve(hasil)
-         })
-         .catch(reject)
-       })
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`https://doujindesu.tv`)
+      .then(({ data }) => {
+        const $ = cheerio.load(data);
+        const hasil = [];
+        $("#archives > div > article").each(async function (a, b) {
+          let result = {
+            title: $(b).find("> a").attr("title"),
+            link: "https://doujindesu.tv" + $(b).find("> a").attr("href"),
+            info: $(b).find("div > div > a > span").text(),
+            type: $(b).find("> a > figure > span").text(),
+            thumb: $(b).find("> a > figure > img").attr("src"),
+          };
+          hasil.push(result);
+        });
+        resolve(hasil);
+      })
+      .catch(reject);
+  });
 }
 
 async function hentai() {
-    return new Promise((resolve, reject) => {
-        const page = Math.floor(Math.random() * 1153)
-        axios.get('https://sfmcompile.club/page/'+page)
-        .then((data) => {
-            const $ = cheerio.load(data.data)
-            const hasil = []
-            $('#primary > div > div > ul > li > article').each(async function (a, b) {
-                hasil.push({
-                    title: $(b).find('header > h2').text(),
-                    link: $(b).find('header > h2 > a').attr('href'),
-                    category: $(b).find('header > div.entry-before-title > span > span').text().replace('in ', ''),
-                    share_count: $(b).find('header > div.entry-after-title > p > span.entry-shares').text(),
-                    views_count: $(b).find('header > div.entry-after-title > p > span.entry-views').text(),
-                    type: $(b).find('source').attr('type') || 'image/jpeg',
-                    video_1: $(b).find('source').attr('src') || $(b).find('img').attr('data-src'),
-                    video_2: $(b).find('video > a').attr('href') || ''
-                })
-            })
-            resolve(hasil)
-        })
-    })
+  return new Promise((resolve, reject) => {
+    const page = Math.floor(Math.random() * 1153);
+    axios.get("https://sfmcompile.club/page/" + page).then((data) => {
+      const $ = cheerio.load(data.data);
+      const hasil = [];
+      $("#primary > div > div > ul > li > article").each(async function (a, b) {
+        hasil.push({
+          title: $(b).find("header > h2").text(),
+          link: $(b).find("header > h2 > a").attr("href"),
+          category: $(b)
+            .find("header > div.entry-before-title > span > span")
+            .text()
+            .replace("in ", ""),
+          share_count: $(b)
+            .find("header > div.entry-after-title > p > span.entry-shares")
+            .text(),
+          views_count: $(b)
+            .find("header > div.entry-after-title > p > span.entry-views")
+            .text(),
+          type: $(b).find("source").attr("type") || "image/jpeg",
+          video_1:
+            $(b).find("source").attr("src") ||
+            $(b).find("img").attr("data-src"),
+          video_2: $(b).find("video > a").attr("href") || "",
+        });
+      });
+      resolve(hasil);
+    });
+  });
 }
 
-async function ssweb(url, device = 'desktop') {
-     return new Promise((resolve, reject) => {
-          const base = 'https://www.screenshotmachine.com'
-          const param = {
-            url: url,
-            device: device,
-            full: true,
-            cacheLimit: 0
-          }
-          axios({url: base + '/capture.php',
-               method: 'POST',
-               data: new URLSearchParams(Object.entries(param)),
-               headers: {
-                    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-               }
-          }).then((data) => {
-               const cookies = data.headers['set-cookie']
-               if (data.data.status == 'success') {
-                    axios.get(base + '/' + data.data.link, {
-                         headers: {
-                              'cookie': cookies.join('')
-                         },
-                         responseType: 'arraybuffer'
-                    }).then(({ data }) => {
-                        let result = {
-                            status: 200,
-                            author: author,
-                            result: data
-                        }
-                         resolve(result)
-                    })
-               } else {
-                    reject({ status: 404, author: author, message: data.data })
-               }
-          }).catch(reject)
-     })
+async function ssweb(url, device = "desktop") {
+  return new Promise((resolve, reject) => {
+    const base = "https://www.screenshotmachine.com";
+    const param = {
+      url: url,
+      device: device,
+      full: true,
+      cacheLimit: 0,
+    };
+    axios({
+      url: base + "/capture.php",
+      method: "POST",
+      data: new URLSearchParams(Object.entries(param)),
+      headers: {
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+    })
+      .then((data) => {
+        const cookies = data.headers["set-cookie"];
+        if (data.data.status == "success") {
+          axios
+            .get(base + "/" + data.data.link, {
+              headers: {
+                cookie: cookies.join(""),
+              },
+              responseType: "arraybuffer",
+            })
+            .then(({ data }) => {
+              let result = {
+                status: 200,
+                author: author,
+                result: data,
+              };
+              resolve(result);
+            });
+        } else {
+          reject({ status: 404, author: author, message: data.data });
+        }
+      })
+      .catch(reject);
+  });
 }
 export {
   xnxxSearch,
