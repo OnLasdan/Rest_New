@@ -56,7 +56,6 @@ h5,
 h6 {
   font-family: var(--font-primary);
 }
-
 /*--------------------------------------------------------------
 # Sections & Section Header
 --------------------------------------------------------------*/
@@ -66,7 +65,12 @@ section {
 }
 
 .section-bg {
-  background-color: #f5f6f7;
+  /* background-color: #f5f6f7; */
+  /* background: url('../img/hero-carousel/hero-carousel-3.jpg') rgba(0, 0, 0, 0.7);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+  background-color: #000;
 }
 
 .section-header {
@@ -783,7 +787,7 @@ section {
 .features .nav-link {
   padding: 15px 0;
   transition: 0.3s;
-  color: var(--color-secondary);
+  color: #fff;
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -823,6 +827,7 @@ section {
 
 .features .tab-content {
   margin-top: 30px;
+  color: #fff;
 }
 
 .features .tab-pane h3 {
