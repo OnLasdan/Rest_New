@@ -20,5 +20,7 @@ router.use(express.static(join(__dirname, '..', 'views', 'pages')))
 router.get('/', (req, res) => {
   res.render('pages/home')
 })
-
+router.get('/document', (req, res) =>{
+  res.render('pages/projects')
+})
 export default router
