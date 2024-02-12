@@ -1,7 +1,7 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-async function wikipedia (query) {
+async function wikipedia(query) {
   try {
     const link = await axios.get(`https://id.m.wikipedia.org/wiki/${query}`)
     const $ = cheerio.load(link.data)
@@ -22,17 +22,17 @@ async function wikipedia (query) {
     const result = isi.map((i) => ({
       judul,
       thumb: 'https:' + thumb,
-      isi: i
+      isi: i,
     }))
 
     return {
       status: link.status,
-      result
+      result,
     }
   } catch (err) {
     const notFound = {
       status: err.response.status,
-      Pesan: err.message
+      Pesan: err.message,
     }
     return notFound
   }

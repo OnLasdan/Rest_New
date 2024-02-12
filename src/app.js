@@ -33,7 +33,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: 'uh58h5yj8'
+    secret: 'uh58h5yj8',
   })
 )
 app.set('trust proxy', 1)

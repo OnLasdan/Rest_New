@@ -5,14 +5,14 @@ import moment from 'moment-timezone'
 import mimetype from 'mime-types'
 import qs from 'qs'
 
-async function pinterestvideodownloader (t) {
+async function pinterestvideodownloader(t) {
   return new Promise(async (e, a) => {
     const i = new URLSearchParams()
     i.append('url', t)
     const o = await (
       await fetch('https://pinterestvideodownloader.com/', {
         method: 'POST',
-        body: i
+        body: i,
       })
     ).text()
     $ = cheerio.load(o)
@@ -23,12 +23,14 @@ async function pinterestvideodownloader (t) {
           r.push({ url: $($(e).find('td')[0]).find('a').attr('href') })
       }),
       r.length == 0)
-    ) { return e({ status: !1 }) }
+    ) {
+      return e({ status: !1 })
+    }
     e({ status: !0, data: r })
   })
 }
 
-async function mediafires (t) {
+async function mediafires(t) {
   const e = await axios.get(t)
   const a = cheerio.load(e.data)
   const i = []
@@ -50,15 +52,15 @@ async function mediafires (t) {
   )
 }
 
-async function facebook (t) {
+async function facebook(t) {
   return new Promise(async (e, a) => {
     const i = await fetch('https://www.getfvid.com/downloader', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        Referer: 'https://www.getfvid.com/'
+        Referer: 'https://www.getfvid.com/',
       },
-      body: new URLSearchParams(Object.entries({ url: t }))
+      body: new URLSearchParams(Object.entries({ url: t })),
     })
     const o = cheerio.load(await i.text())
     e({
@@ -76,13 +78,13 @@ async function facebook (t) {
         ).attr('href'),
         audio: o(
           'body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(3) > a'
-        ).attr('href')
-      }
+        ).attr('href'),
+      },
     })
   })
 }
 
-async function shortlink (t) {
+async function shortlink(t) {
   return (
     await axios.get(
       'https://tinyurl.com/api-create.php?url=' + encodeURIComponent(t)
@@ -90,11 +92,11 @@ async function shortlink (t) {
   ).data
 }
 
-async function xnxxSearch (t) {
+async function xnxxSearch(t) {
   return new Promise((n, e) => {
     const r = 'https://www.xnxx.com'
     fetch(`${r}/search/${t}/${Math.floor(3 * Math.random()) + 1}`, {
-      method: 'get'
+      method: 'get',
     })
       .then((t) => t.text())
       .then((t) => {
@@ -107,31 +109,31 @@ async function xnxxSearch (t) {
           e(n)
             .find('div.thumb')
             .each(function (t, n) {
-              a.push(
-                r + e(n).find('a').attr('href').replace('/THUMBNUM/', '/')
-              )
+              a.push(r + e(n).find('a').attr('href').replace('/THUMBNUM/', '/'))
             })
         }),
-        e('div.mozaique').each(function (t, n) {
-          e(n)
-            .find('div.thumb-under')
-            .each(function (t, n) {
-              i.push(e(n).find('p.metadata').text()),
-              e(n)
-                .find('a')
-                .each(function (t, n) {
-                  o.push(e(n).attr('title'))
-                })
-            })
-        })
-        for (let t = 0; t < o.length; t++) { s.push({ title: o[t], info: i[t], link: a[t] }) }
+          e('div.mozaique').each(function (t, n) {
+            e(n)
+              .find('div.thumb-under')
+              .each(function (t, n) {
+                i.push(e(n).find('p.metadata').text()),
+                  e(n)
+                    .find('a')
+                    .each(function (t, n) {
+                      o.push(e(n).attr('title'))
+                    })
+              })
+          })
+        for (let t = 0; t < o.length; t++) {
+          s.push({ title: o[t], info: i[t], link: a[t] })
+        }
         n({ status: !0, result: s })
       })
       .catch((t) => e({ status: !1, result: t }))
   })
 }
 
-async function xnxxDownloader (t) {
+async function xnxxDownloader(t) {
   return new Promise((n, e) => {
     fetch(`${t}`, { method: 'get' })
       .then((t) => t.text())
@@ -154,7 +156,7 @@ async function xnxxDownloader (t) {
           thumbSlide: l.match("html5player.setThumbSlide\\('(.*?)'\\);")[1],
           thumbSlideBig: l.match(
             "html5player.setThumbSlideBig\\('(.*?)'\\);"
-          )[1]
+          )[1],
         }
         n({
           status: !0,
@@ -166,13 +168,13 @@ async function xnxxDownloader (t) {
           videoWidth: c,
           videoHeight: u,
           info: f,
-          files: m
+          files: m,
         })
       })
       .catch((t) => e({ status: !1, result: t }))
   })
 }
-async function doujindesusearch (query) {
+async function doujindesusearch(query) {
   return new Promise((resolve, reject) => {
     axios
       .get(`https://doujindesu.tv/?s=${query}`)
@@ -186,7 +188,7 @@ async function doujindesusearch (query) {
             title: $(b).find('> a > figure > img').attr('title'),
             type: $(b).find('> a > figure > span').text(),
             status: $(b).find('> a > div > div.status').text(),
-            score: $(b).find('> a > div > div.score').text()
+            score: $(b).find('> a > div > div.score').text(),
           }
           hasil.push(result)
         })
@@ -195,7 +197,7 @@ async function doujindesusearch (query) {
       .catch(reject)
   })
 }
-async function doujindesuch (url) {
+async function doujindesuch(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
@@ -205,7 +207,7 @@ async function doujindesuch (url) {
         $('#chapter_list > ul > li').each(async function (a, b) {
           const result = {
             title: $(b).find('> div.chright > span > a').attr('title'),
-            url: $(b).find('> div.chright > span > a').attr('href')
+            url: $(b).find('> div.chright > span > a').attr('href'),
           }
           hasil.push(result)
         })
@@ -214,7 +216,7 @@ async function doujindesuch (url) {
       .catch(reject)
   })
 }
-async function doujindesulatest () {
+async function doujindesulatest() {
   return new Promise((resolve, reject) => {
     axios
       .get('https://doujindesu.tv')
@@ -227,7 +229,7 @@ async function doujindesulatest () {
             link: 'https://doujindesu.tv' + $(b).find('> a').attr('href'),
             info: $(b).find('div > div > a > span').text(),
             type: $(b).find('> a > figure > span').text(),
-            thumb: $(b).find('> a > figure > img').attr('src')
+            thumb: $(b).find('> a > figure > img').attr('src'),
           }
           hasil.push(result)
         })
@@ -237,7 +239,7 @@ async function doujindesulatest () {
   })
 }
 
-async function hentai () {
+async function hentai() {
   return new Promise((resolve, reject) => {
     const page = Math.floor(Math.random() * 1153)
     axios.get('https://sfmcompile.club/page/' + page).then((data) => {
@@ -261,7 +263,7 @@ async function hentai () {
           video_1:
             $(b).find('source').attr('src') ||
             $(b).find('img').attr('data-src'),
-          video_2: $(b).find('video > a').attr('href') || ''
+          video_2: $(b).find('video > a').attr('href') || '',
         })
       })
       resolve(hasil)
@@ -269,22 +271,22 @@ async function hentai () {
   })
 }
 
-async function ssweb (url, device = 'desktop') {
+async function ssweb(url, device = 'desktop') {
   return new Promise((resolve, reject) => {
     const base = 'https://www.screenshotmachine.com'
     const param = {
       url,
       device,
       full: true,
-      cacheLimit: 0
+      cacheLimit: 0,
     }
     axios({
       url: base + '/capture.php',
       method: 'POST',
       data: new URLSearchParams(Object.entries(param)),
       headers: {
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
     })
       .then((data) => {
         const cookies = data.headers['set-cookie']
@@ -292,15 +294,15 @@ async function ssweb (url, device = 'desktop') {
           axios
             .get(base + '/' + data.data.link, {
               headers: {
-                cookie: cookies.join('')
+                cookie: cookies.join(''),
               },
-              responseType: 'arraybuffer'
+              responseType: 'arraybuffer',
             })
             .then(({ data }) => {
               const result = {
                 status: 200,
                 author,
-                result: data
+                result: data,
               }
               resolve(result)
             })
@@ -322,5 +324,5 @@ export {
   doujindesuch,
   doujindesulatest,
   hentai,
-  ssweb
+  ssweb,
 }

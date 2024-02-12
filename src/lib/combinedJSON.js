@@ -5,7 +5,7 @@ import { join, dirname } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-async function getAllEndpoints () {
+async function getAllEndpoints() {
   const interfacePath = join(__dirname, '../routes/interface')
   const jsFiles = readdirSync(interfacePath).filter((file) =>
     file.endsWith('.js')
@@ -17,37 +17,37 @@ async function getAllEndpoints () {
   return Promise.all(moduleImports)
 }
 
-async function generateCombinedJSON () {
+async function generateCombinedJSON() {
   const mods = await getAllEndpoints()
 
   return {
     openapi: '3.0.0',
     info: {
       title: '.M.U.F.A.R. APIs',
-      version: '1.1.11'
+      version: '1.1.11',
     },
     security: [
       {
-        apiKey: []
-      }
+        apiKey: [],
+      },
     ],
     components: {
       securitySchemes: {
         apiKey: {
           type: 'apiKey',
           in: 'query',
-          name: 'apikey'
-        }
-      }
+          name: 'apikey',
+        },
+      },
     },
     paths: {
       ...mods.reduce((acc, module) => {
         return {
           ...acc,
-          ...module
+          ...module,
         }
-      }, {})
-    }
+      }, {}),
+    },
   }
 }
 

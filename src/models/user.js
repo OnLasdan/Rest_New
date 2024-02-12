@@ -9,33 +9,33 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   username: {
     type: String,
-    required: true
+    required: true,
   },
   apiKey: {
     type: String,
-    required: true
+    required: true,
   },
   limit: {
     type: Number,
-    default: 35
+    default: 35,
   },
   status: {
     type: String,
     enum: ['free', 'premium'],
-    default: 'free'
+    default: 'free',
   },
   isVerified: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const User = mongoose.model('User', userSchema)

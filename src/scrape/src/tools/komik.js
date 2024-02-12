@@ -7,7 +7,7 @@ import PDFDocument from 'pdfkit'
 let no = 1
 let data, result, x, y, z, pagina, rand, slink
 
-async function komikindogetch (url) {
+async function komikindogetch(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
@@ -19,7 +19,7 @@ async function komikindogetch (url) {
             status: 200,
             author,
             title: $(b).find('> span.lchx > a').attr('href'),
-            get_url: $(b).find('> span.lchx > a').text()
+            get_url: $(b).find('> span.lchx > a').text(),
           }
           hasil.push(result)
         })
@@ -28,7 +28,7 @@ async function komikindogetch (url) {
       .catch(reject)
   })
 }
-async function nhentaisearch (query) {
+async function nhentaisearch(query) {
   return new Promise((resolve, reject) => {
     axios
       .get(`https://nhentai.to/search?q=${query}`)
@@ -43,7 +43,7 @@ async function nhentaisearch (query) {
               index: `${no++}`,
               link: 'https://nhentai.to' + $(b).find('> a').attr('href'),
               thumb: $(b).find('> a > img:nth-child(2)').attr('src'),
-              title: $(b).find('> a > div').text()
+              title: $(b).find('> a > div').text(),
             }
             hasil.push(result)
           }
@@ -54,7 +54,7 @@ async function nhentaisearch (query) {
   })
 }
 
-async function nekopoilatest () {
+async function nekopoilatest() {
   try {
     const response = await fetch('https://nekopoi.care/')
 
@@ -72,7 +72,7 @@ async function nekopoilatest () {
         epsd_url: $(b).find('> div.eroinfo > h2 > a').attr('href'),
         thumb: $(b).find('> div.eroimg > div > img').attr('src'),
         up_date: $(b).find('> div.eroinfo > span:nth-child(2)').text(),
-        url: $(b).find('> div.eroinfo > span:nth-child(3) > a').attr('href')
+        url: $(b).find('> div.eroinfo > span:nth-child(3) > a').attr('href'),
       }
       hasil.push(result)
     })
@@ -83,7 +83,7 @@ async function nekopoilatest () {
   }
 }
 
-async function nkpepsddl (url) {
+async function nkpepsddl(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
@@ -107,7 +107,7 @@ async function nkpepsddl (url) {
               .attr('href'),
             ZippyShare: $(b)
               .find('> div.listlink > p > a:nth-child(5)')
-              .attr('href')
+              .attr('href'),
           }
           hasil.push(dati)
         })
@@ -116,7 +116,7 @@ async function nkpepsddl (url) {
       .catch(reject)
   })
 }
-async function dojindsgetimg (url) {
+async function dojindsgetimg(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
@@ -137,5 +137,5 @@ export {
   dojindsgetimg,
   nkpepsddl,
   nekopoilatest,
-  nhentaisearch
+  nhentaisearch,
 }

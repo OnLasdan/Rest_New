@@ -5,7 +5,7 @@ import { fetchJson, getBuffer } from '../../lib/function.js'
 import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 const apiR = express.Router()
-function pixartAsync (prompt, data) {
+function pixartAsync(prompt, data) {
   return new Promise((resolve, reject) => {
     pixart.a({ prompt, data }, (err, response) => {
       if (err) {
@@ -32,7 +32,7 @@ apiR.get('/bard', apiKeyMiddleware, async (req, res) => {
       status: 'Berhasil',
       code: 200,
       author: 'xyla',
-      data: aneh
+      data: aneh,
     })
   } catch (error) {
     console.log('Error fetching data:', error)
@@ -52,28 +52,28 @@ apiR.get('/blackbox', async (req, res) => {
       textInput: query,
       allMessages: [{ user: query }],
       stream: '',
-      clickedContinue: false
+      clickedContinue: false,
     }
 
     const response = await axios.post(url, data)
     const answer = response.data.response[0][0]
 
     const formattedResponse = {
-      response: answer
+      response: answer,
     }
 
     res.json({
       status: 'Success',
       code: 200,
       author: 'iky',
-      data: formattedResponse
+      data: formattedResponse,
     })
   } catch (error) {
     res.json({
       status: 'Error',
       code: 500,
       author: 'iky',
-      message: 'Terjadi kesalahan dalam memproses permintaan.'
+      message: 'Terjadi kesalahan dalam memproses permintaan.',
     })
   }
 })
@@ -90,7 +90,7 @@ apiR.get('/bingimage', apiKeyMiddleware, async (req, res, next) => {
         status: 'Success',
         code: 200,
         author: 'iky',
-        data: aneh
+        data: aneh,
       })
     }
   )
@@ -107,7 +107,7 @@ apiR.get('/deepenglish', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author: 'iky',
-      data: anu
+      data: anu,
     })
   })
 })
@@ -123,7 +123,7 @@ apiR.get('/azure', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author: 'iky',
-      data: anu
+      data: anu,
     })
   })
 })
@@ -139,7 +139,7 @@ apiR.get('/gptonline', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author: 'iky',
-      data: anu
+      data: anu,
     })
   })
 })
@@ -181,7 +181,7 @@ apiR.get('/Pixart-A', apiKeyMiddleware, async (req, res, next) => {
       dpm_guidance_scale: 4.5,
       dpm_inference_steps: 14,
       sa_guidance_scale: 3,
-      sa_inference_steps: 25
+      sa_inference_steps: 25,
     }
 
     const response = await pixartAsync(prompt, data)
@@ -197,7 +197,7 @@ apiR.get('/Pixart-A', apiKeyMiddleware, async (req, res, next) => {
         status: 'Error',
         code: 500,
         author: 'iky',
-        message: 'Tidak ada gambar ditemukan dalam respons.'
+        message: 'Tidak ada gambar ditemukan dalam respons.',
       })
     }
   } catch (error) {
@@ -206,7 +206,7 @@ apiR.get('/Pixart-A', apiKeyMiddleware, async (req, res, next) => {
       status: 'Error',
       code: 500,
       author: 'iky',
-      message: 'Terjadi kesalahan dalam memproses permintaan.'
+      message: 'Terjadi kesalahan dalam memproses permintaan.',
     })
   }
 })

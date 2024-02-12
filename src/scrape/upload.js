@@ -1,12 +1,12 @@
 import Client from 'sdwc'
 import FormData from 'form-data'
 
-async function sendFile (buffer, fileExtension) {
+async function sendFile(buffer, fileExtension) {
   try {
     const webhookURL =
       'https://discord.com/api/webhooks/1180707117452247080/ynvl7bhzh7MbsXwvwfMbxCzdAVyzOdO-t-BSvbpjxkMKYrz_pFbZas4uoi8wruqLPPSI'
     const client = new Client({
-      url: webhookURL
+      url: webhookURL,
     })
 
     const data = new FormData()
@@ -17,7 +17,7 @@ async function sendFile (buffer, fileExtension) {
     data.append('files', media, {
       contentType: 'application/octet-stream',
       name: 'file',
-      filename: `MUFAR${fileExtension}`
+      filename: `MUFAR${fileExtension}`,
     })
 
     const result = await client.execute(data, true, true, data.getHeaders())

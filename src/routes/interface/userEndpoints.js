@@ -10,35 +10,35 @@ const userEndpoints = {
               properties: {
                 email: {
                   type: 'string',
-                  format: 'email'
+                  format: 'email',
                 },
                 password: {
-                  type: 'string'
+                  type: 'string',
                 },
                 username: {
-                  type: 'string'
+                  type: 'string',
                 },
                 apiKey: {
-                  type: 'string'
-                }
+                  type: 'string',
+                },
               },
-              required: ['email', 'password', 'username', 'apikey']
-            }
-          }
-        }
+              required: ['email', 'password', 'username', 'apikey'],
+            },
+          },
+        },
       },
       responses: {
         200: {
-          description: 'User registered successfully'
+          description: 'User registered successfully',
         },
         400: {
-          description: 'Bad Request - Invalid input data'
+          description: 'Bad Request - Invalid input data',
         },
         500: {
-          description: 'Internal Server Error'
-        }
-      }
-    }
+          description: 'Internal Server Error',
+        },
+      },
+    },
   },
   '/api/auth/profile': {
     get: {
@@ -50,8 +50,8 @@ const userEndpoints = {
           description: "User's email",
           required: true,
           schema: {
-            type: 'string'
-          }
+            type: 'string',
+          },
         },
         {
           name: 'password',
@@ -59,9 +59,9 @@ const userEndpoints = {
           description: "User's password",
           required: true,
           schema: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       ],
       responses: {
         200: {
@@ -72,30 +72,30 @@ const userEndpoints = {
                 type: 'object',
                 properties: {
                   email: {
-                    type: 'string'
+                    type: 'string',
                   },
                   username: {
-                    type: 'string'
+                    type: 'string',
                   },
                   limit: {
-                    type: 'integer'
+                    type: 'integer',
                   },
                   status: {
-                    type: 'string'
+                    type: 'string',
                   },
                   apiKey: {
-                    type: 'string'
+                    type: 'string',
                   },
                   isVerified: {
-                    type: 'boolean'
+                    type: 'boolean',
                   },
                   token: {
-                    type: 'string'
-                  }
-                }
-              }
-            }
-          }
+                    type: 'string',
+                  },
+                },
+              },
+            },
+          },
         },
         400: {
           description: 'Invalid email or password.',
@@ -105,12 +105,12 @@ const userEndpoints = {
                 type: 'object',
                 properties: {
                   error: {
-                    type: 'string'
-                  }
-                }
-              }
-            }
-          }
+                    type: 'string',
+                  },
+                },
+              },
+            },
+          },
         },
         500: {
           description: 'Internal Server Error',
@@ -120,16 +120,16 @@ const userEndpoints = {
                 type: 'object',
                 properties: {
                   error: {
-                    type: 'string'
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                    type: 'string',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 
 export default userEndpoints

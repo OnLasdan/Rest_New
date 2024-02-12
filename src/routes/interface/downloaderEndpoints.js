@@ -8,9 +8,9 @@ const downloaderEndpoints = {
           name: 'url',
           required: true,
           schema: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       ],
       responses: {
         200: {
@@ -22,20 +22,20 @@ const downloaderEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' }
-                }
+                  data: { type: 'object' },
+                },
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {}
-              }
-            }
-          }
-        }
-      }
-    }
+                data: {},
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/downloader/facebook': {
     get: {
@@ -46,9 +46,9 @@ const downloaderEndpoints = {
           name: 'url',
           required: true,
           schema: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       ],
       responses: {
         200: {
@@ -60,20 +60,20 @@ const downloaderEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' }
-                }
+                  data: { type: 'object' },
+                },
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {}
-              }
-            }
-          }
-        }
-      }
-    }
+                data: {},
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/downloader/xnxx': {
     get: {
@@ -84,9 +84,9 @@ const downloaderEndpoints = {
           name: 'url',
           required: true,
           schema: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       ],
       responses: {
         200: {
@@ -98,20 +98,20 @@ const downloaderEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' }
-                }
+                  data: { type: 'object' },
+                },
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {}
-              }
-            }
-          }
-        }
-      }
-    }
+                data: {},
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/downloader/mediafire': {
     get: {
@@ -122,9 +122,9 @@ const downloaderEndpoints = {
           name: 'url',
           required: true,
           schema: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       ],
       responses: {
         200: {
@@ -136,20 +136,20 @@ const downloaderEndpoints = {
                   status: { type: 'string' },
                   code: { type: 'integer' },
                   author: { type: 'string' },
-                  data: { type: 'object' }
-                }
+                  data: { type: 'object' },
+                },
               },
               example: {
                 status: 'Success',
                 code: 200,
                 author: 'xyla',
-                data: {}
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                data: {},
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 export default downloaderEndpoints

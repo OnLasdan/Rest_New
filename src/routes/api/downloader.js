@@ -3,7 +3,7 @@ import { fetchJson } from '../../lib/function.js'
 import {
   mediafires,
   facebook,
-  xnxxDownloader
+  xnxxDownloader,
 } from '../../scrape/src/downloader/downloader.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 const author = 'xyla'
@@ -21,7 +21,7 @@ apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
     status: 'Success',
     code: 200,
     author: 'Xyla',
-    data: xorizn.result
+    data: xorizn.result,
   })
 })
 
@@ -34,7 +34,7 @@ apiR.get('/mediafire', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -48,7 +48,7 @@ apiR.get('/facebook', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -62,7 +62,7 @@ apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })

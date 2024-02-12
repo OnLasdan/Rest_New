@@ -1,5 +1,5 @@
 import yts from 'yt-search'
-async function youtube (query) {
+async function youtube(query) {
   return new Promise((resolve, reject) => {
     try {
       const cari = yts(query).then((data) => {

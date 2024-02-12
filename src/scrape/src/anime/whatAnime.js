@@ -1,4 +1,4 @@
-async function traceMoe (url) {
+async function traceMoe(url) {
   try {
     const res = await fetch(
       `https://api.trace.moe/search?anilistInfo&url=${encodeURIComponent(url)}`

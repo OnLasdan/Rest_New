@@ -14,7 +14,9 @@ apiR.post('/cdn', upload.single('file'), async (req, res) => {
     const user = await User.findOne({ apiKey })
 
     if (!user) return res.status(401).json({ error: 'Invalid API key.' })
-    if (user.limit <= 0) { return res.status(403).json({ error: 'Limit exceeded.' }) }
+    if (user.limit <= 0) {
+      return res.status(403).json({ error: 'Limit exceeded.' })
+    }
     if (!req.file) return res.status(400).json({ error: 'No file uploaded.' })
 
     const { buffer, originalname } = req.file
@@ -28,13 +30,13 @@ apiR.post('/cdn', upload.single('file'), async (req, res) => {
       status: 'Success',
       code: 200,
       author: 'Xyla',
-      data: result
+      data: result,
     })
   } catch (error) {
     console.error('Error processing file upload:', error)
     res.status(500).json({
       error: 'Internal Server Error',
-      message: 'An error occurred while processing the file upload.'
+      message: 'An error occurred while processing the file upload.',
     })
   }
 })

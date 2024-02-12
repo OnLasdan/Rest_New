@@ -1,7 +1,7 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-async function mediafire (url) {
+async function mediafire(url) {
   try {
     const res = await axios.get(url)
     const $ = cheerio.load(res.data)
@@ -23,7 +23,7 @@ async function mediafire (url) {
       title: nameFile,
       size: sizeFile,
       url: urlFile,
-      mime
+      mime,
     }
 
     return result

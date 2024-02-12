@@ -7,12 +7,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/elaina': {
     get: {
@@ -22,12 +22,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/miku': {
     get: {
@@ -37,12 +37,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/shota': {
     get: {
@@ -52,12 +52,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/anna': {
     get: {
@@ -67,12 +67,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/ikuyo': {
     get: {
@@ -82,12 +82,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/neko': {
     get: {
@@ -97,12 +97,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/takina': {
     get: {
@@ -112,12 +112,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/asuna': {
     get: {
@@ -127,12 +127,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/kaela': {
     get: {
@@ -142,12 +142,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/rias': {
     get: {
@@ -157,12 +157,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/waifu': {
     get: {
@@ -172,12 +172,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/sakura': {
     get: {
@@ -187,12 +187,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/kaguya': {
     get: {
@@ -202,12 +202,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/ayanokouji': {
     get: {
@@ -217,12 +217,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/yotsuba': {
     get: {
@@ -232,12 +232,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/ayuzawa': {
     get: {
@@ -247,12 +247,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/kaori': {
     get: {
@@ -262,12 +262,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/sasuke': {
     get: {
@@ -277,12 +277,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/yumeko': {
     get: {
@@ -292,12 +292,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/bocchi': {
     get: {
@@ -307,12 +307,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/kobo': {
     get: {
@@ -322,12 +322,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/chisato': {
     get: {
@@ -337,12 +337,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/kotori': {
     get: {
@@ -352,12 +352,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/shinka': {
     get: {
@@ -367,12 +367,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/cosplay': {
     get: {
@@ -382,12 +382,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/loli': {
     get: {
@@ -397,12 +397,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/shizuka': {
     get: {
@@ -412,12 +412,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
   },
   '/api/sfw/sakura': {
     get: {
@@ -427,12 +427,12 @@ const sfwEndpoints = {
           description: 'Successfully retrieved a random image.',
           content: {
             'image/*': {
-              example: 'https://example.com/image.jpg'
-            }
-          }
-        }
-      }
-    }
-  }
+              example: 'https://example.com/image.jpg',
+            },
+          },
+        },
+      },
+    },
+  },
 }
 export default sfwEndpoints

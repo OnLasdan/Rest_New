@@ -17,7 +17,7 @@ apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (e) {
     next(e)
@@ -34,7 +34,7 @@ apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     next(error)
@@ -51,7 +51,7 @@ apiR.get('/wikipedia', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     next(error)

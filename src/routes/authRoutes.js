@@ -10,9 +10,15 @@ const router = express.Router()
 router.post('/auth/register', async (req, res) => {
   try {
     const { email, password, username, apiKey } = req.body
-    if (!email || !validator.isEmail(email)) { return res.status(400).json({ error: 'Email tidak valid' }) }
-    if (!validator.isLength(password, { min: 6 })) { return res.status(400).send('Password harus minimal 6 karakter') }
-    if (!validator.isLength(username, { min: 3 })) { return res.status(400).send('Username harus minimal 3 karakter') }
+    if (!email || !validator.isEmail(email)) {
+      return res.status(400).json({ error: 'Email tidak valid' })
+    }
+    if (!validator.isLength(password, { min: 6 })) {
+      return res.status(400).send('Password harus minimal 6 karakter')
+    }
+    if (!validator.isLength(username, { min: 3 })) {
+      return res.status(400).send('Username harus minimal 3 karakter')
+    }
     const existingUser = await User.findOne({ email })
     const existingKey = await User.findOne({ apiKey })
     console.log(existingKey)
@@ -34,7 +40,7 @@ router.post('/auth/register', async (req, res) => {
       apiKey,
       email,
       password: hashedPassword,
-      username
+      username,
     })
 
     await newUser.save()
@@ -70,7 +76,7 @@ router.get('/api/auth/profile', async (req, res) => {
       limit: user.limit,
       status: user.status,
       apiKey: user.apiKey,
-      isVerified: user.isVerified
+      isVerified: user.isVerified,
     })
   } catch (error) {
     console.error('Error logging in:', error)
@@ -87,20 +93,20 @@ router.get('/cekey', async (req, res) => {
   res.json({ limit: user.limit })
 })
 
-async function sendVerificationEmail (toEmail, verificationUrl) {
+async function sendVerificationEmail(toEmail, verificationUrl) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'lzaky404@gmail.com',
-      pass: 'kqfsqrqrdigiaicr'
-    }
+      pass: 'kqfsqrqrdigiaicr',
+    },
   })
 
   const mailOptions = {
     from: '"M.U.F.A.R." <admin@onlasdan.tech>',
     to: toEmail,
     subject: 'Account Verification',
-    html: `<p>Click the button to verify your email:</p><a href="${verificationUrl}" style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>`
+    html: `<p>Click the button to verify your email:</p><a href="${verificationUrl}" style="padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Verify Email</a>`,
   }
 
   await transporter.sendMail(mailOptions)

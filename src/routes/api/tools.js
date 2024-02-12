@@ -11,7 +11,7 @@ apiR.get('/translate', apiKeyMiddleware, async (req, res) => {
 
     if (!lang || !text) {
       return res.status(400).json({
-        error: 'Invalid parameters. Both lang and text are required.'
+        error: 'Invalid parameters. Both lang and text are required.',
       })
     }
 
@@ -20,7 +20,7 @@ apiR.get('/translate', apiKeyMiddleware, async (req, res) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     console.error(error)
@@ -51,7 +51,7 @@ apiR.get('/anti-porn', apiKeyMiddleware, async (req, res) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     res.status(500).json({ error: 'Terjadi kesalahan dalam server' })

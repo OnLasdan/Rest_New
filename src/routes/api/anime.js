@@ -3,12 +3,12 @@ import {
   doujindesusearch,
   doujindesuch,
   doujindesulatest,
-  hentai
+  hentai,
 } from '../../scrape/src/downloader/downloader.js'
 import {
   komikindogetch,
   dojindsgetimg,
-  nhentaisearch
+  nhentaisearch,
 } from '../../scrape/src/tools/komik.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import traceMoe from '../../scrape/src/anime/whatAnime.js'
@@ -25,7 +25,7 @@ apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -41,7 +41,7 @@ apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -56,7 +56,7 @@ apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -69,7 +69,7 @@ apiR.get('/doujin-latest', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -83,7 +83,7 @@ apiR.get('/hentai', apiKeyMiddleware, async (req, res, next) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   })
 })
@@ -106,7 +106,7 @@ apiR.get('/whatanime', apiKeyMiddleware, async (req, res) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     console.error(error)
@@ -132,7 +132,7 @@ apiR.get('/nhentai-search', apiKeyMiddleware, async (req, res) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     console.error(error)

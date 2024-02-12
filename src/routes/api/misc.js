@@ -23,18 +23,18 @@ apiR.get('/clock', (req, res) => {
     return {
       wib: wibTime,
       wita: witaTime,
-      wit: witTime
+      wit: witTime,
     }
   }
 
-  function formatTime (time) {
+  function formatTime(time) {
     const h = set(time.hours())
     const m = set(time.minutes())
     const s = set(time.seconds())
     return `${h}:${m}:${s}`
   }
 
-  function set (val) {
+  function set(val) {
     return val < 10 ? '0' + val : val
   }
 

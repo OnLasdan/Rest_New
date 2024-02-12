@@ -12,30 +12,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/indonesia': {
     get: {
@@ -50,30 +50,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/japan': {
     get: {
@@ -88,30 +88,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/korean': {
     get: {
@@ -126,30 +126,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/vietnam': {
     get: {
@@ -164,30 +164,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/random': {
     get: {
@@ -202,30 +202,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/thailand': {
     get: {
@@ -240,30 +240,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/malaysia': {
     get: {
@@ -278,30 +278,30 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   '/api/random/potatogodzilla': {
     get: {
@@ -316,31 +316,31 @@ const randomEndpoints = {
                 properties: {
                   status: {
                     type: 'string',
-                    example: 'Success'
+                    example: 'Success',
                   },
                   code: {
                     type: 'integer',
-                    example: 200
+                    example: 200,
                   },
                   author: {
                     type: 'string',
-                    example: 'Xyla'
+                    example: 'Xyla',
                   },
                   data: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      example: 'https://example.com/image.jpg'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                      example: 'https://example.com/image.jpg',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   // ... tambahkan endpoint random lainnya
 }
 export default randomEndpoints
