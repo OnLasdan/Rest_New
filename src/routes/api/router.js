@@ -13,7 +13,8 @@ const routeModules = [
   'misc',
   'sfw',
   'anime',
-  'tools'
+  'tools',
+  'shortUrl'
 ]
 
 routeModules.forEach(async (routeModule) => {

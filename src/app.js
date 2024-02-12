@@ -24,7 +24,7 @@ const app = express()
 dotenv.config()
 resetLimitsCron()
 if (process.env.NODE_ENV === 'development') {
-  await swaggerWr()
+  swaggerWr()
   app.use(customLogger)
 }
 app.use(bodyParser.json())
