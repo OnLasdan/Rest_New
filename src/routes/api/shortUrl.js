@@ -20,7 +20,6 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
     ${response.status}`); }
     const json = await response.json()
     const data = json.shorturl
-
     
     res.json({
       status: 'Success',
