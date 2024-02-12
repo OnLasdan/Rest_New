@@ -18,7 +18,10 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
     fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`)
     if (!response.ok) { throw new Error(`HTTP error! Status:
     ${response.status}`); }
-    const data = await response.json()
+    const json = await response.json()
+    const data = json.shorturl
+
+    
     res.json({
       status: 'Success',
       code: 200,
