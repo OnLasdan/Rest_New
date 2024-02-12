@@ -66,7 +66,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f5f6f7;
+  background-color: #000;
 }
 
 .section-header {
@@ -206,7 +206,7 @@ section {
   inset: 0;
   z-index: 999999;
   overflow: hidden;
-  background: #fff;
+  background: #000;
   transition: all 0.6s ease-out;
 }
 
@@ -215,7 +215,7 @@ section {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #fff;
+  border: 6px solid #000;
   border-color: var(--color-primary) transparent var(--color-primary) transparent;
   border-radius: 50%;
   width: 60px;
@@ -776,6 +776,12 @@ section {
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
+.fst-italic {
+  color: white;
+  font-style: italic;
+  margin: 15px auto 15px auto;
+}
+
 .features .nav-tabs {
   border: 0;
 }
@@ -783,7 +789,7 @@ section {
 .features .nav-link {
   padding: 15px 0;
   transition: 0.3s;
-  color: var(--color-secondary);
+  color: #fff;
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -803,6 +809,7 @@ section {
   font-size: 18px;
   font-weight: 600;
   margin: 0;
+  color: #fff;
 }
 
 @media (max-width: 575px) {
@@ -831,6 +838,7 @@ section {
   position: relative;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  color: #fff;
 }
 
 .features .tab-pane h3:after {
@@ -847,6 +855,7 @@ section {
 .features .tab-pane ul {
   list-style: none;
   padding: 0;
+  color: #fff;
 }
 
 .features .tab-pane ul li {
