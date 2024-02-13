@@ -11,40 +11,39 @@ const author = 'xyla'
 const apiR = express.Router()
 
 apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url;
-  if (!url) return res.json(global.msg.paramurl);
+  const url = req.query.url
+  if (!url) return res.json(global.msg.paramurl)
 
-  let data;
-  const source = req.params.source.toLowerCase();
+  let data
+  const source = req.params.source.toLowerCase()
 
   switch (source) {
     case 'tiktok':
       data = await fetchJson(
         `https://xorizn-downloads.vercel.app/api/downloads/tiktok?url=${url}`
-      );
-      break;
+      )
+      break
     case 'mediafire':
-      data = await mediafires(url);
-      break;
+      data = await mediafires(url)
+      break
     case 'facebook':
-      data = await facebook(url);
-      break;
+      data = await facebook(url)
+      break
     case 'xnxx':
-      data = await xnxxDownloader(url);
-      break;
+      data = await xnxxDownloader(url)
+      break
     default:
-      return res.json(global.msg.invalidsource);
+      return res.json(global.msg.invalidsource)
   }
 
-  if (!data) return res.json(global.msg.nodata);
+  if (!data) return res.json(global.msg.nodata)
 
   res.status(200).json({
     status: 'Success',
     code: 200,
     author: 'Xyla',
     data,
-  });
-});
-
+  })
+})
 
 export default apiR

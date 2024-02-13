@@ -1,11 +1,33 @@
-import axios from 'axios'
 import express from 'express'
+import axios from 'axios'
 import { pixart } from 'gpti'
 import { fetchJson, getBuffer } from '../../lib/function.js'
 import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
+
 const apiR = express.Router()
-function pixartAsync(prompt, data) {
+const author = 'xyla'
+
+const performSearch = async (req, res, next, searchFunction) => {
+  const query = req.query.q
+  if (!query) return res.json(global.msg.paramquery)
+
+  try {
+    const data = await searchFunction(query)
+    if (!data) return res.json(global.msg.nodata)
+
+    res.json({
+      status: 'Success',
+      code: 200,
+      author,
+      data,
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+const pixartAsync = async (prompt, data) => {
   return new Promise((resolve, reject) => {
     pixart.a({ prompt, data }, (err, response) => {
       if (err) {
@@ -17,197 +39,124 @@ function pixartAsync(prompt, data) {
   })
 }
 
-apiR.get('/bard', apiKeyMiddleware, async (req, res) => {
-  const query = req.query.q
-
-  if (!query) return res.json(global.msg.paramquery)
+apiR.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
+  const { feature } = req.params
 
   try {
-    const data = await fetchJson(`https://aemt.me/bard?text=${query}`)
-    const aneh = data.result
+    switch (feature) {
+      case 'bard':
+        const bardQuery = req.query.q
+        if (!bardQuery) return res.json(global.msg.paramquery)
+        const bardData = await fetchJson(
+          `https://aemt.me/bard?text=${bardQuery}`
+        )
+        if (!bardData.result) return res.json(global.msg.nodata)
+        return res.json({
+          status: 'Berhasil',
+          code: 200,
+          author: 'xyla',
+          data: bardData.result,
+        })
 
-    if (!aneh) return res.json(global.msg.nodata)
+      case 'blackbox':
+        const blackboxQuery = req.query.q
+        if (!blackboxQuery) return res.json(global.msg.paramquery)
+        const blackboxUrl = 'https://useblackbox.io/chat-request-v4'
+        const blackboxData = {
+          textInput: blackboxQuery,
+          allMessages: [{ user: blackboxQuery }],
+          stream: '',
+          clickedContinue: false,
+        }
+        const blackboxResponse = await axios.post(blackboxUrl, blackboxData)
+        const blackboxAnswer = blackboxResponse.data.response[0][0]
+        return res.json({
+          status: 'Success',
+          code: 200,
+          author: 'iky',
+          data: { response: blackboxAnswer },
+        })
 
-    res.json({
-      status: 'Berhasil',
-      code: 200,
-      author: 'xyla',
-      data: aneh,
-    })
-  } catch (error) {
-    console.log('Error fetching data:', error)
-    return res.status(500).json({ error: 'Kesalahan Server Internal' })
-  }
-})
+      case 'bingimage':
+        const bingQuery = req.query.q
+        if (!bingQuery) return res.json(global.msg.paramquery)
+        const bingData = await fetchJson(
+          `https://aemt.me/bingimg?text=${bingQuery}`
+        )
+        if (!bingData.result) return res.json(global.msg.nodata)
+        return res.json({
+          status: 'Success',
+          code: 200,
+          author: 'iky',
+          data: bingData.result,
+        })
 
-apiR.get('/blackbox', async (req, res) => {
-  try {
-    const query = req.query.q
+      case 'toanime':
+        const url = req.query.url
+        if (!url) return res.json(global.msg.paramquery)
+        try {
+          const response = await fetchJson(`https://aemt.me/toanime?url=${url}`)
+          const imageUrl = response.url.img_crop_single
+          if (!imageUrl) return res.json(global.msg.nodata)
+          const imageResponse = await getBuffer(imageUrl)
+          res.set('Content-Type', 'image/png')
+          return res.send(imageResponse.data)
+        } catch (error) {
+          console.error(error)
+          return res.status(500).json({ error: 'Internal Server Error' })
+        }
 
-    if (!query) return res.json(global.msg.paramquery)
+      case 'Pixart-A':
+        const pixartPrompt = req.query.prompt
+        const pixartStyle = req.query.style
+        const pixartSampler = req.query.sampler
+        const pixartWidth = req.query.width
+        const pixartHeight = req.query.height
+        const pixartData = {
+          prompt_negative: '',
+          sampler: pixartSampler,
+          image_style: pixartStyle,
+          width: pixartWidth,
+          height: pixartHeight,
+          dpm_guidance_scale: 4.5,
+          dpm_inference_steps: 14,
+          sa_guidance_scale: 3,
+          sa_inference_steps: 25,
+        }
+        try {
+          const pixartResponse = await pixartAsync(pixartPrompt, pixartData)
+          if (
+            pixartResponse &&
+            pixartResponse.images &&
+            pixartResponse.images.length > 0
+          ) {
+            let base64Image = pixartResponse.images[0]
+            base64Image = base64Image.replace(/^data:image\/jpeg;base64,/, '')
+            res.contentType('image/jpeg')
+            return res.send(Buffer.from(base64Image, 'base64'))
+          } else {
+            return res.json({
+              status: 'Error',
+              code: 500,
+              author: 'iky',
+              message: 'Tidak ada gambar ditemukan dalam respons.',
+            })
+          }
+        } catch (error) {
+          console.error(error)
+          return res.json({
+            status: 'Error',
+            code: 500,
+            author: 'iky',
+            message: 'Terjadi kesalahan dalam memproses permintaan.',
+          })
+        }
 
-    const url = 'https://useblackbox.io/chat-request-v4'
-
-    const data = {
-      textInput: query,
-      allMessages: [{ user: query }],
-      stream: '',
-      clickedContinue: false,
-    }
-
-    const response = await axios.post(url, data)
-    const answer = response.data.response[0][0]
-
-    const formattedResponse = {
-      response: answer,
-    }
-
-    res.json({
-      status: 'Success',
-      code: 200,
-      author: 'iky',
-      data: formattedResponse,
-    })
-  } catch (error) {
-    res.json({
-      status: 'Error',
-      code: 500,
-      author: 'iky',
-      message: 'Terjadi kesalahan dalam memproses permintaan.',
-    })
-  }
-})
-
-apiR.get('/bingimage', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
-
-  xorizn = await fetchJson(`https://aemt.me/bingimg?text=${query}`).then(
-    (data) => {
-      const aneh = data.result
-      if (!aneh) return res.json(global.msg.nodata)
-      res.json({
-        status: 'Success',
-        code: 200,
-        author: 'iky',
-        data: aneh,
-      })
-    }
-  )
-})
-
-apiR.get('/deepenglish', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
-
-  scrape.others.deepenglish(query).then((data) => {
-    const anu = data
-    if (!anu) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author: 'iky',
-      data: anu,
-    })
-  })
-})
-
-apiR.get('/azure', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
-
-  scrape.others.azure(query).then((data) => {
-    const anu = data
-    if (!anu) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author: 'iky',
-      data: anu,
-    })
-  })
-})
-
-apiR.get('/gptonline', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
-
-  scrape.others.gptonline(query).then((data) => {
-    const anu = data
-    if (!anu) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author: 'iky',
-      data: anu,
-    })
-  })
-})
-
-apiR.get('/toanime', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramquery)
-
-  try {
-    const response = await fetchJson(`https://aemt.me/toanime?url=${url}`)
-    const imageUrl = response.url.img_crop_single
-
-    if (!imageUrl) return res.json(global.msg.nodata)
-
-    const imageResponse = await getBuffer(imageUrl)
-
-    res.set('Content-Type', 'image/png')
-    res.send(imageResponse.data)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
-apiR.get('/Pixart-A', apiKeyMiddleware, async (req, res, next) => {
-  try {
-    const prompt = req.query.prompt
-    const style = req.query.style
-    const sampler = req.query.sampler
-    const width = req.query.width
-    const height = req.query.height
-
-    const data = {
-      prompt_negative: '',
-      sampler,
-      image_style: style,
-      width,
-      height,
-      dpm_guidance_scale: 4.5,
-      dpm_inference_steps: 14,
-      sa_guidance_scale: 3,
-      sa_inference_steps: 25,
-    }
-
-    const response = await pixartAsync(prompt, data)
-
-    if (response && response.images && response.images.length > 0) {
-      let base64Image = response.images[0]
-      base64Image = base64Image.replace(/^data:image\/jpeg;base64,/, '')
-
-      res.contentType('image/jpeg')
-      res.send(Buffer.from(base64Image, 'base64'))
-    } else {
-      res.json({
-        status: 'Error',
-        code: 500,
-        author: 'iky',
-        message: 'Tidak ada gambar ditemukan dalam respons.',
-      })
+      default:
+        return res.status(404).json({ error: 'Invalid feature.' })
     }
   } catch (error) {
-    console.error(error)
-    res.json({
-      status: 'Error',
-      code: 500,
-      author: 'iky',
-      message: 'Terjadi kesalahan dalam memproses permintaan.',
-    })
+    next(error)
   }
 })
 

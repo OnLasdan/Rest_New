@@ -1,35 +1,20 @@
 import express from 'express'
 import { xnxxSearch } from '../../scrape/src/downloader/downloader.js'
 import youtube from '../../scrape/src/search/youtube.js'
-import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import wikipedia from '../../scrape/src/search/wikipedia.js'
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
+
 const apiR = express.Router()
-const __path = process.cwd()
 const author = 'xyla'
 
-apiR.get('/youtube', apiKeyMiddleware, async (req, res, next) => {
+const performSearch = async (req, res, next, searchFunction) => {
   const query = req.query.q
   if (!query) return res.json(global.msg.paramquery)
-  try {
-    const data = await youtube(query)
-    if (!data) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data,
-    })
-  } catch (e) {
-    next(e)
-  }
-})
 
-apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
   try {
-    const data = await xnxxSearch(query)
+    const data = await searchFunction(query)
     if (!data) return res.json(global.msg.nodata)
+
     res.json({
       status: 'Success',
       code: 200,
@@ -39,20 +24,28 @@ apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-})
+}
 
-apiR.get('/wikipedia', apiKeyMiddleware, async (req, res, next) => {
-  const query = req.query.q
-  if (!query) return res.json(global.msg.paramquery)
+apiR.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
+  const { feature } = req.params
   try {
-    const data = await wikipedia(query)
-    if (!data) return res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data,
-    })
+    switch (feature) {
+      case 'youtube':
+        performSearch(req, res, next, youtube)
+        break
+
+      case 'xnxx':
+        performSearch(req, res, next, xnxxSearch)
+        break
+
+      case 'wikipedia':
+        performSearch(req, res, next, wikipedia)
+        break
+
+      default:
+        res.status(404).json({ error: 'Invalid feature.' })
+        break
+    }
   } catch (error) {
     next(error)
   }

@@ -11,9 +11,10 @@ const __dirname = dirname(__filename)
 const apiR = express.Router()
 apiR.use(cors())
 
-const routeModules = fs.readdirSync(__dirname)
-  .filter(file => file.endsWith('.js') && file !== 'router.js')
-  .map(file => file.replace('.js', ''));
+const routeModules = fs
+  .readdirSync(__dirname)
+  .filter((file) => file.endsWith('.js') && file !== 'router.js')
+  .map((file) => file.replace('.js', ''))
 
 const importRoutes = async (routeModule) => {
   try {
@@ -21,7 +22,9 @@ const importRoutes = async (routeModule) => {
     if (routes.default && typeof routes.default === 'function') {
       apiR.use(`/api/${routeModule}`, routes.default)
     } else {
-      console.error(`Error importing routes from ${routeModule}: Invalid middleware.`)
+      console.error(
+        `Error importing routes from ${routeModule}: Invalid middleware.`
+      )
     }
   } catch (error) {
     console.error(`Error importing routes from ${routeModule}:`, error)
@@ -29,7 +32,7 @@ const importRoutes = async (routeModule) => {
 }
 
 for (const routeModule of routeModules) {
-  importRoutes(routeModule);
+  importRoutes(routeModule)
 }
 
 export default apiR

@@ -7,31 +7,27 @@ import nodemailer from 'nodemailer'
 
 const router = express.Router()
 
-router.post('/auth/register', async (req, res) => {
+router.post('/api/auth/register', async (req, res) => {
   try {
     const { email, password, username, apiKey } = req.body
-    if (!email || !validator.isEmail(email)) {
+    if (!email || !validator.isEmail(email))
       return res.status(400).json({ error: 'Email tidak valid' })
-    }
-    if (!validator.isLength(password, { min: 6 })) {
+    if (!validator.isLength(password, { min: 6 }))
       return res.status(400).send('Password harus minimal 6 karakter')
-    }
-    if (!validator.isLength(username, { min: 3 })) {
+    if (!validator.isLength(username, { min: 3 }))
       return res.status(400).send('Username harus minimal 3 karakter')
-    }
+
     const existingUser = await User.findOne({ email })
     const existingKey = await User.findOne({ apiKey })
-    console.log(existingKey)
-    if (existingUser) {
+
+    if (existingUser)
       return res
         .status(400)
         .json({ error: 'User with this email already exists.' })
-    }
-    if (existingKey == apiKey) {
+    if (existingKey && existingKey.apiKey === apiKey)
       return res
         .status(400)
         .json({ error: 'User with this apiKey already exists.' })
-    }
 
     const saltRounds = 10
     const hashedPassword = await bcrypt.hash(password, saltRounds)
@@ -42,13 +38,10 @@ router.post('/auth/register', async (req, res) => {
       password: hashedPassword,
       username,
     })
-
     await newUser.save()
 
     const accessToken = jwt.sign({ email }, 'Konbanwa', { expiresIn: '15m' })
-
     const verificationUrl = `${req.protocol}://${req.get('host')}/verify/${accessToken}`
-
     await sendVerificationEmail(email, verificationUrl)
 
     res.send('Check email untuk verifikasi email')
@@ -61,15 +54,11 @@ router.post('/auth/register', async (req, res) => {
 router.get('/api/auth/profile', async (req, res) => {
   try {
     const { email, password } = req.query
-
     const user = await User.findOne({ email })
-    if (!user) {
+
+    if (!user || !(await bcrypt.compare(password, user.password)))
       return res.status(400).json({ error: 'Invalid email or password.' })
-    }
-    const validPassword = await bcrypt.compare(password, user.password)
-    if (!validPassword) {
-      return res.status(400).json({ error: 'Invalid email or password.' })
-    }
+
     res.json({
       email: user.email,
       username: user.username,
@@ -86,10 +75,10 @@ router.get('/api/auth/profile', async (req, res) => {
 
 router.get('/cekey', async (req, res) => {
   const { key } = req.query
-  const user = await User.findOne({ key })
-  if (!user) {
-    return res.status(400).json({ error: 'Invalid apikey.' })
-  }
+  const user = await User.findOne({ apiKey: key })
+
+  if (!user) return res.status(400).json({ error: 'Invalid apikey.' })
+
   res.json({ limit: user.limit })
 })
 
@@ -111,4 +100,5 @@ async function sendVerificationEmail(toEmail, verificationUrl) {
 
   await transporter.sendMail(mailOptions)
 }
+
 export default router
