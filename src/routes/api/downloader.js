@@ -1,10 +1,6 @@
 import express from 'express'
 import { fetchJson } from '../../lib/function.js'
-import {
-  mediafires,
-  facebook,
-  xnxxDownloader,
-} from '../../scrape/index.js'
+import scrape  from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()
@@ -23,13 +19,13 @@ apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
       )
       break
     case 'mediafire':
-      data = await mediafires(url)
+      data = await scrape.mediafires(url)
       break
     case 'facebook':
-      data = await facebook(url)
+      data = await scrape.facebook(url)
       break
     case 'xnxx':
-      data = await xnxxDownloader(url)
+      data = await scrape.xnxxDownloader(url)
       break
     default:
       return res.json(global.msg.invalidsource)
