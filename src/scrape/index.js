@@ -17,6 +17,8 @@ import wikipedia from './src/search/wikipedia.js'
 import youtube from './src/search/youtube.js'
 import pinterestvideodownloader from './src/downloader/pinterestvideodownloader.js';
 import facebook from './src/downloader/facebook.js';
+import { cekGambar } from './src/tools/antiPorn.js';
+import { translate, langList } from './src/tools/translate.js'
 
 const scrape = {
     dojindsgetimg,
@@ -37,7 +39,12 @@ const scrape = {
     pinterestvideodownloader,
     facebook,
     youtube,
-    wikipedia 
+    wikipedia,
+    cekGambar,
+    translate,
+    langList
+
+
 };
 
 export default scrape

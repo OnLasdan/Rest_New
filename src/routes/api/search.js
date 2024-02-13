@@ -1,7 +1,5 @@
 import express from 'express'
 import scrape from '../../scrape/index.js'
-import youtube from '../../scrape/src/search/youtube.js'
-import wikipedia from '../../scrape/src/search/wikipedia.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()
@@ -30,7 +28,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
   try {
     switch (feature) {
       case 'youtube':
-        performSearch(req, res, next, youtube)
+        performSearch(req, res, next, scrape.youtube)
         break
 
       case 'xnxx':
@@ -38,7 +36,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
         break
 
       case 'wikipedia':
-        performSearch(req, res, next, wikipedia)
+        performSearch(req, res, next, scrape.wikipedia)
         break
 
       default:
