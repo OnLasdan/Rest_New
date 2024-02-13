@@ -15,6 +15,7 @@
     "express-session": "^1.17.3",
     "form-data": "^4.0.0",
     "formdata-node": "^3.7.0",
+    "gpti": "^2.0.4",
     "helmet": "^7.1.0",
     "js-yaml": "^4.1.0",
     "jsonwebtoken": "^9.0.2",

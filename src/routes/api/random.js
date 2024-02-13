@@ -14,7 +14,7 @@ const countries = [
   'korean',
   'malaysia',
   'thailand',
-  'vietnam',
+  'vietnam'
 ]
 
 countries.forEach((country) => {
@@ -31,14 +31,14 @@ countries.forEach((country) => {
         status: 'Success',
         code: 200,
         author: 'Xyla',
-        data: result,
+        data: result
       })
     } catch (error) {
       console.error(`Error in handling '/${country}' endpoint:`, error)
       res.status(500).json({
         status: 'Error',
         code: 500,
-        message: 'Internal Server Error',
+        message: 'Internal Server Error'
       })
     }
   })

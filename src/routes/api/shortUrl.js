@@ -11,7 +11,7 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
 
     if (!url) {
       return res.status(400).json({
-        error: 'url are required.',
+        error: 'url are required.'
       })
     }
     const response = await fetch(
@@ -28,7 +28,7 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
       status: 'Success',
       code: 200,
       author,
-      data,
+      data
     })
   } catch (error) {
     console.error(error)

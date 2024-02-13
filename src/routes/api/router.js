@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import fs from 'fs'
-import { readdirSync } from 'fs'
+import fs, { readdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { join, dirname } from 'path'
 
