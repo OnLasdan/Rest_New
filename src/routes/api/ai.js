@@ -1,8 +1,6 @@
 import express from 'express'
-import axios from 'axios'
-import { pixart } from 'gpti'
+import axios from 'axios']
 import { fetchJson, getBuffer } from '../../lib/function.js'
-import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()
