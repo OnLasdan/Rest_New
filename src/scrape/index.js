@@ -13,6 +13,8 @@ import xnxxDownloader from './src/downloader/xnxxDownloader.js';
 import xnxxSearch from './src/downloader/xnxxSearch.js';
 import shortlink from './src/downloader/shortlink.js';
 import ssweb from './src/downloader/ssweb.js';
+import wikipedia from './src/search/wikipedia.js'
+import youtube from './src/search/youtube.js'
 import pinterestvideodownloader from './src/downloader/pinterestvideodownloader.js';
 import facebook from './src/downloader/facebook.js';
 
@@ -34,6 +36,8 @@ const scrape = {
     ssweb,
     pinterestvideodownloader,
     facebook,
+    youtube,
+    wikipedia 
 };
 
 export default scrape
