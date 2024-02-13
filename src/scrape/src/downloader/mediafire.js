@@ -32,3 +32,4 @@ export async function mediafire(url) {
     throw error;
   }
 }
+export default mediafire

@@ -4,7 +4,7 @@ import {
   mediafires,
   facebook,
   xnxxDownloader,
-} from '../../scrape/src/downloader.js'
+} from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()

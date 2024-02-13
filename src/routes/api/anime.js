@@ -4,12 +4,10 @@ import {
   doujindesuch,
   doujindesulatest,
   hentai,
-} from '../../scrape/src/downloader.js'
-import {
   komikindogetch,
   dojindsgetimg,
   nhentaisearch,
-} from '../../scrape/src/tools/komik.js'
+} from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import traceMoe from '../../scrape/src/anime/whatAnime.js'
 const author = 'Xyla'
