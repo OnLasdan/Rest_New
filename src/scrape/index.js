@@ -16,7 +16,7 @@ import ssweb from './src/downloader/ssweb.js';
 import pinterestvideodownloader from './src/downloader/pinterestvideodownloader.js';
 import facebook from './src/downloader/facebook.js';
 
-export {
+const scrape = {
     dojindsgetimg,
     komikindogetch,
     nhentaisearch,
@@ -36,3 +36,4 @@ export {
     facebook,
 };
 
+export default scrape
