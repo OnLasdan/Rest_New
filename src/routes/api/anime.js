@@ -3,12 +3,12 @@ import {
   doujindesusearch,
   doujindesuch,
   doujindesulatest,
-  hentai
+  hentai,
 } from '../../scrape/src/downloader/downloader.js'
 import {
   komikindogetch,
   dojindsgetimg,
-  nhentaisearch
+  nhentaisearch,
 } from '../../scrape/src/tools/komik.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import traceMoe from '../../scrape/src/anime/whatAnime.js'
@@ -40,7 +40,7 @@ const handlers = {
         status: 'Success',
         code: 200,
         author,
-        data
+        data,
       })
     } catch (error) {
       console.error(error)
@@ -65,22 +65,27 @@ const handlers = {
         status: 'Success',
         code: 200,
         author,
-        data
+        data,
       })
     } catch (error) {
       console.error(error)
       res.status(500).json({ error: 'Internal server error.' })
     }
-  }
+  },
 }
 
-Object.keys(handlers).forEach(route => {
+Object.keys(handlers).forEach((route) => {
   apiR.get(`/${route}`, apiKeyMiddleware, async (req, res, next) => {
     const handler = handlers[route]
     const url = req.query.url
     const q = req.query.q
 
-    if ((route === 'doujin-search' || route === 'doujin-ch' || route === 'doujin-img') && !url) {
+    if (
+      (route === 'doujin-search' ||
+        route === 'doujin-ch' ||
+        route === 'doujin-img') &&
+      !url
+    ) {
       return res.json(global.msg.paramurl)
     }
 
@@ -98,7 +103,7 @@ Object.keys(handlers).forEach(route => {
         status: 'Success',
         code: 200,
         author,
-        data
+        data,
       })
     })
   })

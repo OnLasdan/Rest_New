@@ -19,7 +19,7 @@ const performSearch = async (req, res, next, searchFunction) => {
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
   } catch (error) {
     next(error)

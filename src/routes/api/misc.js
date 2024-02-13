@@ -27,7 +27,7 @@ apiR.get('/:endpoint', (req, res) => {
         return {
           wib: wibTime,
           wita: witaTime,
-          wit: witTime
+          wit: witTime,
         }
       }
 

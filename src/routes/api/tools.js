@@ -14,7 +14,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res) => {
         const { lang, text } = req.query
         if (!lang || !text) {
           return res.status(400).json({
-            error: 'Invalid parameters. Both lang and text are required.'
+            error: 'Invalid parameters. Both lang and text are required.',
           })
         }
         const translateData = await translate(lang, text)
@@ -22,7 +22,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res) => {
           status: 'Success',
           code: 200,
           author,
-          data: translateData
+          data: translateData,
         })
 
       case 'langList':
@@ -41,7 +41,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res) => {
           status: 'Success',
           code: 200,
           author,
-          data: antiPornData
+          data: antiPornData,
         })
 
       default:

@@ -12,7 +12,7 @@ const handleSuccess = (res, data) => {
     status: 'Success',
     code: 200,
     author,
-    data
+    data,
   })
 }
 
@@ -41,7 +41,9 @@ apiRouter.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
         const bardQuery = req.query.q
         if (!bardQuery) return res.json({ error: 'Missing query parameter.' })
 
-        const bardData = await fetchJson(`https://aemt.me/bard?text=${bardQuery}`)
+        const bardData = await fetchJson(
+          `https://aemt.me/bard?text=${bardQuery}`
+        )
         if (!bardData.result) return res.json({ error: 'No data found.' })
 
         handleSuccess(res, bardData.result)
@@ -49,14 +51,15 @@ apiRouter.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
 
       case 'blackbox':
         const blackboxQuery = req.query.q
-        if (!blackboxQuery) return res.json({ error: 'Missing query parameter.' })
+        if (!blackboxQuery)
+          return res.json({ error: 'Missing query parameter.' })
 
         const blackboxUrl = 'https://useblackbox.io/chat-request-v4'
         const blackboxData = {
           textInput: blackboxQuery,
           allMessages: [{ user: blackboxQuery }],
           stream: '',
-          clickedContinue: false
+          clickedContinue: false,
         }
         const blackboxResponse = await axios.post(blackboxUrl, blackboxData)
         const blackboxAnswer = blackboxResponse.data.response[0][0]
@@ -67,7 +70,9 @@ apiRouter.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
         const bingQuery = req.query.q
         if (!bingQuery) return res.json({ error: 'Missing query parameter.' })
 
-        const bingData = await fetchJson(`https://aemt.me/bingimg?text=${bingQuery}`)
+        const bingData = await fetchJson(
+          `https://aemt.me/bingimg?text=${bingQuery}`
+        )
         if (!bingData.result) return res.json({ error: 'No data found.' })
 
         handleSuccess(res, bingData.result)
@@ -101,10 +106,14 @@ apiRouter.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
           dpm_guidance_scale: 4.5,
           dpm_inference_steps: 14,
           sa_guidance_scale: 3,
-          sa_inference_steps: 25
+          sa_inference_steps: 25,
         }
         const pixartResponse = await pixartAsync(pixartPrompt, pixartData)
-        if (pixartResponse && pixartResponse.images && pixartResponse.images.length > 0) {
+        if (
+          pixartResponse &&
+          pixartResponse.images &&
+          pixartResponse.images.length > 0
+        ) {
           let base64Image = pixartResponse.images[0]
           base64Image = base64Image.replace(/^data:image\/jpeg;base64,/, '')
           res.contentType('image/jpeg')

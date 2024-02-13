@@ -10,7 +10,7 @@ import path from 'path'
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname)
 
-function swaggerJs (inputFilePath, outputFilePath) {
+function swaggerJs(inputFilePath, outputFilePath) {
   try {
     const yamlContent = fs.readFileSync(inputFilePath, 'utf8')
     const yamlData = yaml.load(yamlContent)
@@ -22,8 +22,8 @@ function swaggerJs (inputFilePath, outputFilePath) {
       if (api === 'api' && rest.length > 0) {
         const outputData = {
           paths: {
-            [route]: data
-          }
+            [route]: data,
+          },
         }
         const outputYaml = yaml.dump(outputData)
 
@@ -54,9 +54,9 @@ const fetchJson = async (url, options) => {
       url,
       headers: {
         'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
       },
-      ...options
+      ...options,
     })
     return res.data
   } catch (err) {
@@ -72,10 +72,10 @@ const getBuffer = async (url, options) => {
       url,
       headers: {
         DNT: 1,
-        'Upgrade-Insecure-Request': 1
+        'Upgrade-Insecure-Request': 1,
       },
       ...options,
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
     return res.data
   } catch (e) {
@@ -119,13 +119,13 @@ const customLogger = morgan(function (tokens, req, res) {
       ? `${chalk.blue('Response Time:')} ${chalk.bold.blue(responseTime + ' ms')}`
       : `${chalk.red('Response Time:')} ${chalk.bold.red(responseTime + ' ms')}`,
     `${chalk.magenta('IP Address:')} ${chalk.bold.magenta(ipAddress)}`,
-    `${chalk.yellow('User Agent:')} ${chalk.bold.yellow(userAgent)}`
+    `${chalk.yellow('User Agent:')} ${chalk.bold.yellow(userAgent)}`,
   ]
 
   console.log(log.join('\n'))
 })
 
-async function swaggerWr () {
+async function swaggerWr() {
   const spinner = ora('Mengumpulkan swagger file').start()
 
   try {
@@ -158,5 +158,5 @@ export {
   getBuffer,
   customLogger,
   swaggerWr,
-  swaggerJs
+  swaggerJs,
 }

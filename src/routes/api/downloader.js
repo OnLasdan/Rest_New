@@ -3,7 +3,7 @@ import { fetchJson } from '../../lib/function.js'
 import {
   mediafires,
   facebook,
-  xnxxDownloader
+  xnxxDownloader,
 } from '../../scrape/src/downloader/downloader.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
@@ -41,7 +41,7 @@ apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
     status: 'Success',
     code: 200,
     author,
-    data
+    data,
   })
 })
 

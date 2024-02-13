@@ -30,13 +30,13 @@ apiR.post('/cdn', upload.single('file'), async (req, res) => {
       status: 'Success',
       code: 200,
       author: 'Xyla',
-      data: result
+      data: result,
     })
   } catch (error) {
     console.error('Error processing file upload:', error)
     res.status(500).json({
       error: 'Internal Server Error',
-      message: 'An error occurred while processing the file upload.'
+      message: 'An error occurred while processing the file upload.',
     })
   }
 })

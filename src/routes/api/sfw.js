@@ -35,7 +35,7 @@ const countries = [
   'shinka',
   'cosplay',
   'loli',
-  'shizuka'
+  'shizuka',
 ]
 
 countries.forEach((country) => {
@@ -47,7 +47,7 @@ countries.forEach((country) => {
       const result = data[Math.floor(Math.random() * data.length)]
 
       const { data: imageBuffer } = await axios.get(result, {
-        responseType: 'arraybuffer'
+        responseType: 'arraybuffer',
       })
 
       res.setHeader('Content-Type', 'image/jpeg')
@@ -57,7 +57,7 @@ countries.forEach((country) => {
       res.status(500).json({
         status: 'Error',
         code: 500,
-        message: 'Internal Server Error'
+        message: 'Internal Server Error',
       })
     }
   })
