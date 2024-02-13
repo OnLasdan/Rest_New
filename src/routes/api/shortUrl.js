@@ -1,6 +1,6 @@
 import express from 'express'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
-import { fetchJson } from '../../lib/function.js'
+import fetch  from 'node-fetch'
 const apiR = express.Router()
 
 apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
@@ -12,14 +12,16 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
         error: 'url are required.',
       })
     }
-    const response = await fetchJson(
+    const response = await fetch(
       `https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`
     )
     if (!response.ok) {
       throw new Error(`HTTP error! Status:
     ${response.status}`)
     }
-    const data = response.shorturl
+    const json = await response.json()
+    console.log(json)
+    const data = json.shorturl
 
     res.json({
       status: 'Success',
