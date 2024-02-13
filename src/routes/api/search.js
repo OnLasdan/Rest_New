@@ -1,5 +1,5 @@
 import express from 'express'
-import { xnxxSearch } from '../../scrape/index.js'
+import scrape from '../../scrape/index.js'
 import youtube from '../../scrape/src/search/youtube.js'
 import wikipedia from '../../scrape/src/search/wikipedia.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
@@ -34,7 +34,7 @@ apiR.get('/:feature', apiKeyMiddleware, async (req, res, next) => {
         break
 
       case 'xnxx':
-        performSearch(req, res, next, xnxxSearch)
+        performSearch(req, res, next, scrape.xnxxSearch)
         break
 
       case 'wikipedia':
