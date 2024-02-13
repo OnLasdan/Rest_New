@@ -10,61 +10,41 @@ const author = 'xyla'
 
 const apiR = express.Router()
 
-apiR.get('/tiktok', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  const xorizn = await fetchJson(
-    `https://xorizn-downloads.vercel.app/api/downloads/tiktok?url=${url}`
-  )
-  if (!xorizn.result) return res.json(global.msg.nodata)
+apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
+  const url = req.query.url;
+  if (!url) return res.json(global.msg.paramurl);
+
+  let data;
+  const source = req.params.source.toLowerCase();
+
+  switch (source) {
+    case 'tiktok':
+      data = await fetchJson(
+        `https://xorizn-downloads.vercel.app/api/downloads/tiktok?url=${url}`
+      );
+      break;
+    case 'mediafire':
+      data = await mediafires(url);
+      break;
+    case 'facebook':
+      data = await facebook(url);
+      break;
+    case 'xnxx':
+      data = await xnxxDownloader(url);
+      break;
+    default:
+      return res.json(global.msg.invalidsource);
+  }
+
+  if (!data) return res.json(global.msg.nodata);
+
   res.status(200).json({
     status: 'Success',
     code: 200,
     author: 'Xyla',
-    data: xorizn.result,
-  })
-})
+    data,
+  });
+});
 
-apiR.get('/mediafire', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  mediafires(url).then((data) => {
-    if (!data) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data,
-    })
-  })
-})
-
-apiR.get('/facebook', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  facebook(url).then((data) => {
-    if (!data) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data,
-    })
-  })
-})
-
-apiR.get('/xnxx', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  xnxxDownloader(url).then((data) => {
-    if (!data) res.json(global.msg.nodata)
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data,
-    })
-  })
-})
 
 export default apiR
