@@ -6,7 +6,6 @@ import {
   xnxxDownloader
 } from '../../scrape/src/downloader/downloader.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
-const author = 'xyla'
 
 const apiR = express.Router()
 
@@ -41,7 +40,7 @@ apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
   res.status(200).json({
     status: 'Success',
     code: 200,
-    author: 'Xyla',
+    author,
     data
   })
 })

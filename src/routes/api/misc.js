@@ -2,7 +2,6 @@ import express from 'express'
 import moment from 'moment-timezone'
 
 const apiR = express.Router()
-const __path = process.cwd()
 
 apiR.get('/:endpoint', (req, res) => {
   const { endpoint } = req.params
@@ -30,17 +29,6 @@ apiR.get('/:endpoint', (req, res) => {
           wita: witaTime,
           wit: witTime
         }
-      }
-
-      function formatTime (time) {
-        const h = set(time.hours())
-        const m = set(time.minutes())
-        const s = set(time.seconds())
-        return `${h}:${m}:${s}`
-      }
-
-      function set (val) {
-        return val < 10 ? '0' + val : val
       }
 
       // Send the initial response

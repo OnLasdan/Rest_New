@@ -1,6 +1,6 @@
 import cron from 'node-cron'
 import User from '../models/user.js'
-async function resetLimitsCron() {
+async function resetLimitsCron () {
   // Schedule a cron job to run every day at midnight (00:00)
   cron.schedule('0 0 * * *', async () => {
     try {

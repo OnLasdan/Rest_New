@@ -16,24 +16,6 @@ const handleSuccess = (res, data) => {
   })
 }
 
-const handleError = (res, code, message) => {
-  res.status(code).json({ error: message })
-}
-
-const performSearch = async (req, res, next, searchFunction) => {
-  const query = req.query.q
-  if (!query) return res.json({ error: 'Missing query parameter.' })
-
-  try {
-    const data = await searchFunction(query)
-    if (!data) return res.json({ error: 'No data found.' })
-
-    handleSuccess(res, data)
-  } catch (error) {
-    next(error)
-  }
-}
-
 const pixartAsync = async (prompt, data) => {
   try {
     return await new Promise((resolve, reject) => {

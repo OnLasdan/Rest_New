@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises'
 import path, { join } from 'path'
-export default async function getConfig() {
+export default async function getConfig () {
   const customCssPath = join(
     path.dirname(new URL(import.meta.url).pathname),
     'custom.css'
@@ -14,13 +14,13 @@ export default async function getConfig() {
       docExpansion: 'list',
       defaultModelsExpandDepth: 1,
       operationsSorter: 'method',
-      setPreLoadingEnabled: true,
+      setPreLoadingEnabled: true
     },
     customCss,
     customfavIcon: '../assets/image/2.png',
     customSiteTitle: '.M.U.F.A.R.',
     explorer: false,
     deepLinking: true,
-    setPreLoadingEnabled: true,
+    setPreLoadingEnabled: true
   }
 }

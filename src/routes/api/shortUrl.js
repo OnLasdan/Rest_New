@@ -1,7 +1,5 @@
-import axios from 'axios'
 import express from 'express'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
-import fetch from 'node-fetch'
 import { fetchJson } from '../../lib/function.js'
 const apiR = express.Router()
 
@@ -14,15 +12,14 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
         error: 'url are required.'
       })
     }
-    const response = await fetch(
+    const response = await fetchJson(
       `https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`
     )
     if (!response.ok) {
       throw new Error(`HTTP error! Status:
     ${response.status}`)
     }
-    const json = await response.json()
-    const data = json.shorturl
+    const data = response.shorturl
 
     res.json({
       status: 'Success',

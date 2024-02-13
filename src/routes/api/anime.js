@@ -12,132 +12,96 @@ import {
 } from '../../scrape/src/tools/komik.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import traceMoe from '../../scrape/src/anime/whatAnime.js'
+const author = 'Xyla'
 const apiR = express.Router()
 
-apiR.get('/doujin-search', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.q
-  if (!url) return res.json(global.msg.paramurl)
-  doujindesusearch(url).then((data) => {
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
-    }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  })
-})
+const handlers = {
+  'doujin-search': doujindesusearch,
+  'doujin-ch': doujindesuch,
+  'doujin-img': dojindsgetimg,
+  'komikindo-ch': komikindogetch,
+  'doujin-latest': doujindesulatest,
+  hentai,
+  whatanime: async (req, res) => {
+    const url = req.query.url
 
-apiR.get('/doujin-ch', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  doujindesuch(url).then((data) => {
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
-    }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  })
-})
-apiR.get('/doujin-img', apiKeyMiddleware, async (req, res, next) => {
-  const url = req.query.url
-  if (!url) return res.json(global.msg.paramurl)
-  dojindsgetimg(url).then((data) => {
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
-    }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  })
-})
-apiR.get('/doujin-latest', apiKeyMiddleware, async (req, res, next) => {
-  doujindesulatest().then((data) => {
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
-    }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  })
-})
+    try {
+      if (!url) {
+        return res
+          .status(400)
+          .json({ error: 'Invalid parameters. URL is required.' })
+      }
 
-apiR.get('/hentai', apiKeyMiddleware, async (req, res, next) => {
-  hentai().then((data) => {
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
+      const data = await traceMoe(url)
+      if (data.length === 0) {
+        return res.json(global.mdg.nodata)
+      }
+      res.json({
+        status: 'Success',
+        code: 200,
+        author,
+        data
+      })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Internal server error.' })
     }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  })
-})
+  },
+  'nhentai-search': async (req, res) => {
+    const q = req.query.q
+    try {
+      if (!q) {
+        return res
+          .status(400)
+          .json({ error: 'Invalid parameters. query is required.' })
+      }
 
-apiR.get('/whatanime', apiKeyMiddleware, async (req, res) => {
-  const url = req.query.url
+      const data = await nhentaisearch(q)
+      if (data.length === 0) {
+        return res.json(global.msg.nodata)
+      }
 
-  try {
-    if (!url) {
-      return res
-        .status(400)
-        .json({ error: 'Invalid parameters. URL is required.' })
+      res.json({
+        status: 'Success',
+        code: 200,
+        author,
+        data
+      })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Internal server error.' })
     }
-
-    const data = await traceMoe(url)
-    if (data.length === 0) {
-      return res.json(global.mdg.nodata)
-    }
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
-    })
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Internal server error.' })
   }
-})
+}
 
-apiR.get('/nhentai-search', apiKeyMiddleware, async (req, res) => {
-  const q = req.query.q
-  try {
-    if (!q) {
+Object.keys(handlers).forEach(route => {
+  apiR.get(`/${route}`, apiKeyMiddleware, async (req, res, next) => {
+    const handler = handlers[route]
+    const url = req.query.url
+    const q = req.query.q
+
+    if ((route === 'doujin-search' || route === 'doujin-ch' || route === 'doujin-img') && !url) {
+      return res.json(global.msg.paramurl)
+    }
+
+    if (route === 'nhentai-search' && !q) {
       return res
         .status(400)
         .json({ error: 'Invalid parameters. query is required.' })
     }
 
-    const data = await nhentaisearch(q)
-    if (data.length === 0) {
-      return res.json(global.msg.nodata)
-    }
-
-    res.json({
-      status: 'Success',
-      code: 200,
-      author,
-      data
+    handler(url || q).then((data) => {
+      if (data.length === 0) {
+        return res.json(global.msg.nodata)
+      }
+      res.json({
+        status: 'Success',
+        code: 200,
+        author,
+        data
+      })
     })
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Internal server error.' })
-  }
+  })
 })
 
 export default apiR
