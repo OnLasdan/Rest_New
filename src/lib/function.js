@@ -158,5 +158,4 @@ export {
   getBuffer,
   customLogger,
   swaggerWr,
-  swaggerJs,
 }

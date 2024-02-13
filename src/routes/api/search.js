@@ -5,7 +5,6 @@ import wikipedia from '../../scrape/src/search/wikipedia.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()
-const author = 'xyla'
 
 const performSearch = async (req, res, next, searchFunction) => {
   const query = req.query.q
@@ -13,7 +12,7 @@ const performSearch = async (req, res, next, searchFunction) => {
 
   try {
     const data = await searchFunction(query)
-    if (!data) return res.json(global.msg.nodata)
+     if (!data) return res.json(global.msg.nodata)
 
     res.json({
       status: 'Success',

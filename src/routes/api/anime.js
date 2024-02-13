@@ -16,7 +16,7 @@ const author = 'Xyla'
 const apiR = express.Router()
 
 const handlers = {
-  'doujin-search': doujindesusearch, 
+  'doujin-search': doujindesusearch,   
   'doujin-ch': doujindesuch,
   'doujin-img': dojindsgetimg,
   'komikindo-ch': komikindogetch,
