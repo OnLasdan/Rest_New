@@ -1,6 +1,5 @@
 // app.js
 import express from 'express'
-import swaggerUi from 'swagger-ui-express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import favicon from 'serve-favicon'
@@ -9,7 +8,6 @@ import dotenv from 'dotenv'
 import compression from 'compression'
 import session from 'express-session'
 import helmet from 'helmet'
-import { createRequire } from 'module'
 import helloRouter from './views/home.js'
 import R404 from './views/error.js'
 import apiR from './routes/api/router.js'
@@ -18,7 +16,6 @@ import verifyRoutes from './routes/verifyRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import routerDocs from './routes/routerDocs.js'
 import { swaggerWr, customLogger } from './lib/function.js'
-import chalk from 'chalk'
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname)
 const app = express()
 dotenv.config()
