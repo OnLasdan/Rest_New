@@ -1,5 +1,5 @@
 import express from 'express'
-import { xnxxSearch } from '../../scrape/src/downloader/downloader.js'
+import { xnxxSearch } from '../../scrape/src/downloader.js'
 import youtube from '../../scrape/src/search/youtube.js'
 import wikipedia from '../../scrape/src/search/wikipedia.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'

@@ -4,7 +4,7 @@ import {
   doujindesuch,
   doujindesulatest,
   hentai,
-} from '../../scrape/src/downloader/downloader.js'
+} from '../../scrape/src/downloader.js'
 import {
   komikindogetch,
   dojindsgetimg,

@@ -97,7 +97,6 @@ const getHashedPassword = (password) => {
   return hash
 }
 
-// ========================================
 const customLogger = morgan(function (tokens, req, res) {
   const method = tokens.method(req, res)
   const uri = decodeURI(tokens.url(req, res))

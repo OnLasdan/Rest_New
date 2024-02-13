@@ -1,11 +1,7 @@
-import cheerio from 'cheerio'
 import axios from 'axios'
+import cheerio from 'cheerio'
 import fetch from 'node-fetch'
-import fs from 'fs'
-import qs from 'qs'
-import PDFDocument from 'pdfkit'
 let no = 1
-let data, result, x, y, z, pagina, rand, slink
 
 async function komikindogetch(url) {
   return new Promise((resolve, reject) => {
@@ -133,9 +129,7 @@ async function dojindsgetimg(url) {
 }
 
 export {
-  komikindogetch,
-  dojindsgetimg,
-  nkpepsddl,
-  nekopoilatest,
-  nhentaisearch,
+  dojindsgetimg, komikindogetch, nekopoilatest,
+  nhentaisearch, nkpepsddl
 }
+
