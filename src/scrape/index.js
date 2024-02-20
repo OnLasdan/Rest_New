@@ -43,8 +43,6 @@ const scrape = {
     cekGambar,
     translate,
     langList
-
-
 };
 
 export default scrape
