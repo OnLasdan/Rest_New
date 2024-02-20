@@ -1,14 +1,13 @@
-import axios from "axios";
-import cheerio from "cheerio";
-
+import axios from 'axios'
+import cheerio from 'cheerio'
 
 async function nkpepsddl(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
       .then(({ data }) => {
-        const $ = cheerio.load(data);
-        const hasil = [];
+        const $ = cheerio.load(data)
+        const hasil = []
         $(
           '#content > div.postsbody > div > div.arealinker > div.boxdownload > div'
         ).each(async function (a, b) {
@@ -27,12 +26,12 @@ async function nkpepsddl(url) {
             ZippyShare: $(b)
               .find('> div.listlink > p > a:nth-child(5)')
               .attr('href'),
-          };
-          hasil.push(dati);
-        });
-        resolve(hasil);
+          }
+          hasil.push(dati)
+        })
+        resolve(hasil)
       })
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 export default nkpepsddl

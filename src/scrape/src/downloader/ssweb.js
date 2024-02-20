@@ -1,15 +1,14 @@
-import axios from 'axios';
-
+import axios from 'axios'
 
 async function ssweb(url, device = 'desktop') {
   return new Promise((resolve, reject) => {
-    const base = 'https://www.screenshotmachine.com';
+    const base = 'https://www.screenshotmachine.com'
     const param = {
       url,
       device,
       full: true,
       cacheLimit: 0,
-    };
+    }
     axios({
       url: base + '/capture.php',
       method: 'POST',
@@ -19,7 +18,7 @@ async function ssweb(url, device = 'desktop') {
       },
     })
       .then((data) => {
-        const cookies = data.headers['set-cookie'];
+        const cookies = data.headers['set-cookie']
         if (data.data.status == 'success') {
           axios
             .get(base + '/' + data.data.link, {
@@ -33,14 +32,14 @@ async function ssweb(url, device = 'desktop') {
                 status: 200,
                 author,
                 result: data,
-              };
-              resolve(result);
-            });
+              }
+              resolve(result)
+            })
         } else {
-          reject({ status: 404, author, message: data.data });
+          reject({ status: 404, author, message: data.data })
         }
       })
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 export default ssweb

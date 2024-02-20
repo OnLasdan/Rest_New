@@ -1,6 +1,5 @@
-import cheerio from 'cheerio';
-import fetch from 'node-fetch';
-
+import cheerio from 'cheerio'
+import fetch from 'node-fetch'
 
 async function facebook(t) {
   return new Promise(async (e, a) => {
@@ -11,8 +10,8 @@ async function facebook(t) {
         Referer: 'https://www.getfvid.com/',
       },
       body: new URLSearchParams(Object.entries({ url: t })),
-    });
-    const o = cheerio.load(await i.text());
+    })
+    const o = cheerio.load(await i.text())
     e({
       result: {
         url: t,
@@ -30,7 +29,7 @@ async function facebook(t) {
           'body > div.page-content > div > div > div.col-lg-10.col-md-10.col-centered > div > div:nth-child(3) > div > div.col-md-4.btns-download > p:nth-child(3) > a'
         ).attr('href'),
       },
-    });
-  });
+    })
+  })
 }
-export default facebook 
+export default facebook

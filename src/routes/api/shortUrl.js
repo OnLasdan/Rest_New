@@ -1,7 +1,7 @@
 import express from 'express'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import scrape from '../../scrape/index.js'
-import fetch  from 'node-fetch'
+import fetch from 'node-fetch'
 const apiR = express.Router()
 
 apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
@@ -36,7 +36,7 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
   }
 })
 
-apiR.get('tiny', apiKeyMiddleware, async(req, res ) => {
+apiR.get('tiny', apiKeyMiddleware, async (req, res) => {
   try {
     const { url } = req.query
     if (!url) {
@@ -44,23 +44,21 @@ apiR.get('tiny', apiKeyMiddleware, async(req, res ) => {
         error: 'url parameter required.',
       })
     }
-    
+
     const data = await scrape.shorturl(encodeURIComponent(url))
-    
+
     res.json({
       status: 'Success',
       code: 200,
       author,
-      data
+      data,
     })
-    
   } catch (e) {
     console.log(e)
     res.status(500).json({
-      error: 'Internal Server Error '
+      error: 'Internal Server Error ',
     })
   }
 })
-
 
 export default apiR

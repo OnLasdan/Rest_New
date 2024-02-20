@@ -1,14 +1,13 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
-
+import axios from 'axios'
+import cheerio from 'cheerio'
 
 async function doujindesulatest() {
   return new Promise((resolve, reject) => {
     axios
       .get('https://doujindesu.tv')
       .then(({ data }) => {
-        const $ = cheerio.load(data);
-        const hasil = [];
+        const $ = cheerio.load(data)
+        const hasil = []
         $('#archives > div > article').each(async function (a, b) {
           const result = {
             title: $(b).find('> a').attr('title'),
@@ -16,13 +15,12 @@ async function doujindesulatest() {
             info: $(b).find('div > div > a > span').text(),
             type: $(b).find('> a > figure > span').text(),
             thumb: $(b).find('> a > figure > img').attr('src'),
-          };
-          hasil.push(result);
-        });
-        resolve(hasil);
+          }
+          hasil.push(result)
+        })
+        resolve(hasil)
       })
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 export default doujindesulatest
-

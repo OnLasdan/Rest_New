@@ -1,6 +1,6 @@
 import express from 'express'
 import { fetchJson } from '../../lib/function.js'
-import scrape  from '../../scrape/index.js'
+import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()

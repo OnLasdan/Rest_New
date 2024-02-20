@@ -62,8 +62,8 @@ const shortUrlEnpoints = {
             type: 'string',
           },
           description: 'The URL to be shortened',
-          },
-        ],
+        },
+      ],
       responses: {
         200: {
           description: 'Successful response',
@@ -102,4 +102,4 @@ const shortUrlEnpoints = {
     },
   },
 }
-export default shortUrlEnpoints;
+export default shortUrlEnpoints

@@ -1,20 +1,19 @@
-import axios from "axios";
-import cheerio from "cheerio";
-
+import axios from 'axios'
+import cheerio from 'cheerio'
 
 async function dojindsgetimg(url) {
   return new Promise((resolve, reject) => {
     axios
       .get(url)
       .then(({ data }) => {
-        const $ = cheerio.load(data);
-        const hasil = [];
+        const $ = cheerio.load(data)
+        const hasil = []
         $('#anu > img').each(async function (a, b) {
-          hasil.push($(b).attr('src'));
-        });
-        resolve(hasil);
+          hasil.push($(b).attr('src'))
+        })
+        resolve(hasil)
       })
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 export default dojindsgetimg

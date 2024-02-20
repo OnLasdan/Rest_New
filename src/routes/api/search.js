@@ -10,7 +10,7 @@ const performSearch = async (req, res, next, searchFunction) => {
 
   try {
     const data = await searchFunction(query)
-     if (!data) return res.json(global.msg.nodata)
+    if (!data) return res.json(global.msg.nodata)
 
     res.json({
       status: 'Success',
