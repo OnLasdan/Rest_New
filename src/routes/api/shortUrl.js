@@ -36,7 +36,7 @@ apiR.get('/isgd', apiKeyMiddleware, async (req, res) => {
   }
 })
 
-apiR.get('tiny', apiKeyMiddleware, async (req, res) => {
+apiR.get('/tiny', apiKeyMiddleware, async (req, res) => {
   try {
     const { url } = req.query
     if (!url) {
@@ -45,7 +45,7 @@ apiR.get('tiny', apiKeyMiddleware, async (req, res) => {
       })
     }
 
-    const data = await scrape.shorturl(encodeURIComponent(url))
+    const data = await scrape.shortlink(encodeURIComponent(url))
 
     res.json({
       status: 'Success',
