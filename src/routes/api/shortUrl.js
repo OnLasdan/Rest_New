@@ -25,7 +25,11 @@ apiR.get('/:shortener', apiKeyMiddleware, async (req, res) => {
 
     switch (req.params.shortener) {
       case 'isgd':
-        shortUrl = await shortenWithIsGd(url)
+        shortUrl = await shortenWithIsGd(decodeURIComponent(url))
+        break
+
+     case 'vgd':
+        shortUrl = await shortenWithVgd(decodeURIComponent(url))
         break
 
       case 'tiny':
@@ -61,6 +65,18 @@ async function VURL(url) {
   }
   const json = await response.json()
   return json
+}
+
+
+async function shortenWithVgd(url) {
+  const response = await fetch(
+    `https://v.gd/create.php?format=json&url=${decodeURIComponent(url)}`
+  )
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`)
+  }
+  const json = await response.json()
+  return json.shorturl
 }
 
 async function shortenWithIsGd(url) {

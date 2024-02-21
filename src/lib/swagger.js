@@ -692,20 +692,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -724,20 +722,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -756,20 +752,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -788,20 +782,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -820,20 +812,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -852,20 +842,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -884,20 +872,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -916,20 +902,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -948,20 +932,18 @@
  *               schema:
  *                 type: object
  *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
+ *                   status: string
+ *                   code: integer
+ *                   author: string
  *                   data:
  *                     type: array
- *                     items:
- *                       type: string
- *                       example: https://example.com/image.jpg
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
  * 
  */
 
@@ -1609,6 +1591,45 @@
  * @swagger
  * paths:
  *   /api/shortUrl/vurl:
+ *     get:
+ *       tags:
+ *         - ShortUrl
+ *       parameters:
+ *         - name: url
+ *           in: query
+ *           required: true
+ *           schema:
+ *             type: string
+ *           description: The URL to be shortened
+ *       responses:
+ *         '200':
+ *           description: Successful response
+ *           content:
+ *             application/json:
+ *               example:
+ *                 status: Success
+ *                 code: 200
+ *                 author: Xyla
+ *                 data: https://shortened-url.com
+ *         '400':
+ *           description: Bad request
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: url is required.
+ *         '500':
+ *           description: Internal server error
+ *           content:
+ *             application/json:
+ *               example:
+ *                 error: Internal server error.
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/shortUrl/vgd:
  *     get:
  *       tags:
  *         - ShortUrl

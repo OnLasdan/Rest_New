@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import express from 'express'
 import axios from 'axios'
 import { pixart } from 'gpti'

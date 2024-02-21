@@ -1,5 +1,5 @@
-const randomEndpoints = {
-  '/api/random/china': {
+function createRandomEndpoint() {
+  return {
     get: {
       tags: ['Random'],
       responses: {
@@ -10,25 +10,19 @@ const randomEndpoints = {
               schema: {
                 type: 'object',
                 properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
+                  status: 'string',
+                  code: 'integer',
+                  author: 'string',
                   data: {
                     type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
+                    items: 'string',
                   },
+                },
+                example: {
+                  status: 'Success',
+                  code: 200,
+                  author: 'Xyla',
+                  data: ['https://example.com/image.jpg'],
                 },
               },
             },
@@ -36,311 +30,15 @@ const randomEndpoints = {
         },
       },
     },
-  },
-  '/api/random/indonesia': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/japan': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/korean': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/vietnam': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/random': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/thailand': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/malaysia': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  '/api/random/potatogodzilla': {
-    get: {
-      tags: ['Random'],
-      responses: {
-        200: {
-          description: 'Successfully retrieved a random image.',
-          content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: {
-                    type: 'string',
-                    example: 'Success',
-                  },
-                  code: {
-                    type: 'integer',
-                    example: 200,
-                  },
-                  author: {
-                    type: 'string',
-                    example: 'Xyla',
-                  },
-                  data: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      example: 'https://example.com/image.jpg',
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  // ... tambahkan endpoint random lainnya
+  };
 }
-export default randomEndpoints
+
+const countries = ['china', 'indonesia', 'japan', 'korean', 'vietnam', 'random', 'thailand', 'malaysia', 'potatogodzilla'];
+
+const randomEndpoints = {};
+
+countries.forEach(country => {
+  randomEndpoints[`/api/random/${country}`] = createRandomEndpoint();
+});
+
+export default randomEndpoints;
