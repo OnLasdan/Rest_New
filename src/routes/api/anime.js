@@ -7,12 +7,12 @@ const author = 'Xyla'
 const apiR = express.Router()
 
 const handlers = {
-  'doujin-search': scrape.doujindesusearch,
-  'doujin-ch': scrape.doujindesuch,
-  'doujin-img': scrape.dojindsgetimg,
-  'komikindo-ch': scrape.komikindogetch,
-  'doujin-latest': scrape.doujindesulatest,
-  hentai: scrape.hentai,
+  'doujin-search': scrape.komik.doujindesusearch,
+  'doujin-ch': scrape.downloader.doujindesuch,
+  'doujin-img': scrape.komik.dojindsgetimg,
+  'komikindo-ch': scrape.komik.komikindogetch,
+  'doujin-latest': scrape.downloader.doujindesulatest,
+  hentai: scrape.downloader.hentai,
   whatanime: async (req, res) => {
     const url = req.query.url
 
@@ -23,7 +23,7 @@ const handlers = {
           .json({ error: 'Invalid parameters. URL is required.' })
       }
 
-      const data = await traceMoe(url)
+      const data = await scrape.anime.traceMoe(url)
       if (data.length === 0) {
         return res.json(global.mdg.nodata)
       }
@@ -47,7 +47,7 @@ const handlers = {
           .json({ error: 'Invalid parameters. query is required.' })
       }
 
-      const data = await scrape.nhentaisearch(q)
+      const data = await scrape.komik.nhentaisearch(q)
       if (data.length === 0) {
         return res.json(global.msg.nodata)
       }
