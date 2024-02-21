@@ -10,6 +10,12 @@ import path from 'path'
 const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname)
 
+/**
+ * Bikin file JavaScript Swagger dari file YAML Swagger, nih.
+ * @param {string} inputFilePath - Lokasi file YAML Swagger.
+ * @param {string} outputFilePath - Lokasi file JavaScript Swagger yang bakal dibikin.
+ */
+ 
 function swaggerJs(inputFilePath, outputFilePath) {
   try {
     const yamlContent = fs.readFileSync(inputFilePath, 'utf8')
@@ -46,6 +52,13 @@ function swaggerJs(inputFilePath, outputFilePath) {
   }
 }
 
+/**
+ * Lakukan GET HTTP dengan axios, dapatkan datanya dalam bentuk JSON.
+ * @param {string} url - URL endpoint.
+ * @param {Object} options - Opsi ekstra buat permintaan HTTP.
+ * @returns {Promise} - Hasil GET HTTP, datanya dalam format JSON.
+ */
+
 const fetchJson = async (url, options) => {
   try {
     options = options || {}
@@ -63,6 +76,13 @@ const fetchJson = async (url, options) => {
     return err
   }
 }
+
+/**
+ * Lakukan GET HTTP dengan axios, dapetin datanya dalam bentuk array buffer.
+ * @param {string} url - URL endpoint.
+ * @param {Object} options - Opsi ekstra buat permintaan HTTP.
+ * @returns {Promise} - Hasil GET HTTP, datanya dalam format array buffer.
+ */
 
 const getBuffer = async (url, options) => {
   try {
@@ -83,6 +103,12 @@ const getBuffer = async (url, options) => {
   }
 }
 
+/**
+ * Bikin teks acak berdasarkan panjang yang diinginkan, seru nih!
+ * @param {number} len - Panjang teks acak yang mau dibuat.
+ * @returns {string} - Teks acak hasil kreasinya.
+ */
+
 const randomText = (len) => {
   const result = []
   for (let i = 0; i < len; i++) {
@@ -91,11 +117,22 @@ const randomText = (len) => {
   return result.join('')
 }
 
+/**
+ * Dapetin hash dari password pakai algoritma SHA-256. Mantap!
+ * @param {string} password - Password yang bakal di-hash.
+ * @returns {string} - Password yang udah di-hash.
+ */
+
 const getHashedPassword = (password) => {
   const sha256 = crypto.createHash('sha256')
   const hash = sha256.update(password).digest('base64')
   return hash
 }
+
+/**
+ * Logger khusus buat catet info GET HTTP. Keren!
+ * @type {Function}
+ */
 
 const customLogger = morgan(function (tokens, req, res) {
   const method = tokens.method(req, res)
@@ -123,6 +160,11 @@ const customLogger = morgan(function (tokens, req, res) {
 
   console.log(log.join('\n'))
 })
+
+/**
+ * Proses buat file Swagger dalam format YAML dan JSON. Seru nih!
+ * @returns {Promise} - Berhasil atau gagalnya tergantung keberuntungan.
+ */
 
 async function swaggerWr() {
   const spinner = ora('Mengumpulkan swagger file').start()
