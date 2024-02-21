@@ -17,6 +17,11 @@ async function getAllEndpoints() {
   return Promise.all(moduleImports)
 }
 
+/**
+ * Bikin file JSON yang gabungin semua endpoint dari modul-modul.
+ * @returns {Promise<Object>} - Promise dengan objek JSON hasil gabungan.
+ */
+
 async function generateCombinedJSON() {
   const mods = await getAllEndpoints()
 
