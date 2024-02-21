@@ -19,16 +19,9 @@ apiR.get('/:shortener', apiKeyMiddleware, async (req, res) => {
 
     switch (req.params.shortener) {
       case 'isgd':
-        const response = await fetch(
-          `https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const json = await response.json();
-        shortUrl = json.shorturl;
+        shortUrl = await shortenWithIsGd(url);
         break;
-
+        
       case 'tiny':
         shortUrl = await scrape.shortlink(encodeURIComponent(url));
         break;
@@ -50,5 +43,16 @@ apiR.get('/:shortener', apiKeyMiddleware, async (req, res) => {
     res.status(500).json({ error: 'Internal server error.' });
   }
 });
+
+async function shortenWithIsGd(url) {
+  const response = await fetch(
+    `https://is.gd/create.php?format=json&url=${encodeURIComponent(url)}`
+  );
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+  const json = await response.json();
+  return json.shorturl;
+}
 
 export default apiR;
