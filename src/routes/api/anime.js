@@ -1,42 +1,40 @@
-
 import express from 'express';
 import scrape from '../../scrape/index.js';
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
-import traceMoe from '../../scrape/src/anime/whatAnime.js';
 
 const apiRouter = express.Router();
-
+console.log(scrape)
 const handlers = {
   'doujin-search': {
-    handler: scrape.komik.doujindesusearch,
+    handler: scrape.doujindesusearch,
     requiredParam: 'url',
   },
   'doujin-ch': {
-    handler: scrape.downloader.doujindesuch,
+    handler: scrape.doujindesuch,
     requiredParam: 'url',
   },
   'doujin-img': {
-    handler: scrape.komik.dojindsgetimg,
+    handler: scrape.dojindsgetimg,
     requiredParam: 'url',
   },
   'komikindo-ch': {
-    handler: scrape.komik.komikindogetch,
+    handler: scrape.komikindogetch,
     requiredParam: null,
   },
   'doujin-latest': {
-    handler: scrape.downloader.doujindesulatest,
+    handler: scrape.doujindesulatest,
     requiredParam: null,
   },
   hentai: {
-    handler: scrape.downloader.hentai,
+    handler: scrape.hentai,
     requiredParam: null,
   },
   whatanime: {
-    handler: traceMoe,
+    handler: scrape.traceMoe,
     requiredParam: 'url',
   },
   'nhentai-search': {
-    handler: scrape.komik.nhentaisearch,
+    handler: scrape.nhentaisearch,
     requiredParam: 'q',
   },
 };
