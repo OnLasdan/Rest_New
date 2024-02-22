@@ -1,8 +1,8 @@
-import express from 'express';
-import scrape from '../../scrape/index.js';
-import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js';
+import express from 'express'
+import scrape from '../../scrape/index.js'
+import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
-const apiRouter = express.Router();
+const apiRouter = express.Router()
 console.log(scrape)
 const handlers = {
   'doujin-search': {
@@ -37,31 +37,35 @@ const handlers = {
     handler: scrape.nhentaisearch,
     requiredParam: 'q',
   },
-};
+}
 
-apiRouter.use(apiKeyMiddleware);
+apiRouter.use(apiKeyMiddleware)
 
 Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
   apiRouter.get(`/${route}`, async (req, res) => {
     try {
-      const paramValue = req.query[requiredParam];
+      const paramValue = req.query[requiredParam]
 
       if (requiredParam && !paramValue) {
-        return res.status(400).json({ error: `Parameter tidak valid. ${requiredParam} diperlukan.` });
+        return res
+          .status(400)
+          .json({
+            error: `Parameter tidak valid. ${requiredParam} diperlukan.`,
+          })
       }
 
-      const data = await handler(paramValue);
+      const data = await handler(paramValue)
 
       if (!data.length) {
-        return res.json(global.msg.nodata);
+        return res.json(global.msg.nodata)
       }
 
-      res.json({ status: 'Berhasil!', code: 200, author, data });
+      res.json({ status: 'Berhasil!', code: 200, author, data })
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Terjadi kesalahan internal server.' });
+      console.error(error)
+      res.status(500).json({ error: 'Terjadi kesalahan internal server.' })
     }
-  });
-});
+  })
+})
 
-export default apiRouter;
+export default apiRouter

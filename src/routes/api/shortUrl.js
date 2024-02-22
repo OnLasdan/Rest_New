@@ -28,7 +28,7 @@ apiR.get('/:shortener', apiKeyMiddleware, async (req, res) => {
         shortUrl = await shortenWithIsGd(decodeURIComponent(url))
         break
 
-     case 'vgd':
+      case 'vgd':
         shortUrl = await shortenWithVgd(decodeURIComponent(url))
         break
 
@@ -66,7 +66,6 @@ async function VURL(url) {
   const json = await response.json()
   return json
 }
-
 
 async function shortenWithVgd(url) {
   const response = await fetch(

@@ -11,4 +11,17 @@ import ssweb from './ssweb.js'
 import pinterestvideodownloader from './pinterestvideodownloader.js'
 import facebook from './facebook.js'
 
-export { mediafire, mediafires, doujindesuch, doujindesulatest, doujindesusearch, hentai, xnxxDownloader, xnxxSearch, shortlink, ssweb, pinterestvideodownloader, facebook }
+export {
+  mediafire,
+  mediafires,
+  doujindesuch,
+  doujindesulatest,
+  doujindesusearch,
+  hentai,
+  xnxxDownloader,
+  xnxxSearch,
+  shortlink,
+  ssweb,
+  pinterestvideodownloader,
+  facebook,
+}

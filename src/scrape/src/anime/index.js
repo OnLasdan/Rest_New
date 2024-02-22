@@ -1,5 +1,3 @@
-import traceMoe from '././whatAnime.js';
+import traceMoe from '././whatAnime.js'
 
-export {
-  traceMoe
-}
+export { traceMoe }

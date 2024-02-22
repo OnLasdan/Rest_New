@@ -30,15 +30,25 @@ function createRandomEndpoint() {
         },
       },
     },
-  };
+  }
 }
 
-const countries = ['china', 'indonesia', 'japan', 'korean', 'vietnam', 'random', 'thailand', 'malaysia', 'potatogodzilla'];
+const countries = [
+  'china',
+  'indonesia',
+  'japan',
+  'korean',
+  'vietnam',
+  'random',
+  'thailand',
+  'malaysia',
+  'potatogodzilla',
+]
 
-const randomEndpoints = {};
+const randomEndpoints = {}
 
-countries.forEach(country => {
-  randomEndpoints[`/api/random/${country}`] = createRandomEndpoint();
-});
+countries.forEach((country) => {
+  randomEndpoints[`/api/random/${country}`] = createRandomEndpoint()
+})
 
-export default randomEndpoints;
+export default randomEndpoints
