@@ -47,11 +47,9 @@ Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
       const paramValue = req.query[requiredParam]
 
       if (requiredParam && !paramValue) {
-        return res
-          .status(400)
-          .json({
-            error: `Parameter tidak valid. ${requiredParam} diperlukan.`,
-          })
+        return res.status(400).json({
+          error: `Parameter tidak valid. ${requiredParam} diperlukan.`,
+        })
       }
 
       const data = await handler(paramValue)
