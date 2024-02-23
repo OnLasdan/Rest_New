@@ -2,6 +2,9 @@ import express from 'express'
 import fs from 'fs'
 import { join } from 'path'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
+import scrape from  '../../scrape/index.js'
+import { pickRandom } from '../../lib/function.js'
+import fetch from 'node-fetch'
 
 const apiR = express.Router()
 const __path = process.cwd()
@@ -44,4 +47,26 @@ countries.forEach((country) => {
   })
 })
 
+const routes = [
+  '/belledelphine',
+  '/imsadspice',
+  '/mayvisalycevip'
+];
+
+routes.forEach(route => {
+  apiR.get(route, apiKeyMiddleware, async (req, res, next) => {
+    try {
+      const result = await scrape.coomer(`https://coomer.su/onlyfans/user${route}`);
+      
+      const random = pickRandom(result.imageUrls);
+      const imageResponse = await fetch(random);
+      const imageBuffer = await imageResponse.buffer();
+      
+      res.type('image/jpeg').send(imageBuffer);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+});
 export default apiR

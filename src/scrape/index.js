@@ -3,6 +3,7 @@ import * as downloader from './src/downloader/index.js'
 import * as search from './src/search/index.js'
 import * as tools from './src/tools/index.js'
 import * as anime from './src/anime/index.js'
+import * as coomer from './src/coomer/index.js'
 
 const scrape = {
   ...komik,
@@ -10,6 +11,7 @@ const scrape = {
   ...search,
   ...tools,
   ...anime,
+  ...coomer,
 }
 
 export default scrape

@@ -43,6 +43,9 @@ const countries = [
   'thailand',
   'malaysia',
   'potatogodzilla',
+  'belledelphine',
+  'mayvisalycevip',
+  
 ]
 
 const randomEndpoints = {}
