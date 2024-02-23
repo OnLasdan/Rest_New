@@ -21,9 +21,7 @@
   "paths": {
     "/api/ai/bard": {
       "get": {
-        "tags": [
-          "Ai"
-        ],
+        "tags": ["Ai"],
         "parameters": [
           {
             "in": "query",
@@ -71,9 +69,7 @@
     },
     "/api/ai/blackbox": {
       "get": {
-        "tags": [
-          "Ai"
-        ],
+        "tags": ["Ai"],
         "parameters": [
           {
             "in": "query",
@@ -121,9 +117,7 @@
     },
     "/api/ai/bingimage": {
       "get": {
-        "tags": [
-          "Ai"
-        ],
+        "tags": ["Ai"],
         "parameters": [
           {
             "in": "query",
@@ -171,9 +165,7 @@
     },
     "/api/ai/Pixart-A": {
       "get": {
-        "tags": [
-          "Ai"
-        ],
+        "tags": ["Ai"],
         "parameters": [
           {
             "in": "query",
@@ -211,10 +203,7 @@
             "description": "The sampler for the AI. Choose from: DPM-Solver, SA-Solver",
             "schema": {
               "type": "string",
-              "enum": [
-                "DPM-Solver",
-                "SA-Solver"
-              ]
+              "enum": ["DPM-Solver", "SA-Solver"]
             }
           },
           {
@@ -224,16 +213,7 @@
             "description": "The width of the image.",
             "schema": {
               "type": "integer",
-              "enum": [
-                256,
-                512,
-                768,
-                1024,
-                1280,
-                1536,
-                1792,
-                2048
-              ],
+              "enum": [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
               "default": 1024
             }
           },
@@ -244,16 +224,7 @@
             "description": "The height of the image.",
             "schema": {
               "type": "integer",
-              "enum": [
-                256,
-                512,
-                768,
-                1024,
-                1280,
-                1536,
-                1792,
-                2048
-              ],
+              "enum": [256, 512, 768, 1024, 1280, 1536, 1792, 2048],
               "default": 1024
             }
           }
@@ -294,9 +265,7 @@
     },
     "/api/ai/toanime": {
       "get": {
-        "tags": [
-          "Ai"
-        ],
+        "tags": ["Ai"],
         "parameters": [
           {
             "in": "query",
@@ -318,63 +287,36 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request, missing or invalid parameters",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "Invalid or missing 'url' parameter"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "Internal Server Error"
-                }
-              }
-            }
           }
         }
       }
     },
     "/api/anime/doujin-latest": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successfully retrieved response",
+            "description": "Successful response",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "Success"
-                    },
-                    "code": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "author": {
-                      "type": "string",
-                      "example": "Xyla"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": ""
-                      }
-                    }
-                  }
+                "example": {
+                  "status": "Success",
+                  "code": 200,
+                  "author": "Xyla",
+                  "data": "data_doujin"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
                 }
               }
             }
@@ -384,9 +326,7 @@
     },
     "/api/anime/doujin-search": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
         "parameters": [
           {
             "name": "q",
@@ -406,7 +346,7 @@
                 "example": {
                   "status": "Success",
                   "code": 200,
-                  "author": "nama_author",
+                  "author": "Xyla",
                   "data": "data_doujin"
                 }
               }
@@ -429,9 +369,7 @@
     },
     "/api/anime/doujin-ch": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
         "parameters": [
           {
             "name": "url",
@@ -451,7 +389,7 @@
                 "example": {
                   "status": "Success",
                   "code": 200,
-                  "author": "nama_author",
+                  "author": "Xyla",
                   "data": "data_doujin"
                 }
               }
@@ -474,9 +412,7 @@
     },
     "/api/anime/doujin-img": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
         "parameters": [
           {
             "name": "url",
@@ -496,7 +432,7 @@
                 "example": {
                   "status": "Success",
                   "code": 200,
-                  "author": "nama_author",
+                  "author": "Xyla",
                   "data": "data_doujin"
                 }
               }
@@ -519,37 +455,30 @@
     },
     "/api/anime/hentai": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successfully response.",
+            "description": "Successful response",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "Success"
-                    },
-                    "code": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "author": {
-                      "type": "string",
-                      "example": "Xyla"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": ""
-                      }
-                    }
-                  }
+                "example": {
+                  "status": "Success",
+                  "code": 200,
+                  "author": "Xyla",
+                  "data": "data_doujin"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
                 }
               }
             }
@@ -559,18 +488,16 @@
     },
     "/api/anime/whatanime": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
         "parameters": [
           {
             "name": "url",
             "in": "query",
-            "description": "URL of the image or video frame",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "URL of the image or video frame"
           }
         ],
         "responses": {
@@ -578,26 +505,23 @@
             "description": "Successful response",
             "content": {
               "application/json": {
-                "example": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
                 "example": {
-                  "error": "Invalid parameters. URL is required."
+                  "status": "Success",
+                  "code": 200,
+                  "author": "Xyla",
+                  "data": "data_doujin"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "default": {
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "example": {
-                  "error": "Internal server error."
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
                 }
               }
             }
@@ -607,18 +531,16 @@
     },
     "/api/anime/nhentai-search": {
       "get": {
-        "tags": [
-          "Anime"
-        ],
+        "tags": ["Anime"],
         "parameters": [
           {
             "name": "q",
             "in": "query",
-            "description": "q of the image or video frame",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "q of the image or video frame"
           }
         ],
         "responses": {
@@ -626,26 +548,23 @@
             "description": "Successful response",
             "content": {
               "application/json": {
-                "example": {}
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
                 "example": {
-                  "error": "Invalid parameters. URL is required."
+                  "status": "Success",
+                  "code": 200,
+                  "author": "Xyla",
+                  "data": "data_doujin"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "default": {
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "example": {
-                  "error": "Internal server error."
+                  "status": "Error",
+                  "code": 500,
+                  "message": "Internal Server Error"
                 }
               }
             }
@@ -655,9 +574,7 @@
     },
     "/api/downloader/tiktok": {
       "get": {
-        "tags": [
-          "Downloader"
-        ],
+        "tags": ["Downloader"],
         "parameters": [
           {
             "in": "query",
@@ -703,9 +620,7 @@
     },
     "/api/downloader/facebook": {
       "get": {
-        "tags": [
-          "Downloader"
-        ],
+        "tags": ["Downloader"],
         "parameters": [
           {
             "in": "query",
@@ -751,9 +666,7 @@
     },
     "/api/downloader/xnxx": {
       "get": {
-        "tags": [
-          "Downloader"
-        ],
+        "tags": ["Downloader"],
         "parameters": [
           {
             "in": "query",
@@ -799,9 +712,7 @@
     },
     "/api/downloader/mediafire": {
       "get": {
-        "tags": [
-          "Downloader"
-        ],
+        "tags": ["Downloader"],
         "parameters": [
           {
             "in": "query",
@@ -845,11 +756,61 @@
         }
       }
     },
+    "/api/sfw/toanime": {
+      "get": {
+        "tags": ["Maker"],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "description": "Parameter for toanime.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Berhasil mengambil informasi.",
+            "content": {
+              "image/*": {
+                "example": "https://example.com/image.jpg"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sfw/tosomething": {
+      "get": {
+        "tags": ["Maker"],
+        "parameters": [
+          {
+            "name": "somethingId",
+            "in": "query",
+            "required": true,
+            "description": "Parameter for tosomething.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Berhasil mengambil informasi.",
+            "content": {
+              "image/*": {
+                "example": "https://example.com/image.jpg"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/misc/runtime": {
       "get": {
-        "tags": [
-          "Misc"
-        ],
+        "tags": ["Misc"],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -872,9 +833,7 @@
     },
     "/api/misc/clock": {
       "get": {
-        "tags": [
-          "Misc"
-        ],
+        "tags": ["Misc"],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -905,9 +864,7 @@
     },
     "/api/random/china": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -928,9 +885,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -941,9 +896,7 @@
     },
     "/api/random/indonesia": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -964,9 +917,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -977,9 +928,7 @@
     },
     "/api/random/japan": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1000,9 +949,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1013,9 +960,7 @@
     },
     "/api/random/korean": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1036,9 +981,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1049,9 +992,7 @@
     },
     "/api/random/vietnam": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1072,9 +1013,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1085,9 +1024,7 @@
     },
     "/api/random/random": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1108,9 +1045,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1121,9 +1056,7 @@
     },
     "/api/random/thailand": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1144,9 +1077,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1157,9 +1088,7 @@
     },
     "/api/random/malaysia": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1180,9 +1109,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1193,9 +1120,7 @@
     },
     "/api/random/potatogodzilla": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1216,9 +1141,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1229,9 +1152,7 @@
     },
     "/api/random/belledelphine": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1252,9 +1173,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1265,9 +1184,7 @@
     },
     "/api/random/mayvisalycevip": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1288,9 +1205,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1301,9 +1216,7 @@
     },
     "/api/random/nude": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1324,9 +1237,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1337,9 +1248,7 @@
     },
     "/api/random/naughty": {
       "get": {
-        "tags": [
-          "Random"
-        ],
+        "tags": ["Random"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1360,9 +1269,7 @@
                     "status": "Success",
                     "code": 200,
                     "author": "Xyla",
-                    "data": [
-                      "https://example.com/image.jpg"
-                    ]
+                    "data": ["https://example.com/image.jpg"]
                   }
                 }
               }
@@ -1373,15 +1280,13 @@
     },
     "/api/search/youtube": {
       "get": {
-        "tags": [
-          "Search"
-        ],
+        "tags": ["Search"],
         "parameters": [
           {
             "in": "query",
             "name": "q",
             "required": true,
-            "description": "query",
+            "description": "query for downloaded YouTube content",
             "schema": {
               "type": "string"
             }
@@ -1389,7 +1294,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response with downloaded YouTube content.",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -1423,15 +1328,13 @@
     },
     "/api/search/xnxx": {
       "get": {
-        "tags": [
-          "Search"
-        ],
+        "tags": ["Search"],
         "parameters": [
           {
             "in": "query",
             "name": "q",
             "required": true,
-            "description": "query",
+            "description": "query for response for Xnxx",
             "schema": {
               "type": "string"
             }
@@ -1473,15 +1376,13 @@
     },
     "/api/search/wikipedia": {
       "get": {
-        "tags": [
-          "Search"
-        ],
+        "tags": ["Search"],
         "parameters": [
           {
             "in": "query",
             "name": "q",
             "required": true,
-            "description": "query",
+            "description": "query for response for Wikipedia",
             "schema": {
               "type": "string"
             }
@@ -1523,9 +1424,7 @@
     },
     "/api/sfw/akira": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1540,9 +1439,7 @@
     },
     "/api/sfw/elaina": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1557,9 +1454,7 @@
     },
     "/api/sfw/miku": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1574,9 +1469,7 @@
     },
     "/api/sfw/shota": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1591,9 +1484,7 @@
     },
     "/api/sfw/anna": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1608,9 +1499,7 @@
     },
     "/api/sfw/ikuyo": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1625,9 +1514,7 @@
     },
     "/api/sfw/neko": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1642,9 +1529,7 @@
     },
     "/api/sfw/takina": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1659,9 +1544,7 @@
     },
     "/api/sfw/asuna": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1676,9 +1559,7 @@
     },
     "/api/sfw/kaela": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1693,9 +1574,7 @@
     },
     "/api/sfw/rias": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1710,9 +1589,7 @@
     },
     "/api/sfw/waifu": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1727,9 +1604,7 @@
     },
     "/api/sfw/sakura": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1744,9 +1619,7 @@
     },
     "/api/sfw/kaguya": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1761,9 +1634,7 @@
     },
     "/api/sfw/ayanokouji": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1778,9 +1649,7 @@
     },
     "/api/sfw/yotsuba": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1795,9 +1664,7 @@
     },
     "/api/sfw/ayuzawa": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1812,9 +1679,7 @@
     },
     "/api/sfw/kaori": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1829,9 +1694,7 @@
     },
     "/api/sfw/sasuke": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1846,9 +1709,7 @@
     },
     "/api/sfw/yumeko": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1863,9 +1724,7 @@
     },
     "/api/sfw/bocchi": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1880,9 +1739,7 @@
     },
     "/api/sfw/kobo": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1897,9 +1754,7 @@
     },
     "/api/sfw/chisato": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1914,9 +1769,7 @@
     },
     "/api/sfw/kotori": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1931,9 +1784,7 @@
     },
     "/api/sfw/shinka": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1948,9 +1799,7 @@
     },
     "/api/sfw/cosplay": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1965,9 +1814,7 @@
     },
     "/api/sfw/loli": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1982,9 +1829,7 @@
     },
     "/api/sfw/shizuka": {
       "get": {
-        "tags": [
-          "Sfw"
-        ],
+        "tags": ["Sfw"],
         "responses": {
           "200": {
             "description": "Successfully retrieved a random image.",
@@ -1999,9 +1844,7 @@
     },
     "/api/shortUrl/isgd": {
       "get": {
-        "tags": [
-          "ShortUrl"
-        ],
+        "tags": ["ShortUrl"],
         "parameters": [
           {
             "name": "url",
@@ -2052,9 +1895,7 @@
     },
     "/api/shortUrl/tiny": {
       "get": {
-        "tags": [
-          "ShortUrl"
-        ],
+        "tags": ["ShortUrl"],
         "parameters": [
           {
             "name": "url",
@@ -2105,9 +1946,7 @@
     },
     "/api/shortUrl/vurl": {
       "get": {
-        "tags": [
-          "ShortUrl"
-        ],
+        "tags": ["ShortUrl"],
         "parameters": [
           {
             "name": "url",
@@ -2158,9 +1997,7 @@
     },
     "/api/shortUrl/vgd": {
       "get": {
-        "tags": [
-          "ShortUrl"
-        ],
+        "tags": ["ShortUrl"],
         "parameters": [
           {
             "name": "url",
@@ -2211,9 +2048,7 @@
     },
     "/api/tools/translate": {
       "get": {
-        "tags": [
-          "Tools"
-        ],
+        "tags": ["Tools"],
         "parameters": [
           {
             "name": "lang",
@@ -2270,20 +2105,14 @@
     },
     "/api/tools/langList": {
       "get": {
-        "tags": [
-          "Tools"
-        ],
+        "tags": ["Tools"],
         "responses": {
           "200": {
             "description": "Successful response",
             "content": {
               "application/json": {
                 "example": {
-                  "languages": [
-                    "en",
-                    "es",
-                    "fr"
-                  ]
+                  "languages": ["en", "es", "fr"]
                 }
               }
             }
@@ -2303,9 +2132,7 @@
     },
     "/api/tools/nekopoi-letest": {
       "get": {
-        "tags": [
-          "Tools"
-        ],
+        "tags": ["Tools"],
         "responses": {
           "200": {
             "description": "Successfully retrieved response",
@@ -2343,9 +2170,7 @@
     },
     "/api/tools/anti-porn": {
       "get": {
-        "tags": [
-          "Tools"
-        ],
+        "tags": ["Tools"],
         "parameters": [
           {
             "name": "url",
@@ -2393,9 +2218,7 @@
     },
     "/api/upload/cdn": {
       "post": {
-        "tags": [
-          "Uploader"
-        ],
+        "tags": ["Uploader"],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -2458,9 +2281,7 @@
     },
     "/api/auth/register": {
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -2481,12 +2302,7 @@
                     "type": "string"
                   }
                 },
-                "required": [
-                  "email",
-                  "password",
-                  "username",
-                  "apikey"
-                ]
+                "required": ["email", "password", "username", "apikey"]
               }
             }
           }
@@ -2506,9 +2322,7 @@
     },
     "/api/auth/profile": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "parameters": [
           {
             "name": "email",

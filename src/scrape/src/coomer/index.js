@@ -1,5 +1,3 @@
 import coomer from './coomer.js'
 
-export {
-	coomer
-}
+export { coomer }
