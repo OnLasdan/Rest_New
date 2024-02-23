@@ -1,7 +1,4 @@
-const endpoints = [
-  { name: 'toanime', param: 'url' },
-  { name: 'tosomething', param: 'somethingId' },
-]
+const endpoints = [{ name: 'toanime', param: 'url' }]
 
 const sfwEndpoints = {}
 

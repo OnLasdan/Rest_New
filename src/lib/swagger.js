@@ -637,29 +637,6 @@
 /**
  * @swagger
  * paths:
- *   /api/sfw/tosomething:
- *     get:
- *       tags:
- *         - Maker
- *       parameters:
- *         - name: somethingId
- *           in: query
- *           required: true
- *           description: Parameter for tosomething.
- *           schema:
- *             type: string
- *       responses:
- *         '200':
- *           description: Berhasil mengambil informasi.
- *           content:
- *             image/*:
- *               example: https://example.com/image.jpg
- * 
- */
-
-/**
- * @swagger
- * paths:
  *   /api/misc/runtime:
  *     get:
  *       tags:
