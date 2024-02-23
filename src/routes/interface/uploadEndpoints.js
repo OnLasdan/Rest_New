@@ -8,9 +8,6 @@ const uploadEndpoints = {
             schema: {
               type: 'object',
               properties: {
-                apiKey: {
-                  type: 'string',
-                },
                 file: {
                   type: 'string',
                   format: 'binary',
@@ -60,6 +57,47 @@ const uploadEndpoints = {
           ApiKeyAuth: [],
         },
       ],
+    },
+  },
+  '/api/upload/upload': {
+    post: {
+      tags: ['Uploader'],
+      requestBody: {
+        content: {
+          'multipart/form-data': {
+            schema: {
+              type: 'object',
+              properties: {
+                file: {
+                  type: 'string',
+                  format: 'binary',
+                },
+              },
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: 'Successful response',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  url: {
+                    type: 'string',
+                    description: 'URL of the uploaded file',
+                  },
+                },
+              },
+            },
+          },
+        },
+        500: {
+          description: 'Internal Server Error',
+        },
+      },
     },
   },
 }

@@ -13,6 +13,7 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "file-type": "^19.0.0",
     "form-data": "^4.0.0",
     "formdata-node": "^3.7.0",
     "gpti": "^2.0.4",
@@ -35,7 +36,6 @@
     "sdwc": "^1.0.1",
     "serve-favicon": "^2.5.0",
     "swagger-ui-express": "^5.0.0",
-    "unimported": "^1.31.1",
     "uuid": "^7.0.3",
     "validator": "^13.11.0",
     "yt-search": "^2.10.4"
@@ -69,9 +69,6 @@
   },
   "homepage": "https://github.com/Pkok1024/dollar#readme",
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "onchange": "7.1.0",
-    "prettier": "3.2.5",
-    "supertest": "^6.3.4"
+    "prettier": "3.2.5"
   }
 }

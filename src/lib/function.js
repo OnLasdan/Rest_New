@@ -15,7 +15,7 @@ const currentDirectory = path.dirname(new URL(import.meta.url).pathname)
  * @param {string} inputFilePath - Lokasi file YAML Swagger.
  * @param {string} outputFilePath - Lokasi file JavaScript Swagger yang bakal dibikin.
  */
- 
+
 function swaggerJs(inputFilePath, outputFilePath) {
   try {
     const yamlContent = fs.readFileSync(inputFilePath, 'utf8')
@@ -192,6 +192,11 @@ async function swaggerWr() {
   }
 }
 
+const pickRandom = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length)
+  return array[randomIndex]
+}
+
 export {
   randomText,
   getHashedPassword,
@@ -199,4 +204,5 @@ export {
   getBuffer,
   customLogger,
   swaggerWr,
+  pickRandom,
 }

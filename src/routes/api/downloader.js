@@ -19,13 +19,13 @@ apiR.get('/:source', apiKeyMiddleware, async (req, res, next) => {
       )
       break
     case 'mediafire':
-      data = await scrape.mediafires(url)
+      data = await scrape.downloader.mediafires(url)
       break
     case 'facebook':
-      data = await scrape.facebook(url)
+      data = await scrape.downloader.facebook(url)
       break
     case 'xnxx':
-      data = await scrape.xnxxDownloader(url)
+      data = await scrape.downloader.xnxxDownloader(url)
       break
     default:
       return res.json(global.msg.invalidsource)

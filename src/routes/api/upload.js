@@ -3,28 +3,17 @@ import multer from 'multer'
 import path from 'path'
 import { sendFile } from '../../scrape/upload.js'
 import User from '../../models/user.js'
-
+import pixeldrain from '../../scrape/src/upload/pixeldrain.js'
 const apiR = express.Router()
 const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
 apiR.post('/cdn', upload.single('file'), async (req, res) => {
   try {
-    const { apiKey } = req.body
-    const user = await User.findOne({ apiKey })
-
-    if (!user) return res.status(401).json({ error: 'Invalid API key.' })
-    if (user.limit <= 0) {
-      return res.status(403).json({ error: 'Limit exceeded.' })
-    }
-    if (!req.file) return res.status(400).json({ error: 'No file uploaded.' })
-
+    
     const { buffer, originalname } = req.file
     const ext = path.extname(originalname)
     const result = await sendFile(buffer, ext)
-
-    user.limit -= 1
-    await user.save()
 
     res.json({
       status: 'Success',

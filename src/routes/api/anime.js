@@ -1,102 +1,68 @@
 import express from 'express'
-import scrape from '../../scrape/index.js' // Sesuaikan dengan struktur direktori Anda
+import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
-import traceMoe from '../../scrape/src/anime/whatAnime.js'
 
-const author = 'Xyla'
 const apiR = express.Router()
 
 const handlers = {
-  'doujin-search': scrape.doujindesusearch,
-  'doujin-ch': scrape.doujindesuch,
-  'doujin-img': scrape.dojindsgetimg,
-  'komikindo-ch': scrape.komikindogetch,
-  'doujin-latest': scrape.doujindesulatest,
-  hentai: scrape.hentai,
-  whatanime: async (req, res) => {
-    const url = req.query.url
-
-    try {
-      if (!url) {
-        return res
-          .status(400)
-          .json({ error: 'Invalid parameters. URL is required.' })
-      }
-
-      const data = await traceMoe(url)
-      if (data.length === 0) {
-        return res.json(global.mdg.nodata)
-      }
-      res.json({
-        status: 'Success',
-        code: 200,
-        author,
-        data,
-      })
-    } catch (error) {
-      console.error(error)
-      res.status(500).json({ error: 'Internal server error.' })
-    }
+  'doujin-search': {
+    handler: scrape.doujindesusearch,
+    requiredParam: 'url',
   },
-  'nhentai-search': async (req, res) => {
-    const q = req.query.q
-    try {
-      if (!q) {
-        return res
-          .status(400)
-          .json({ error: 'Invalid parameters. query is required.' })
-      }
-
-      const data = await scrape.nhentaisearch(q)
-      if (data.length === 0) {
-        return res.json(global.msg.nodata)
-      }
-
-      res.json({
-        status: 'Success',
-        code: 200,
-        author,
-        data,
-      })
-    } catch (error) {
-      console.error(error)
-      res.status(500).json({ error: 'Internal server error.' })
-    }
+  'doujin-ch': {
+    handler: scrape.doujindesuch,
+    requiredParam: 'url',
+  },
+  'doujin-img': {
+    handler: scrape.dojindsgetimg,
+    requiredParam: 'url',
+  },
+  'komikindo-ch': {
+    handler: scrape.komikindogetch,
+    requiredParam: null,
+  },
+  'doujin-latest': {
+    handler: scrape.doujindesulatest,
+    requiredParam: null,
+  },
+  hentai: {
+    handler: scrape.hentai,
+    requiredParam: null,
+  },
+  whatanime: {
+    handler: scrape.traceMoe,
+    requiredParam: 'url',
+  },
+  'nhentai-search': {
+    handler: scrape.nhentaisearch,
+    requiredParam: 'q',
   },
 }
 
-Object.keys(handlers).forEach((route) => {
-  apiR.get(`/${route}`, apiKeyMiddleware, async (req, res, next) => {
-    const handler = handlers[route]
-    const url = req.query.url
-    const q = req.query.q
+apiR.use(apiKeyMiddleware)
 
-    if (
-      (route === 'doujin-search' ||
-        route === 'doujin-ch' ||
-        route === 'doujin-img') &&
-      !url
-    ) {
-      return res.json(global.msg.paramurl)
-    }
+Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
+  apiR.get(`/${route}`, async (req, res) => {
+    try {
+      const paramValue = req.query[requiredParam]
 
-    if (route === 'nhentai-search' && !q) {
-      return res
-        .status(400)
-        .json({ error: 'Invalid parameters. query is required.' })
-    }
+      if (requiredParam && !paramValue) {
+        return res.status(400).json({
+          error: `Parameter tidak valid. ${requiredParam} diperlukan.`,
+        })
+      }
 
-    handler(url || q).then((data) => {
-      if (data.length === 0) {
+      const data = await handler(paramValue)
+
+      if (!data.length) {
         return res.json(global.msg.nodata)
       }
-      res.json({
-        status: 'Success',
-        code: 200,
-        author,
-        data,
-      })
-    })
+
+      res.json({ status: 'Berhasil!', code: 200, author, data })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Terjadi kesalahan internal server.' })
+    }
   })
 })
 

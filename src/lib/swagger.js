@@ -231,18 +231,6 @@
  *               schema:
  *                 type: string
  *                 format: binary
- *         '400':
- *           description: Bad request, missing or invalid parameters
- *           content:
- *             application/json:
- *               example:
- *                 message: Invalid or missing 'url' parameter
- *         '500':
- *           description: Internal server error
- *           content:
- *             application/json:
- *               example:
- *                 error: Internal Server Error
  * 
  */
 
@@ -253,28 +241,25 @@
  *     get:
  *       tags:
  *         - Anime
+ *       parameters: []
  *       responses:
  *         '200':
- *           description: Successfully retrieved response
+ *           description: Successful response
  *           content:
  *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
- *                   data:
- *                     type: array
- *                     items:
- *                       type: string
- *                       example: ''
+ *               example:
+ *                 status: Success
+ *                 code: 200
+ *                 author: Xyla
+ *                 data: data_doujin
+ *         default:
+ *           description: Unexpected error
+ *           content:
+ *             application/json:
+ *               example:
+ *                 status: Error
+ *                 code: 500
+ *                 message: Internal Server Error
  * 
  */
 
@@ -300,7 +285,7 @@
  *               example:
  *                 status: Success
  *                 code: 200
- *                 author: nama_author
+ *                 author: Xyla
  *                 data: data_doujin
  *         default:
  *           description: Unexpected error
@@ -335,7 +320,7 @@
  *               example:
  *                 status: Success
  *                 code: 200
- *                 author: nama_author
+ *                 author: Xyla
  *                 data: data_doujin
  *         default:
  *           description: Unexpected error
@@ -370,7 +355,7 @@
  *               example:
  *                 status: Success
  *                 code: 200
- *                 author: nama_author
+ *                 author: Xyla
  *                 data: data_doujin
  *         default:
  *           description: Unexpected error
@@ -390,28 +375,25 @@
  *     get:
  *       tags:
  *         - Anime
+ *       parameters: []
  *       responses:
  *         '200':
- *           description: Successfully response.
+ *           description: Successful response
  *           content:
  *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status:
- *                     type: string
- *                     example: Success
- *                   code:
- *                     type: integer
- *                     example: 200
- *                   author:
- *                     type: string
- *                     example: Xyla
- *                   data:
- *                     type: array
- *                     items:
- *                       type: string
- *                       example: ''
+ *               example:
+ *                 status: Success
+ *                 code: 200
+ *                 author: Xyla
+ *                 data: data_doujin
+ *         default:
+ *           description: Unexpected error
+ *           content:
+ *             application/json:
+ *               example:
+ *                 status: Error
+ *                 code: 500
+ *                 message: Internal Server Error
  * 
  */
 
@@ -425,28 +407,28 @@
  *       parameters:
  *         - name: url
  *           in: query
- *           description: URL of the image or video frame
  *           required: true
  *           schema:
  *             type: string
+ *           description: URL of the image or video frame
  *       responses:
  *         '200':
  *           description: Successful response
  *           content:
  *             application/json:
- *               example: {}
- *         '400':
- *           description: Bad Request
+ *               example:
+ *                 status: Success
+ *                 code: 200
+ *                 author: Xyla
+ *                 data: data_doujin
+ *         default:
+ *           description: Unexpected error
  *           content:
  *             application/json:
  *               example:
- *                 error: Invalid parameters. URL is required.
- *         '500':
- *           description: Internal Server Error
- *           content:
- *             application/json:
- *               example:
- *                 error: Internal server error.
+ *                 status: Error
+ *                 code: 500
+ *                 message: Internal Server Error
  * 
  */
 
@@ -460,28 +442,28 @@
  *       parameters:
  *         - name: q
  *           in: query
- *           description: q of the image or video frame
  *           required: true
  *           schema:
  *             type: string
+ *           description: q of the image or video frame
  *       responses:
  *         '200':
  *           description: Successful response
  *           content:
  *             application/json:
- *               example: {}
- *         '400':
- *           description: Bad Request
+ *               example:
+ *                 status: Success
+ *                 code: 200
+ *                 author: Xyla
+ *                 data: data_doujin
+ *         default:
+ *           description: Unexpected error
  *           content:
  *             application/json:
  *               example:
- *                 error: Invalid parameters. URL is required.
- *         '500':
- *           description: Internal Server Error
- *           content:
- *             application/json:
- *               example:
- *                 error: Internal server error.
+ *                 status: Error
+ *                 code: 500
+ *                 message: Internal Server Error
  * 
  */
 
@@ -632,6 +614,29 @@
 /**
  * @swagger
  * paths:
+ *   /api/sfw/toanime:
+ *     get:
+ *       tags:
+ *         - Maker
+ *       parameters:
+ *         - name: url
+ *           in: query
+ *           required: true
+ *           description: Parameter for toanime.
+ *           schema:
+ *             type: string
+ *       responses:
+ *         '200':
+ *           description: Berhasil mengambil informasi.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
  *   /api/misc/runtime:
  *     get:
  *       tags:
@@ -688,22 +693,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -718,22 +709,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -748,22 +725,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -778,22 +741,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -808,22 +757,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -838,22 +773,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -868,22 +789,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -898,22 +805,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -928,22 +821,88 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/belledelphine:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/mayvisalycevip:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/nude:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/imsadspice:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/naughty:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -958,12 +917,12 @@
  *         - in: query
  *           name: q
  *           required: true
- *           description: query
+ *           description: query for downloaded YouTube content
  *           schema:
  *             type: string
  *       responses:
  *         '200':
- *           description: Successful response with downloaded YouTube content.
+ *           description: Successful response
  *           content:
  *             application/json:
  *               schema:
@@ -996,7 +955,7 @@
  *         - in: query
  *           name: q
  *           required: true
- *           description: query
+ *           description: query for response for Xnxx
  *           schema:
  *             type: string
  *       responses:
@@ -1034,7 +993,7 @@
  *         - in: query
  *           name: q
  *           required: true
- *           description: query
+ *           description: query for response for Wikipedia
  *           schema:
  *             type: string
  *       responses:
@@ -1814,8 +1773,6 @@
  *             schema:
  *               type: object
  *               properties:
- *                 apiKey:
- *                   type: string
  *                 file:
  *                   type: string
  *                   format: binary
@@ -1843,6 +1800,38 @@
  *           description: Internal Server Error.
  *       security:
  *         - ApiKeyAuth: []
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/upload/upload:
+ *     post:
+ *       tags:
+ *         - Uploader
+ *       requestBody:
+ *         content:
+ *           multipart/form-data:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 file:
+ *                   type: string
+ *                   format: binary
+ *       responses:
+ *         '200':
+ *           description: Successful response
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   url:
+ *                     type: string
+ *                     description: URL of the uploaded file
+ *         '500':
+ *           description: Internal Server Error
  * 
  */
 
