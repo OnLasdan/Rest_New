@@ -1010,6 +1010,66 @@
 /**
  * @swagger
  * paths:
+ *   /api/random/nude:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   status: string
+ *                   code: integer
+ *                   author: string
+ *                   data:
+ *                     type: array
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/naughty:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   status: string
+ *                   code: integer
+ *                   author: string
+ *                   data:
+ *                     type: array
+ *                     items: string
+ *                 example:
+ *                   status: Success
+ *                   code: 200
+ *                   author: Xyla
+ *                   data:
+ *                     - https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
  *   /api/search/youtube:
  *     get:
  *       tags:

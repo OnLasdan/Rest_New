@@ -18,6 +18,8 @@ const countries = [
   'malaysia',
   'thailand',
   'vietnam',
+  'nude',
+  'naughty',
 ]
 
 countries.forEach((country) => {

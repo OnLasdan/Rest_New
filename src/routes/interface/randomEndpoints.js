@@ -45,6 +45,8 @@ const countries = [
   'potatogodzilla',
   'belledelphine',
   'mayvisalycevip',
+  'nude',
+  'naughty',
   
 ]
 
