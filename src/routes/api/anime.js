@@ -2,8 +2,8 @@ import express from 'express'
 import scrape from '../../scrape/index.js'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
-const apiRouter = express.Router()
-console.log(scrape)
+const apiR = express.Router()
+
 const handlers = {
   'doujin-search': {
     handler: scrape.doujindesusearch,
@@ -39,10 +39,10 @@ const handlers = {
   },
 }
 
-apiRouter.use(apiKeyMiddleware)
+apiR.use(apiKeyMiddleware)
 
 Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
-  apiRouter.get(`/${route}`, async (req, res) => {
+  apiR.get(`/${route}`, async (req, res) => {
     try {
       const paramValue = req.query[requiredParam]
 
@@ -66,4 +66,4 @@ Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
   })
 })
 
-export default apiRouter
+export default apiR

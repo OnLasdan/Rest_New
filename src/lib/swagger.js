@@ -693,22 +693,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -723,22 +709,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -753,22 +725,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -783,22 +741,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -813,22 +757,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -843,22 +773,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -873,22 +789,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -903,22 +805,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -933,22 +821,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -963,22 +837,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -993,22 +853,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -1023,22 +869,24 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/random/imsadspice:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -1053,22 +901,8 @@
  *         '200':
  *           description: Successfully retrieved a random image.
  *           content:
- *             application/json:
- *               schema:
- *                 type: object
- *                 properties:
- *                   status: string
- *                   code: integer
- *                   author: string
- *                   data:
- *                     type: array
- *                     items: string
- *                 example:
- *                   status: Success
- *                   code: 200
- *                   author: Xyla
- *                   data:
- *                     - https://example.com/image.jpg
+ *             image/*:
+ *               example: https://example.com/image.jpg
  * 
  */
 
@@ -1939,8 +1773,6 @@
  *             schema:
  *               type: object
  *               properties:
- *                 apiKey:
- *                   type: string
  *                 file:
  *                   type: string
  *                   format: binary
@@ -1968,6 +1800,38 @@
  *           description: Internal Server Error.
  *       security:
  *         - ApiKeyAuth: []
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/upload/upload:
+ *     post:
+ *       tags:
+ *         - Uploader
+ *       requestBody:
+ *         content:
+ *           multipart/form-data:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 file:
+ *                   type: string
+ *                   format: binary
+ *       responses:
+ *         '200':
+ *           description: Successful response
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   url:
+ *                     type: string
+ *                     description: URL of the uploaded file
+ *         '500':
+ *           description: Internal Server Error
  * 
  */
 

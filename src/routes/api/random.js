@@ -3,7 +3,7 @@ import fs from 'fs'
 import { join } from 'path'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import scrape from '../../scrape/index.js'
-import { pickRandom } from '../../lib/function.js'
+import { pickRandom, getBuffer } from '../../lib/function.js'
 import fetch from 'node-fetch'
 
 const apiR = express.Router()
@@ -32,12 +32,9 @@ countries.forEach((country) => {
       )
       const result = data[Math.floor(Math.random() * data.length)]
 
-      res.status(200).json({
-        status: 'Success',
-        code: 200,
-        author: 'Xyla',
-        data: result,
-      })
+      const buffer = await getBuffer(result)
+
+      res.type('image/jpeg').send(buffer)
     } catch (error) {
       console.error(`Error in handling '/${country}' endpoint:`, error)
       res.status(500).json({
@@ -59,13 +56,16 @@ routes.forEach((route) => {
       )
 
       const random = pickRandom(result.imageUrls)
-      const imageResponse = await fetch(random)
-      const imageBuffer = await imageResponse.buffer()
+      const buffer = await getBuffer(random)
 
-      res.type('image/jpeg').send(imageBuffer)
+      res.type('image/jpeg').send(buffer)
     } catch (error) {
-      console.log(error)
-      res.status(500).send('Internal Server Error')
+      console.error(`Error in handling '/${country}' endpoint:`, error)
+      res.status(500).json({
+        status: 'Error',
+        code: 500,
+        message: 'Internal Server Error',
+      })
     }
   })
 })

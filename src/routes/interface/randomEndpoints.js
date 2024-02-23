@@ -6,25 +6,8 @@ function createRandomEndpoint() {
         200: {
           description: 'Successfully retrieved a random image.',
           content: {
-            'application/json': {
-              schema: {
-                type: 'object',
-                properties: {
-                  status: 'string',
-                  code: 'integer',
-                  author: 'string',
-                  data: {
-                    type: 'array',
-                    items: 'string',
-                  },
-                },
-                example: {
-                  status: 'Success',
-                  code: 200,
-                  author: 'Xyla',
-                  data: ['https://example.com/image.jpg'],
-                },
-              },
+            'image/*': {
+              example: 'https://example.com/image.jpg',
             },
           },
         },
@@ -46,11 +29,11 @@ const countries = [
   'belledelphine',
   'mayvisalycevip',
   'nude',
+  'imsadspice',
   'naughty',
 ]
 
 const randomEndpoints = {}
-
 countries.forEach((country) => {
   randomEndpoints[`/api/random/${country}`] = createRandomEndpoint()
 })

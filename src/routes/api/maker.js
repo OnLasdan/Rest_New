@@ -13,3 +13,5 @@ apiR.get('/anime', apiKeyMiddleware, async (req, res, next) => {
     res.type('image/jpeg').send(data)
   } catch (error) {}
 })
+
+export default apiR
