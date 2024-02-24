@@ -4,10 +4,22 @@ import { join } from 'path'
 import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 import scrape from '../../scrape/index.js'
 import { pickRandom, getBuffer } from '../../lib/function.js'
-import fetch from 'node-fetch'
+import coomer from '../../scrape/src/coomer/coomerAPIs.js'
 
 const apiR = express.Router()
 const __path = process.cwd()
+
+apiR.get('/random-coomer/:username', async (req, res) => {
+  const username = req.params.username;
+
+  try {
+    const result = await coomer(username);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 const countries = [
   'random',
   'potatogodzilla',
