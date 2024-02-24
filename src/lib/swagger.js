@@ -909,6 +909,22 @@
 /**
  * @swagger
  * paths:
+ *   /api/random/jkt48:
+ *     get:
+ *       tags:
+ *         - Random
+ *       responses:
+ *         '200':
+ *           description: Successfully retrieved a random image.
+ *           content:
+ *             image/*:
+ *               example: https://example.com/image.jpg
+ * 
+ */
+
+/**
+ * @swagger
+ * paths:
  *   /api/search/youtube:
  *     get:
  *       tags:

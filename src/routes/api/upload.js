@@ -3,7 +3,6 @@ import multer from 'multer'
 import path from 'path'
 import { sendFile } from '../../scrape/upload.js'
 import User from '../../models/user.js'
-import pixeldrain from '../../scrape/src/upload/pixeldrain.js'
 const apiR = express.Router()
 const storage = multer.memoryStorage()
 const upload = multer({ storage })

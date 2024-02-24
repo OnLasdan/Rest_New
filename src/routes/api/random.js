@@ -20,6 +20,7 @@ const countries = [
   'vietnam',
   'nude',
   'naughty',
+  'jkt48',
 ]
 
 countries.forEach((country) => {
@@ -60,7 +61,7 @@ routes.forEach((route) => {
 
       res.type('image/jpeg').send(buffer)
     } catch (error) {
-      console.error(`Error in handling '/${country}' endpoint:`, error)
+      console.error(`Error in handling '/${route}' endpoint:`, error)
       res.status(500).json({
         status: 'Error',
         code: 500,

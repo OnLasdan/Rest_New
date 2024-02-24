@@ -31,6 +31,7 @@ const countries = [
   'nude',
   'imsadspice',
   'naughty',
+  'jkt48',
 ]
 
 const randomEndpoints = {}
