@@ -2,10 +2,13 @@ import axios from "axios";
 
 async function coomer(coomer) {
     try {
-        const url = `https://coomer.su/onlyfans/${coomer}`
-        const response = await axios.get(url);
-        const attachments = response.data.attachments;
-        const randomAttachment = pickRandom(attachments);
+        const response = await axios.get(`https://coomer.su/api/v1/onlyfans/user/belledelphine?o=0`);
+        console.log(response)
+        const data = response.data
+        const attachments = data.attachments
+        console.log(attachments)
+        const randomData = pickRandom(data);
+        const randomAttachment = pickRandom(randomData);
         const randomPath = pickRandom(randomAttachment.path);
         return {
             url: randomAttachment.url,

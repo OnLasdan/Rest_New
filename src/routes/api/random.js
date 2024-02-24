@@ -9,11 +9,10 @@ import coomer from '../../scrape/src/coomer/coomerAPIs.js'
 const apiR = express.Router()
 const __path = process.cwd()
 
-apiR.get('/random-coomer/:username', async (req, res) => {
-  const username = req.params.username;
-
+apiR.get('/random-coomer/', async (req, res) => {
+  // const username = req.params.username;
   try {
-    const result = await coomer(username);
+    const result = await coomer('lala');
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
