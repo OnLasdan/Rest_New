@@ -1,8 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import fs, { readdirSync } from 'fs'
 import { fileURLToPath } from 'url'
-import { join, dirname } from 'path'
+import { dirname } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
