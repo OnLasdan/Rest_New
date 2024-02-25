@@ -18,6 +18,7 @@ apiR.get('/random-coomer/:username', async (req, res) => {
     res.setHeader('Content-Type', 'image/jpeg')
     response.data.pipe(res)
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })
