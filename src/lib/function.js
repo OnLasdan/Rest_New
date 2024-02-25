@@ -152,8 +152,12 @@ const customLogger = morgan(function (tokens, req, res) {
       ? `${chalk.green('Content Length:')} ${chalk.bold.green(contentLength)}`
       : '',
     responseTime < 500
-      ? `${chalk.blue('Response Time:')} ${chalk.bold.blue(responseTime + ' ms')}`
-      : `${chalk.red('Response Time:')} ${chalk.bold.red(responseTime + ' ms')}`,
+      ? `${chalk.blue('Response Time:')} ${chalk.bold.blue(
+          responseTime + ' ms'
+        )}`
+      : `${chalk.red('Response Time:')} ${chalk.bold.red(
+          responseTime + ' ms'
+        )}`,
     `${chalk.magenta('IP Address:')} ${chalk.bold.magenta(ipAddress)}`,
     `${chalk.yellow('User Agent:')} ${chalk.bold.yellow(userAgent)}`,
   ]

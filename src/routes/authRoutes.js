@@ -41,7 +41,9 @@ router.post('/api/auth/register', async (req, res) => {
     await newUser.save()
 
     const accessToken = jwt.sign({ email }, 'Konbanwa', { expiresIn: '15m' })
-    const verificationUrl = `${req.protocol}://${req.get('host')}/verify/${accessToken}`
+    const verificationUrl = `${req.protocol}://${req.get(
+      'host'
+    )}/verify/${accessToken}`
     await sendVerificationEmail(email, verificationUrl)
 
     res.send('Check email untuk verifikasi email')

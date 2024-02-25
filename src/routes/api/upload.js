@@ -9,10 +9,6 @@ const upload = multer({ storage })
 
 apiR.post('/cdn', upload.single('file'), async (req, res) => {
   try {
-<<<<<<< HEAD
-    
-=======
->>>>>>> dac9534 (-)
     const { buffer, originalname } = req.file
     const ext = path.extname(originalname)
     const result = await sendFile(buffer, ext)
