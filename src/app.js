@@ -1,15 +1,14 @@
 // app.js
 import bodyParser from 'body-parser'
 import compression from 'compression'
+import favicon from 'express-favicon'
 import cors from 'cors'
 import express from 'express'
-import session from 'express-session'
 import helmet from 'helmet'
 import path from 'path'
-import favicon from 'serve-favicon'
 import { customLogger, swaggerWr } from './lib/function.js'
 import resetLimitsCron from './lib/resetLimitsCron.js'
-import apiR from './routes/api/router.js'
+import apiR from './routes/router.js'
 import authRoutes from './routes/authRoutes.js'
 import routerDocs from './routes/routerDocs.js'
 import verifyRoutes from './routes/verifyRoutes.js'
@@ -22,26 +21,14 @@ if (process.env.NODE_ENV === 'development') {
   swaggerWr()
   app.use(customLogger)
 }
-app.use(bodyParser.json())
+app.use(favicon(path.join(currentDirectory,'views','pages','assets','img','android-chrome-512x512.png')))
 app.use(cors())
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'uh58h5yj8',
-  })
-)
 app.set('trust proxy', 1)
 app.use(compression())
-app.use(favicon(path.join(currentDirectory, 'assets', 'image', '2.png')))
-app.use('/assets', express.static(path.join(currentDirectory, 'assets')))
 app.enable('trust proxy')
 app.set('json spaces', 2)
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
 app.use(routerDocs)
 app.use(helmet())
 app.use('/', helloRouter, verifyRoutes, apiR, authRoutes)
 app.use(R404)
-
 export default app

@@ -4,44 +4,12 @@ import apiKeyMiddleware from '../../middlewares/apiKeyMiddleware.js'
 
 const apiR = express.Router()
 
-const handlers = {
-  'doujin-search': {
-    handler: scrape.doujindesusearch,
-    requiredParam: 'url',
-  },
-  'doujin-ch': {
-    handler: scrape.doujindesuch,
-    requiredParam: 'url',
-  },
-  'doujin-img': {
-    handler: scrape.dojindsgetimg,
-    requiredParam: 'url',
-  },
-  'komikindo-ch': {
-    handler: scrape.komikindogetch,
-    requiredParam: null,
-  },
-  'doujin-latest': {
-    handler: scrape.doujindesulatest,
-    requiredParam: null,
-  },
-  hentai: {
-    handler: scrape.hentai,
-    requiredParam: null,
-  },
-  whatanime: {
-    handler: scrape.traceMoe,
-    requiredParam: 'url',
-  },
-  'nhentai-search': {
-    handler: scrape.nhentaisearch,
-    requiredParam: 'q',
-  },
+const errorHandler = (res, error) => {
+  console.error(error)
+  res.status(500).json({ error: 'Terjadi kesalahan internal server.' })
 }
 
-apiR.use(apiKeyMiddleware)
-
-Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
+const addHandler = (route, { handler, requiredParam }) => {
   apiR.get(`/${route}`, async (req, res) => {
     try {
       const paramValue = req.query[requiredParam]
@@ -58,12 +26,42 @@ Object.entries(handlers).forEach(([route, { handler, requiredParam }]) => {
         return res.json(global.msg.nodata)
       }
 
-      res.json({ status: 'Berhasil!', code: 200, author, data })
+      res.json({
+        status: 'Berhasil!',
+        code: 200,
+        author,
+        data,
+      })
     } catch (error) {
-      console.error(error)
-      res.status(500).json({ error: 'Terjadi kesalahan internal server.' })
+      errorHandler(res, error)
     }
   })
+}
+
+apiR.use(apiKeyMiddleware)
+
+addHandler('doujin-search', {
+  handler: scrape.doujindesusearch,
+  requiredParam: 'q',
+})
+addHandler('doujin-ch', { handler: scrape.doujindesuch, requiredParam: 'url' })
+addHandler('doujin-img', {
+  handler: scrape.dojindsgetimg,
+  requiredParam: 'url',
+})
+addHandler('komikindo-ch', {
+  handler: scrape.komikindogetch,
+  requiredParam: null,
+})
+addHandler('doujin-latest', {
+  handler: scrape.doujindesulatest,
+  requiredParam: null,
+})
+addHandler('hentai', { handler: scrape.hentai, requiredParam: null })
+addHandler('whatanime', { handler: scrape.traceMoe, requiredParam: 'url' })
+addHandler('nhentai-search', {
+  handler: scrape.nhentaisearch,
+  requiredParam: 'q',
 })
 
 export default apiR

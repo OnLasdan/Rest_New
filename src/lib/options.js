@@ -14,13 +14,11 @@ export default async function getConfig() {
       docExpansion: 'list',
       defaultModelsExpandDepth: 1,
       operationsSorter: 'method',
-      setPreLoadingEnabled: true,
     },
     customCss,
-    customfavIcon: '../assets/image/2.png',
+    customfavIcon: '../views/pages/assets/img/favicon.png',
     customSiteTitle: '.M.U.F.A.R.',
     explorer: false,
     deepLinking: true,
-    setPreLoadingEnabled: true,
   }
 }
