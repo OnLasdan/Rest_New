@@ -21,7 +21,18 @@ if (process.env.NODE_ENV === 'development') {
   swaggerWr()
   app.use(customLogger)
 }
-app.use(favicon(path.join(currentDirectory,'views','pages','assets','img','android-chrome-512x512.png')))
+app.use(
+  favicon(
+    path.join(
+      currentDirectory,
+      'views',
+      'pages',
+      'assets',
+      'img',
+      'android-chrome-512x512.png'
+    )
+  )
+)
 app.use(cors())
 app.set('trust proxy', 1)
 app.use(compression())
