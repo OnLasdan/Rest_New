@@ -2,7 +2,6 @@
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import cors from 'cors'
-import dotenv from 'dotenv'
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -18,7 +17,6 @@ import R404 from './views/error.js'
 import helloRouter from './views/home.js'
 const currentDirectory = path.dirname(new URL(import.meta.url).pathname)
 const app = express()
-dotenv.config()
 resetLimitsCron()
 if (process.env.NODE_ENV === 'development') {
   swaggerWr()
